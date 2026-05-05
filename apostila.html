@@ -468,6 +468,214 @@
     letter-spacing: 0.15em;
   }
 
+  /* ── SIDE INDEX (sticky sidebar) ────────────── */
+  .side-index { display: none; }
+
+  /* ── SCENE CAROUSEL ─────────────────────────── */
+  .scene-carousel {
+    margin-top: 28px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--line);
+    padding: 18px;
+    position: relative;
+  }
+
+  .scene-carousel-label {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .carousel-viewport {
+    position: relative;
+    overflow: hidden;
+    background: rgba(246, 239, 227, 0.4);
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.4s ease;
+    will-change: transform;
+  }
+
+  .carousel-slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    padding: 18px 24px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .carousel-slide img {
+    max-width: 100%;
+    max-height: 460px;
+    height: auto;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  }
+
+  .carousel-caption {
+    margin-top: 12px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--sumi);
+    font-size: 1.3rem;
+    font-family: 'Fraunces', serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    z-index: 2;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    line-height: 1;
+    padding: 0;
+  }
+
+  .carousel-arrow:hover:not(:disabled) {
+    background: var(--vermilion);
+    color: var(--paper);
+    border-color: var(--vermilion);
+  }
+
+  .carousel-arrow:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  .carousel-arrow.prev { left: 8px; }
+  .carousel-arrow.next { right: 8px; }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--line);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .carousel-dot.active {
+    background: var(--vermilion);
+    transform: scale(1.25);
+  }
+
+  .carousel-counter {
+    text-align: center;
+    margin-top: 8px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── WIDE LAYOUT (sidebar + side images) ────── */
+  @media (min-width: 1240px) {
+    body {
+      padding-left: 30px;
+    }
+
+    .side-index {
+      display: block;
+      position: fixed;
+      top: 30px;
+      left: 30px;
+      width: 230px;
+      max-height: calc(100vh - 60px);
+      overflow-y: auto;
+      padding: 22px 22px 22px 24px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 10;
+    }
+
+    .side-index h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--vermilion);
+      margin-bottom: 16px;
+    }
+
+    .side-index ol {
+      list-style: none;
+      counter-reset: side-item;
+      margin: 0;
+      padding: 0;
+    }
+
+    .side-index li {
+      counter-increment: side-item;
+      position: relative;
+      padding: 5px 0 5px 28px;
+      font-size: 0.84rem;
+      line-height: 1.35;
+    }
+
+    .side-index li::before {
+      content: counter(side-item, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      top: 6px;
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 0.72rem;
+    }
+
+    .side-index a {
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .side-index a:hover { color: var(--vermilion); }
+
+    .container {
+      margin-left: max(300px, calc(50vw - 540px));
+      margin-right: auto;
+      max-width: 1080px;
+    }
+
+    #indexInline { display: none; }
+  }
+
   /* ── COVERAGE NOTICE ────────────────────────── */
   .coverage {
     max-width: 580px;
@@ -543,11 +751,81 @@
     margin: 0 auto;
   }
 
+  .quiz-config {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  .quiz-config label {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .quiz-config select {
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-size: 0.95rem;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--sumi);
+    cursor: pointer;
+  }
+
+  .quiz-card {
+    padding: 28px 32px 24px;
+    background: rgba(246, 239, 227, 0.55);
+    border-left: 3px solid var(--gold);
+  }
+
+  .quiz-progress {
+    margin-bottom: 22px;
+  }
+
+  .quiz-progress-bar {
+    height: 4px;
+    background: rgba(168, 136, 72, 0.2);
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+
+  .quiz-progress-bar > div {
+    height: 100%;
+    background: var(--vermilion);
+    width: 0;
+    transition: width 0.35s ease;
+  }
+
+  .quiz-progress-label {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    text-align: right;
+  }
+
   .quiz-question {
     margin-bottom: 28px;
     padding: 24px 28px;
     background: rgba(246, 239, 227, 0.5);
     border-left: 3px solid var(--gold);
+  }
+
+  .quiz-question.single {
+    margin-bottom: 0;
+    padding: 0;
+    background: transparent;
+    border-left: none;
   }
 
   .quiz-question .q-num {
@@ -562,10 +840,24 @@
 
   .quiz-question .q-text {
     font-family: 'Fraunces', serif;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: var(--sumi);
-    margin-bottom: 16px;
-    line-height: 1.45;
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+
+  .quiz-card-controls {
+    margin-top: 22px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .quiz-btn:disabled {
+    background: transparent;
+    color: var(--ink-soft);
+    border-color: var(--line);
+    cursor: not-allowed;
+    opacity: 0.7;
   }
 
   .quiz-question .q-text .jp-inline {
@@ -587,38 +879,45 @@
     display: flex;
     align-items: flex-start;
     gap: 12px;
+    width: 100%;
     padding: 12px 16px;
     background: rgba(255, 255, 255, 0.65);
     border: 1px solid var(--line);
     cursor: pointer;
+    font-family: 'Manrope', sans-serif;
     font-size: 0.95rem;
     color: var(--ink);
-    transition: background 0.15s, border-color 0.15s;
+    text-align: left;
     line-height: 1.45;
+    transition: background 0.15s, border-color 0.15s, transform 0.1s;
   }
 
-  .quiz-option:hover {
+  .quiz-option:hover:not(:disabled) {
     background: rgba(255, 255, 255, 0.9);
     border-color: var(--gold);
   }
 
-  .quiz-option input {
-    margin-top: 4px;
-    accent-color: var(--vermilion);
-    flex-shrink: 0;
+  .quiz-option:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  .quiz-option:disabled {
+    cursor: default;
   }
 
   .quiz-option.correct {
-    background: rgba(107, 125, 94, 0.18);
+    background: rgba(107, 125, 94, 0.20);
     border-color: var(--sage);
     color: var(--sumi);
   }
 
   .quiz-option.wrong {
-    background: rgba(184, 57, 43, 0.10);
+    background: rgba(184, 57, 43, 0.12);
     border-color: var(--vermilion);
     color: var(--sumi);
   }
+
+  .quiz-option .opt-text { flex: 1; }
 
   .quiz-option .opt-letter {
     font-family: 'Fraunces', serif;
@@ -738,6 +1037,26 @@
 </head>
 <body>
 
+<aside class="side-index" aria-label="Índice de navegação">
+  <h3>目次 — Índice</h3>
+  <ol>
+    <li><a href="#cena1">Na imigração</a></li>
+    <li><a href="#cena2">Procurando o banheiro</a></li>
+    <li><a href="#cena3">Entrando no restaurante</a></li>
+    <li><a href="#cena4">Pedindo no restaurante</a></li>
+    <li><a href="#cena5">Pagando a conta</a></li>
+    <li><a href="#cena6">Konbini — pontos</a></li>
+    <li><a href="#cena7">Konbini — esquentar/sacola</a></li>
+    <li><a href="#cena8">Konbini — bebida</a></li>
+    <li><a href="#cena9">Conhecendo alguém</a></li>
+    <li><a href="#cena10">Na izakaya</a></li>
+    <li><a href="#cena11">Falando da viagem</a></li>
+    <li><a href="#cena12">Quando não entendi</a></li>
+    <li><a href="#cena13">Em sala de aula</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+  </ol>
+</aside>
+
 <div class="container">
 
 <header>
@@ -752,7 +1071,7 @@
   </div>
 </header>
 
-<nav class="index">
+<nav class="index" id="indexInline">
   <h3>Índice — 目次</h3>
   <ol>
     <li><a href="#cena1">Na imigração</a></li>
@@ -1139,6 +1458,42 @@
     </table>
 
     <p style="margin-top:18px;"><strong>Como combinar valores:</strong> os preços se constroem juntando as partes — <em>3.500</em> = <em>sanzen gohyaku en</em> ・ <em>1.280</em> = <em>sen nihyaku hachijuu en</em> ・ <em>15.000</em> = <em>ichiman gosen en</em>. A vírgula portuguesa do milhar = ponto japonês mental: você lê bloco por bloco.</p>
+  </div>
+
+  <div class="scene-carousel" data-carousel aria-label="Material visual da Aula 3 — dinheiro e conta">
+    <div class="scene-carousel-label">Material visual — Aula 3</div>
+    <div class="carousel-viewport">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="Aula 3 - d7d3m1h230ec73e3npsg.jpg" alt="Tabela de centenas (100~900)">
+          <div class="carousel-caption">Centenas — 100 a 900 (irregulares: 300, 600, 800)</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="Aula 3 - d7d3m3cbcf0s73eqik3g.jpg" alt="Tabela de milhares (1.000~10.000)">
+          <div class="carousel-caption">Milhares — 1.000 a 10.000 (irregulares: 3.000, 8.000)</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="Aula 3 - d7d3ltkbcf0s73eqijvg.jpg" alt="Moedas japonesas">
+          <div class="carousel-caption">Moedas — <em>koin / kouka / kozeni</em></div>
+        </div>
+        <div class="carousel-slide">
+          <img src="Aula 3 - d7d3lvp230ec73e3nprg.jpg" alt="Notas japonesas">
+          <div class="carousel-caption">Notas — <em>osatsu</em> (1.000, 2.000, 5.000, 10.000)</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="Aula 3 - d7d3m5p230ec73e3npug.jpg" alt="Cliente no caixa dizendo Kozeni arimasu">
+          <div class="carousel-caption">“Kozeni arimasu” — tenho moedas</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="Aula 3 - d7d3mg6o6fas73dnklrg.jpg" alt="Cliente saindo do caixa dizendo Gochisousama deshita">
+          <div class="carousel-caption">“Gochisousama deshita” — encerrando a refeição</div>
+        </div>
+      </div>
+      <button type="button" class="carousel-arrow prev" aria-label="Imagem anterior">‹</button>
+      <button type="button" class="carousel-arrow next" aria-label="Próxima imagem">›</button>
+    </div>
+    <div class="carousel-dots"></div>
+    <div class="carousel-counter"><span class="cur">1</span> / <span class="tot">6</span></div>
   </div>
 </section>
 
@@ -1740,250 +2095,143 @@
   <div class="quiz-head">
     <div class="ja">小テスト</div>
     <h2>Quiz — <em>teste seus conhecimentos</em></h2>
-    <p>Dez perguntas sorteadas do banco a cada execução. A ordem das alternativas também muda — recarregue a página (ou clique em <em>Novo quiz</em>) para um conjunto diferente.</p>
+    <p>Uma pergunta por vez. Clique numa alternativa para ver na hora se acertou; depois avance. As perguntas e a ordem das alternativas mudam a cada nova rodada.</p>
   </div>
 
-  <form id="quizForm" onsubmit="return false;">
-    <div id="quizQuestions"></div>
-    <div class="quiz-controls">
-      <button type="button" class="quiz-btn" id="btnCheck">Verificar respostas</button>
-      <button type="button" class="quiz-btn secondary" id="btnReset">Novo quiz</button>
+  <div class="quiz-config">
+    <label>
+      Quantas perguntas:
+      <select id="quizSize">
+        <option value="5">5</option>
+        <option value="10" selected>10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+      </select>
+    </label>
+    <button type="button" class="quiz-btn secondary" id="btnNew">Novo quiz</button>
+  </div>
+
+  <div class="quiz-card" id="quizCard">
+    <div class="quiz-progress">
+      <div class="quiz-progress-bar"><div id="progBar"></div></div>
+      <div class="quiz-progress-label">
+        Pergunta <span id="qNow">1</span> / <span id="qTotal">10</span>
+        ・ Acertos: <span id="qScore">0</span>
+      </div>
     </div>
-    <div class="quiz-score" id="quizScore">
-      <div class="ja">けっか — Resultado</div>
-      <div class="big"><span id="scoreNum">0</span> <em>/</em> <span id="scoreTotal">10</span></div>
-      <div class="msg" id="scoreMsg"></div>
+
+    <div class="quiz-question single" id="qBlock">
+      <div class="q-text" id="qText"></div>
+      <ul class="quiz-options" id="qOpts"></ul>
+      <div class="quiz-feedback" id="qFb"></div>
     </div>
-  </form>
+
+    <div class="quiz-card-controls">
+      <button type="button" class="quiz-btn" id="btnNext" disabled>Próxima →</button>
+    </div>
+  </div>
+
+  <div class="quiz-score" id="quizScore">
+    <div class="ja">けっか — Resultado</div>
+    <div class="big"><span id="scoreNum">0</span> <em>/</em> <span id="scoreTotal">10</span></div>
+    <div class="msg" id="scoreMsg"></div>
+    <div class="quiz-card-controls" style="justify-content:center; margin-top:22px;">
+      <button type="button" class="quiz-btn" id="btnAgain">Começar de novo</button>
+    </div>
+  </div>
 </section>
 
 <script>
 (function() {
   const QUESTIONS = [
-    {
-      q: 'Como se diz "por favor" (ao pedir algo) em japonês?',
-      options: [
-        { t: 'Onegaishimasu', ok: true },
-        { t: 'Arigatougozaimasu', ok: false },
-        { t: 'Sumimasen', ok: false },
-        { t: 'Douzo', ok: false }
-      ],
-      hint: '<em>Douzo</em> é usado ao oferecer algo; <em>onegaishimasu</em> ao pedir.'
-    },
-    {
-      q: 'Qual a forma correta de perguntar "Onde fica o banheiro?"',
-      options: [
-        { t: 'Toire wa doko desu ka?', ok: true },
-        { t: 'Toire desu ka?', ok: false },
-        { t: 'Toire o onegaishimasu', ok: false },
-        { t: 'Toire wa nan desu ka?' , ok: false }
-      ],
-      hint: '<em>doko</em> = onde; <em>~wa doko desu ka?</em> é o padrão para "onde fica?"'
-    },
-    {
-      q: 'O que significa <span class="jp-inline">ふたり</span> (<em>futari</em>)?',
-      options: [
-        { t: 'Duas pessoas', ok: true },
-        { t: 'Dois objetos', ok: false },
-        { t: 'Dois ienes', ok: false },
-        { t: 'Segunda-feira', ok: false }
-      ],
-      hint: 'Para coisas em geral, "dois" é <em>futatsu</em>.'
-    },
-    {
-      q: 'Como se diz "três coisas" (contador genérico)?',
-      options: [
-        { t: 'Mittsu', ok: true },
-        { t: 'Sannin', ok: false },
-        { t: 'Sanbyaku', ok: false },
-        { t: 'Sanzen', ok: false }
-      ],
-      hint: '<em>sannin</em> = três pessoas; <em>sanbyaku</em> = 300; <em>sanzen</em> = 3.000.'
-    },
-    {
-      q: 'Qual é a leitura correta de <strong>300</strong> ienes?',
-      options: [
-        { t: 'Sanbyaku en', ok: true },
-        { t: 'Sanhyaku en', ok: false },
-        { t: 'Sanpyaku en', ok: false },
-        { t: 'Mittsu en', ok: false }
-      ],
-      hint: '300, 600 e 800 são irregulares: <em>sanbyaku, roppyaku, happyaku</em>.'
-    },
-    {
-      q: 'Qual é a leitura correta de <strong>3.000</strong> ienes?',
-      options: [
-        { t: 'Sanzen en', ok: true },
-        { t: 'Sansen en', ok: false },
-        { t: 'Sanbyaku en', ok: false },
-        { t: 'Mittsen en', ok: false }
-      ],
-      hint: 'Nos milhares, 3.000 e 8.000 são irregulares: <em>sanzen, hassen</em>.'
-    },
-    {
-      q: 'O que significa <em>muryou</em>?',
-      options: [
-        { t: 'Gratuito', ok: true },
-        { t: 'Pago', ok: false },
-        { t: 'Caro', ok: false },
-        { t: 'Barato', ok: false }
-      ],
-      hint: 'O oposto é <em>yuuryou</em> (pago).'
-    },
-    {
-      q: 'No konbini, o atendente pergunta <em>"Atatame masu ka?"</em>. Ele quer saber:',
-      options: [
-        { t: 'Se você quer esquentar (o produto)', ok: true },
-        { t: 'Se você quer uma sacola', ok: false },
-        { t: 'Se você tem cartão de pontos', ok: false },
-        { t: 'Como você vai pagar', ok: false }
-      ],
-      hint: '<em>atatameru</em> = esquentar.'
-    },
-    {
-      q: 'Qual o demonstrativo certo para "isto" (algo perto de quem fala)?',
-      options: [
-        { t: 'Kore', ok: true },
-        { t: 'Sore', ok: false },
-        { t: 'Are', ok: false },
-        { t: 'Dore', ok: false }
-      ],
-      hint: '<em>kore</em> (perto de mim) ・ <em>sore</em> (perto de você) ・ <em>are</em> (longe).'
-    },
-    {
-      q: 'Qual o demonstrativo certo para "aquilo" (longe dos dois)?',
-      options: [
-        { t: 'Are', ok: true },
-        { t: 'Kore', ok: false },
-        { t: 'Sore', ok: false },
-        { t: 'Dore', ok: false }
-      ],
-      hint: '<em>dore</em> = qual? (entre opções).'
-    },
-    {
-      q: 'Como se diz "Sou brasileiro" (nacionalidade)?',
-      options: [
-        { t: 'Burajiru-jin desu', ok: true },
-        { t: 'Burajiru desu', ok: false },
-        { t: 'Burajiru shusshin', ok: false },
-        { t: 'Burajiru kara', ok: false }
-      ],
-      hint: 'O sufixo <em>~jin</em> indica nacionalidade. <em>shusshin</em> = origem regional.'
-    },
-    {
-      q: 'O que significa "Doko kara kimashita ka?"',
-      options: [
-        { t: 'De onde você veio?', ok: true },
-        { t: 'Para onde você vai?', ok: false },
-        { t: 'Onde você está?', ok: false },
-        { t: 'Onde você mora?', ok: false }
-      ],
-      hint: '<em>kimashita</em> é o passado de <em>kimasu</em> (vir).'
-    },
-    {
-      q: 'Qual é a forma negativa de <em>ikimasu</em> (ir) no presente?',
-      options: [
-        { t: 'Ikimasen', ok: true },
-        { t: 'Ikimashita', ok: false },
-        { t: 'Ikimasen deshita', ok: false },
-        { t: 'Ikanai', ok: false }
-      ],
-      hint: 'Padrão: <em>~masu</em> (afirmativo) ↔ <em>~masen</em> (negativo).'
-    },
-    {
-      q: 'Como pedir educadamente para alguém repetir devagar?',
-      options: [
-        { t: 'Mouichido, yukkuri, onegaishimasu', ok: true },
-        { t: 'Sumimasen, wakarimasen', ok: false },
-        { t: 'Yukkuri desu', ok: false },
-        { t: 'Mouichido kudasai dake', ok: false }
-      ],
-      hint: '<em>mouichido</em> = mais uma vez ・ <em>yukkuri</em> = devagar.'
-    },
-    {
-      q: 'O que o atendente quer saber com "Ijou de yoroshii deshou ka?"',
-      options: [
-        { t: 'Se você quer mais alguma coisa (ou se é só isso)', ok: true },
-        { t: 'Se você quer esquentar', ok: false },
-        { t: 'Se é gratuito', ok: false },
-        { t: 'Qual a forma de pagamento', ok: false }
-      ],
-      hint: '<em>ijou</em> = "isso é tudo"; ele confirma se o pedido encerrou.'
-    },
-    {
-      q: 'Quando se diz "Gochisousama deshita"?',
-      options: [
-        { t: 'Após terminar a refeição', ok: true },
-        { t: 'Antes de começar a comer', ok: false },
-        { t: 'Ao entrar no restaurante', ok: false },
-        { t: 'Para chamar o atendente', ok: false }
-      ],
-      hint: 'Antes da refeição diz-se <em>itadakimasu</em>.'
-    },
-    {
-      q: 'O que significa "Onamae wa nan desu ka?"',
-      options: [
-        { t: 'Qual é o seu nome?', ok: true },
-        { t: 'Quantos anos você tem?', ok: false },
-        { t: 'De onde você é?', ok: false },
-        { t: 'O que você gosta?', ok: false }
-      ],
-      hint: '<em>namae</em> = nome (com o prefixo respeitoso <em>o-</em>).'
-    },
-    {
-      q: 'O que significa <em>osusume</em>?',
-      options: [
-        { t: 'Recomendação (do dia / da casa)', ok: true },
-        { t: 'Conta', ok: false },
-        { t: 'Cardápio', ok: false },
-        { t: 'Pedido', ok: false }
-      ],
-      hint: '<em>okaikei</em> = conta; <em>menyuu</em> = cardápio; <em>chuumon</em> = pedido.'
-    },
-    {
-      q: 'Para responder "Quantas pessoas?" sendo 4, você diz:',
-      options: [
-        { t: 'Yonin desu', ok: true },
-        { t: 'Yottsu desu', ok: false },
-        { t: 'Yonhyaku desu', ok: false },
-        { t: 'Shinin desu', ok: false }
-      ],
-      hint: 'Pessoas: <em>~nin</em> (com irregulares <em>hitori, futari</em>). 4 evita <em>shi</em> (=morte).'
-    },
-    {
-      q: 'Como se diz "está tudo bem / não precisa, obrigado" educadamente?',
-      options: [
-        { t: 'Daijoubu desu', ok: true },
-        { t: 'Genkin desu', ok: false },
-        { t: 'Wakarimasen', ok: false },
-        { t: 'Sumimasen deshita', ok: false }
-      ],
-      hint: '<em>daijoubu desu</em> também serve como recusa educada.'
-    },
-    {
-      q: 'Como você diria "Sou de São Paulo" (origem)?',
-      options: [
-        { t: 'San Pauro shusshin desu', ok: true },
-        { t: 'San Pauro ni ikimasu', ok: false },
-        { t: 'San Pauro desu ka?', ok: false },
-        { t: 'San Pauro no doko desu', ok: false }
-      ],
-      hint: '<em>shusshin</em> indica de onde a pessoa é natural.'
-    },
-    {
-      q: 'Em sala, o sensei pergunta "Miemasu ka? Kikoemasu ka?". Ele quer saber se vocês:',
-      options: [
-        { t: 'Conseguem ver e ouvir', ok: true },
-        { t: 'Entenderam a matéria', ok: false },
-        { t: 'Têm alguma pergunta', ok: false },
-        { t: 'Querem fazer uma pausa', ok: false }
-      ],
-      hint: '<em>mieru</em> = conseguir ver ・ <em>kikoeru</em> = conseguir ouvir.'
-    }
+    { q:'Como se diz "por favor" (ao pedir algo) em japonês?', options:[ {t:'Onegaishimasu',ok:true}, {t:'Arigatougozaimasu',ok:false}, {t:'Sumimasen',ok:false}, {t:'Douzo',ok:false} ], hint:'<em>Douzo</em> é usado ao oferecer algo; <em>onegaishimasu</em>, ao pedir.' },
+    { q:'Como se cumprimenta alguém de manhã (forma educada)?', options:[ {t:'Ohayou gozaimasu',ok:true}, {t:'Konnichiwa',ok:false}, {t:'Konbanwa',ok:false}, {t:'Oyasumi nasai',ok:false} ], hint:'<em>Ohayou</em> sozinho é informal; <em>~gozaimasu</em> é a versão polida.' },
+    { q:'"Konbanwa" é usado:', options:[ {t:'À noite (boa noite, ao chegar)',ok:true}, {t:'Ao acordar',ok:false}, {t:'Antes de dormir',ok:false}, {t:'Ao despedir-se',ok:false} ], hint:'<em>Oyasumi nasai</em> é o "boa noite" antes de dormir.' },
+    { q:'"Sayounara" significa:', options:[ {t:'Adeus / até logo',ok:true}, {t:'Boa noite',ok:false}, {t:'Bom dia',ok:false}, {t:'Por favor',ok:false} ], hint:'Mais casual: <em>jaa, mata</em>.' },
+    { q:'"Hajimemashite" é dito:', options:[ {t:'No primeiro encontro com alguém',ok:true}, {t:'Ao reencontrar um amigo',ok:false}, {t:'Ao despedir-se',ok:false}, {t:'Antes de comer',ok:false} ], hint:'Costuma vir junto com <em>douzo yoroshiku</em>.' },
+    { q:'"Sumimasen" pode significar:', options:[ {t:'Com licença / desculpe / obrigado (todos)',ok:true}, {t:'Apenas "obrigado"',ok:false}, {t:'Apenas "desculpe"',ok:false}, {t:'Apenas "tchau"',ok:false} ], hint:'Provavelmente a palavra mais versátil em japonês cotidiano.' },
+    { q:'Como se diz "Sou brasileiro" (nacionalidade)?', options:[ {t:'Burajiru-jin desu',ok:true}, {t:'Burajiru desu',ok:false}, {t:'Burajiru shusshin',ok:false}, {t:'Burajiru kara',ok:false} ], hint:'O sufixo <em>~jin</em> indica nacionalidade.' },
+    { q:'"Doko kara kimashita ka?" significa:', options:[ {t:'De onde você veio?',ok:true}, {t:'Para onde vai?',ok:false}, {t:'Onde está?',ok:false}, {t:'Onde mora?',ok:false} ], hint:'<em>kimashita</em> = passado de <em>kimasu</em> (vir).' },
+    { q:'Como você diria "Sou de São Paulo" (origem)?', options:[ {t:'San Pauro shusshin desu',ok:true}, {t:'San Pauro ni ikimasu',ok:false}, {t:'San Pauro desu ka?',ok:false}, {t:'San Pauro no doko desu',ok:false} ], hint:'<em>shusshin</em> indica de onde a pessoa é natural.' },
+    { q:'"Onamae wa nan desu ka?" significa:', options:[ {t:'Qual é o seu nome?',ok:true}, {t:'Quantos anos você tem?',ok:false}, {t:'De onde é?',ok:false}, {t:'Você fala inglês?',ok:false} ], hint:'<em>namae</em> = nome.' },
+    { q:'Quantas pessoas é "futari"?', options:[ {t:'2',ok:true}, {t:'1',ok:false}, {t:'4',ok:false}, {t:'7',ok:false} ], hint:'<em>hitori</em> (1) e <em>futari</em> (2) são irregulares.' },
+    { q:'4 pessoas em japonês:', options:[ {t:'Yonin',ok:true}, {t:'Shinin',ok:false}, {t:'Yottsu',ok:false}, {t:'Yonhyaku',ok:false} ], hint:'Evita-se <em>shi</em> (que sugere "morte").' },
+    { q:'Como dizer "somos três pessoas" no restaurante?', options:[ {t:'Sannin desu',ok:true}, {t:'Mittsu desu',ok:false}, {t:'Sangatsu desu',ok:false}, {t:'Sanbyaku desu',ok:false} ], hint:'A partir de 3, segue o padrão <em>número + nin</em>.' },
+    { q:'Contador genérico para "três coisas":', options:[ {t:'Mittsu',ok:true}, {t:'Sannin',ok:false}, {t:'Sanzen',ok:false}, {t:'Sangatsu',ok:false} ], hint:'A série <em>hitotsu, futatsu, mittsu...</em> serve para quase tudo.' },
+    { q:'"Kore o futatsu, onegaishimasu" significa:', options:[ {t:'Dois destes, por favor',ok:true}, {t:'Para duas pessoas, por favor',ok:false}, {t:'Mais um destes, por favor',ok:false}, {t:'A conta para dois, por favor',ok:false} ], hint:'<em>~o [contador], onegaishimasu</em> é o padrão de pedido.' },
+    { q:'Contador genérico para 10:', options:[ {t:'Too',ok:true}, {t:'Juu',ok:false}, {t:'Juuko',ok:false}, {t:'Tooka',ok:false} ], hint:'A partir de 11 volta para o número regular: <em>juuichi, juuni</em>.' },
+    { q:'Leitura correta de 300 ienes:', options:[ {t:'Sanbyaku en',ok:true}, {t:'Sanhyaku en',ok:false}, {t:'Sanpyaku en',ok:false}, {t:'Mittsu en',ok:false} ], hint:'Irregulares: 300 / 600 / 800.' },
+    { q:'Leitura correta de 600 ienes:', options:[ {t:'Roppyaku en',ok:true}, {t:'Rokuhyaku en',ok:false}, {t:'Robyaku en',ok:false}, {t:'Rokupyaku en',ok:false} ], hint:'<em>roku + hyaku → roppyaku</em>.' },
+    { q:'Leitura correta de 800 ienes:', options:[ {t:'Happyaku en',ok:true}, {t:'Hachihyaku en',ok:false}, {t:'Hatsuhyaku en',ok:false}, {t:'Hapyaku en',ok:false} ], hint:'<em>hachi + hyaku → happyaku</em>.' },
+    { q:'Leitura correta de 500 ienes:', options:[ {t:'Gohyaku en',ok:true}, {t:'Gobyaku en',ok:false}, {t:'Gopyaku en',ok:false}, {t:'Goen en',ok:false} ], hint:'500 é regular.' },
+    { q:'Leitura correta de 3.000 ienes:', options:[ {t:'Sanzen en',ok:true}, {t:'Sansen en',ok:false}, {t:'Sanbyaku en',ok:false}, {t:'Mittsen en',ok:false} ], hint:'<em>san + sen → sanzen</em>.' },
+    { q:'Leitura correta de 8.000 ienes:', options:[ {t:'Hassen en',ok:true}, {t:'Hachisen en',ok:false}, {t:'Hapsen en',ok:false}, {t:'Hatten en',ok:false} ], hint:'<em>hachi + sen → hassen</em>.' },
+    { q:'Leitura correta de 10.000 ienes:', options:[ {t:'Ichiman en',ok:true}, {t:'Juusen en',ok:false}, {t:'Sen ichi en',ok:false}, {t:'Manen',ok:false} ], hint:'10.000 muda a base de contagem para <em>man</em>.' },
+    { q:'Como se lê 1.500 ienes?', options:[ {t:'Sen gohyaku en',ok:true}, {t:'Ichi sen gohyaku en',ok:false}, {t:'Sen go en',ok:false}, {t:'Senhyaku en',ok:false} ], hint:'1.000 sozinho é só <em>sen</em> (não <em>ichisen</em>).' },
+    { q:'Como se lê 3.500 ienes?', options:[ {t:'Sanzen gohyaku en',ok:true}, {t:'Sansen gohyaku en',ok:false}, {t:'Mittsu gohyaku en',ok:false}, {t:'Sanbyaku gosen en',ok:false} ], hint:'Junte os blocos: 3.000 + 500.' },
+    { q:'O que significa <em>kozeni</em>?', options:[ {t:'Moedas (trocados)',ok:true}, {t:'Notas',ok:false}, {t:'Cartão de crédito',ok:false}, {t:'Cartão de pontos',ok:false} ], hint:'<em>kouka</em> também = moeda; <em>osatsu</em> = nota.' },
+    { q:'Como se chama uma nota de 10.000 ienes?', options:[ {t:'Ichiman en satsu',ok:true}, {t:'Juusen en satsu',ok:false}, {t:'Manen dama',ok:false}, {t:'Ichiman en dama',ok:false} ], hint:'<em>satsu</em> = nota ・ <em>dama</em> = moeda.' },
+    { q:'A moeda de 5 ienes se chama:', options:[ {t:'Go en dama',ok:true}, {t:'Gohyaku en dama',ok:false}, {t:'Go en satsu',ok:false}, {t:'Goen',ok:false} ], hint:'<em>~en dama</em> para moedas.' },
+    { q:'"Isto" (perto de mim) é:', options:[ {t:'Kore',ok:true}, {t:'Sore',ok:false}, {t:'Are',ok:false}, {t:'Dore',ok:false} ], hint:'<em>kore/sore/are</em> = isto/isso/aquilo.' },
+    { q:'"Aquilo" (longe dos dois) é:', options:[ {t:'Are',ok:true}, {t:'Kore',ok:false}, {t:'Sore',ok:false}, {t:'Dore',ok:false} ], hint:'<em>dore</em> = qual?' },
+    { q:'"Qual?" (entre opções) é:', options:[ {t:'Dore',ok:true}, {t:'Doko',ok:false}, {t:'Dare',ok:false}, {t:'Donna',ok:false} ], hint:'<em>doko</em> = onde, <em>dare</em> = quem.' },
+    { q:'Diferença entre <em>kore</em> e <em>kono</em>:', options:[ {t:'<em>kore</em> = pronome (este aqui); <em>kono</em> = adjetivo (este X)',ok:true}, {t:'<em>kore</em> é educado, <em>kono</em> é casual',ok:false}, {t:'Não há diferença',ok:false}, {t:'<em>kono</em> é só feminino',ok:false} ], hint:'<em>kono hon</em> = "este livro"; <em>kore wa hon desu</em> = "isto é um livro".' },
+    { q:'Para perguntar "onde?":', options:[ {t:'Doko',ok:true}, {t:'Dare',ok:false}, {t:'Itsu',ok:false}, {t:'Nan',ok:false} ], hint:'<em>~wa doko desu ka?</em> = "onde fica ~?".' },
+    { q:'"Quanto custa?" pode ser:', options:[ {t:'Ikura desu ka?',ok:true}, {t:'Ikutsu desu ka?',ok:false}, {t:'Itsu desu ka?',ok:false}, {t:'Nan desu ka?',ok:false} ], hint:'<em>ikura</em> = preço ・ <em>ikutsu</em> = quantos itens.' },
+    { q:'"Quem?" em japonês é:', options:[ {t:'Dare',ok:true}, {t:'Dore',ok:false}, {t:'Doko',ok:false}, {t:'Nan',ok:false} ], hint:'A versão polida é <em>donata</em>.' },
+    { q:'"Quando?" em japonês é:', options:[ {t:'Itsu',ok:true}, {t:'Doko',ok:false}, {t:'Dare',ok:false}, {t:'Nanji',ok:false} ], hint:'<em>nanji</em> = "que horas?".' },
+    { q:'Em "Watashi <strong>wa</strong> Luis desu", a partícula <em>wa</em>:', options:[ {t:'Marca o tópico ("quanto a mim, sou Luis")',ok:true}, {t:'Marca o objeto direto',ok:false}, {t:'Indica direção',ok:false}, {t:'Indica posse',ok:false} ], hint:'Escreve-se は mas pronuncia-se "wa" como partícula.' },
+    { q:'Em "Toukyou <strong>ni</strong> ikimasu", a partícula <em>ni</em>:', options:[ {t:'Indica destino ("vou para Tóquio")',ok:true}, {t:'Marca tópico',ok:false}, {t:'Marca objeto',ok:false}, {t:'Indica origem',ok:false} ], hint:'<em>e</em> (へ) também marca destino.' },
+    { q:'Em "Burajiru <strong>kara</strong> kimashita", <em>kara</em>:', options:[ {t:'Indica origem ("do Brasil")',ok:true}, {t:'Indica destino',ok:false}, {t:'Indica meio',ok:false}, {t:'Marca tópico',ok:false} ], hint:'<em>~kara ~made</em> = "de ~ até ~".' },
+    { q:'Em "kore <strong>o</strong> futatsu", a partícula <em>o</em>:', options:[ {t:'Marca o objeto direto',ok:true}, {t:'Marca o tópico',ok:false}, {t:'Indica origem',ok:false}, {t:'Marca posse',ok:false} ], hint:'Escreve-se を, exclusiva como partícula.' },
+    { q:'Forma negativa de <em>ikimasu</em>:', options:[ {t:'Ikimasen',ok:true}, {t:'Ikimashita',ok:false}, {t:'Ikimasen deshita',ok:false}, {t:'Ikanai',ok:false} ], hint:'<em>~masu → ~masen</em>.' },
+    { q:'Forma passada negativa de <em>ikimasu</em>:', options:[ {t:'Ikimasen deshita',ok:true}, {t:'Ikimashita',ok:false}, {t:'Ikimasen',ok:false}, {t:'Ikanakatta',ok:false} ], hint:'<em>~masen + deshita</em>.' },
+    { q:'"Comi" em japonês (forma educada):', options:[ {t:'Tabemashita',ok:true}, {t:'Tabemasu',ok:false}, {t:'Tabemasen',ok:false}, {t:'Tabete',ok:false} ], hint:'<em>tabemasu → tabemashita</em>.' },
+    { q:'"Wakarimasen" significa:', options:[ {t:'Não entendo',ok:true}, {t:'Entendo',ok:false}, {t:'Não vou',ok:false}, {t:'Não sei se vou',ok:false} ], hint:'<em>wakaru</em> = entender.' },
+    { q:'Para coisas/objetos, "existir" é:', options:[ {t:'Arimasu',ok:true}, {t:'Imasu',ok:false}, {t:'Desu',ok:false}, {t:'Ikimasu',ok:false} ], hint:'<em>imasu</em> é para seres animados.' },
+    { q:'"Pointo ka-do, arimasu ka?" pergunta:', options:[ {t:'Você tem cartão de pontos?',ok:true}, {t:'Tem ponto neste cartão?',ok:false}, {t:'Onde está o cartão?',ok:false}, {t:'Posso pagar com cartão?',ok:false} ], hint:'<em>~arimasu ka?</em> = "tem (algo)?".' },
+    { q:'"Ijou de yoroshii deshou ka?" — o atendente quer saber:', options:[ {t:'Se é só isso (encerra o pedido)',ok:true}, {t:'Se quer esquentar',ok:false}, {t:'Se está bom o lugar',ok:false}, {t:'Como vai pagar',ok:false} ], hint:'<em>ijou</em> = "isso é tudo".' },
+    { q:'Quando se diz "Itadakimasu"?', options:[ {t:'Antes de começar a comer',ok:true}, {t:'Após terminar de comer',ok:false}, {t:'Ao chegar em casa',ok:false}, {t:'Ao receber um presente',ok:false} ], hint:'O par é <em>gochisousama deshita</em> ao final.' },
+    { q:'Quando se diz "Gochisousama deshita"?', options:[ {t:'Após terminar a refeição',ok:true}, {t:'Antes de comer',ok:false}, {t:'Ao entrar no restaurante',ok:false}, {t:'Ao chamar o atendente',ok:false} ], hint:'Encerra a refeição.' },
+    { q:'O que significa "osusume"?', options:[ {t:'Recomendação (do dia/da casa)',ok:true}, {t:'Conta',ok:false}, {t:'Cardápio',ok:false}, {t:'Pedido',ok:false} ], hint:'<em>okaikei</em>=conta; <em>menyuu</em>=cardápio; <em>chuumon</em>=pedido.' },
+    { q:'"Okaikei onegaishimasu" significa:', options:[ {t:'A conta, por favor',ok:true}, {t:'Mais uma porção, por favor',ok:false}, {t:'O cardápio, por favor',ok:false}, {t:'A recomendação, por favor',ok:false} ], hint:'<em>okaikei</em> = conta.' },
+    { q:'"Manseki desu" do atendente significa:', options:[ {t:'Está lotado / não há lugar',ok:true}, {t:'A mesa está pronta',ok:false}, {t:'Tem lugar no balcão',ok:false}, {t:'Sente-se aqui',ok:false} ], hint:'<em>man</em> = cheio; <em>seki</em> = lugar.' },
+    { q:'"Nama biiru" é:', options:[ {t:'Chope (cerveja de pressão)',ok:true}, {t:'Cerveja em lata',ok:false}, {t:'Saquê',ok:false}, {t:'Suco de fruta',ok:false} ], hint:'<em>nama</em> = "fresco/cru".' },
+    { q:'"Atatame masu ka?" no konbini:', options:[ {t:'Quer esquentar?',ok:true}, {t:'Quer sacola?',ok:false}, {t:'Quer cartão de pontos?',ok:false}, {t:'Já é a hora?',ok:false} ], hint:'<em>atatameru</em> = aquecer.' },
+    { q:'O que é "muryou"?', options:[ {t:'Gratuito',ok:true}, {t:'Pago',ok:false}, {t:'Caro',ok:false}, {t:'Barato',ok:false} ], hint:'Oposto: <em>yuuryou</em>.' },
+    { q:'O oposto de "muryou" é:', options:[ {t:'Yuuryou',ok:true}, {t:'Takai',ok:false}, {t:'Daijoubu',ok:false}, {t:'Tasukete',ok:false} ], hint:'<em>yuuryou</em> = pago/com custo.' },
+    { q:'"Reji bukuro" é:', options:[ {t:'Sacola do caixa',ok:true}, {t:'Cesta de compras',ok:false}, {t:'Recibo',ok:false}, {t:'Caixa registradora',ok:false} ], hint:'<em>reji</em>=caixa, <em>fukuro/bukuro</em>=sacola.' },
+    { q:'O que é "jihanki"?', options:[ {t:'Máquina automática (de venda)',ok:true}, {t:'Loja de conveniência',ok:false}, {t:'Restaurante self-service',ok:false}, {t:'Caixa eletrônico',ok:false} ], hint:'Ubíqua no Japão, especialmente para bebidas.' },
+    { q:'Como pedir para repetir devagar?', options:[ {t:'Mouichido, yukkuri, onegaishimasu',ok:true}, {t:'Sumimasen, wakarimasen',ok:false}, {t:'Yukkuri desu',ok:false}, {t:'Hayaku, onegaishimasu',ok:false} ], hint:'<em>mouichido</em> = mais uma vez ・ <em>yukkuri</em> = devagar.' },
+    { q:'"Hayaku" significa:', options:[ {t:'Rápido / depressa',ok:true}, {t:'Devagar',ok:false}, {t:'Mais uma vez',ok:false}, {t:'Bem alto',ok:false} ], hint:'<em>yukkuri</em> = devagar.' },
+    { q:'"Miemasu ka?" é o sensei perguntando se:', options:[ {t:'Você consegue ver',ok:true}, {t:'Você entendeu',ok:false}, {t:'Você consegue ouvir',ok:false}, {t:'Você está pronto',ok:false} ], hint:'<em>kikoemasu ka?</em> = consegue ouvir?' },
+    { q:'"Otsukaresama deshita" é dito:', options:[ {t:'Ao final do trabalho/aula (bom trabalho)',ok:true}, {t:'Ao se desculpar por estar atrasado',ok:false}, {t:'Antes de começar o trabalho',ok:false}, {t:'Ao chegar de manhã',ok:false} ], hint:'Reconhece o esforço da outra pessoa.' },
+    { q:'"Daijoubu desu" como recusa significa:', options:[ {t:'Está tudo bem / não precisa, obrigado',ok:true}, {t:'Sim, por favor',ok:false}, {t:'Estou doente',ok:false}, {t:'Não entendi',ok:false} ], hint:'É a recusa educada padrão.' },
+    { q:'"Oishii" significa:', options:[ {t:'Gostoso / saboroso',ok:true}, {t:'Bonito',ok:false}, {t:'Gentil',ok:false}, {t:'Caro',ok:false} ], hint:'<em>oishikatta desu</em> = "estava gostoso".' },
+    { q:'"Atatakai desu" significa:', options:[ {t:'Está quente / morno',ok:true}, {t:'Está frio',ok:false}, {t:'Está chovendo',ok:false}, {t:'Está delicioso',ok:false} ], hint:'Oposto: <em>samui</em> (frio).' },
+    { q:'"Suki desu" significa:', options:[ {t:'Eu gosto',ok:true}, {t:'Eu odeio',ok:false}, {t:'Estou cansado',ok:false}, {t:'Estou bem',ok:false} ], hint:'<em>kirai</em> = não gostar.' },
+    { q:'"Ii desu ne!" é uma reação que significa:', options:[ {t:'Que legal! / Que bom!',ok:true}, {t:'Não, obrigado',ok:false}, {t:'Vamos!',ok:false}, {t:'Já chega',ok:false} ], hint:'<em>ne</em> busca concordância do interlocutor.' },
+    { q:'"Hai" e "Iie" significam:', options:[ {t:'Sim e Não',ok:true}, {t:'Olá e Tchau',ok:false}, {t:'Por favor e Obrigado',ok:false}, {t:'Mais e Menos',ok:false} ], hint:'Pares mais comuns de resposta.' },
+    { q:'"Genkin" significa:', options:[ {t:'Dinheiro em espécie',ok:true}, {t:'Cartão de crédito',ok:false}, {t:'Recibo',ok:false}, {t:'Cheque',ok:false} ], hint:'<em>genkin de onegaishimasu</em> = "em dinheiro, por favor".' },
+    { q:'"Douzo" se usa quando:', options:[ {t:'Você oferece algo a alguém ("aqui está")',ok:true}, {t:'Você pede algo',ok:false}, {t:'Você se desculpa',ok:false}, {t:'Você cumprimenta',ok:false} ], hint:'É o par natural de <em>onegaishimasu</em>.' },
+    { q:'"Ohayou gozaimasu" se usa:', options:[ {t:'De manhã',ok:true}, {t:'À tarde',ok:false}, {t:'À noite',ok:false}, {t:'Antes de dormir',ok:false} ], hint:'A versão informal é só <em>ohayou</em>.' },
+    { q:'"Oyasumi nasai" significa:', options:[ {t:'Boa noite (antes de dormir)',ok:true}, {t:'Bom dia',ok:false}, {t:'Como vai?',ok:false}, {t:'Bom apetite',ok:false} ], hint:'Não confunda com <em>konbanwa</em> (chegando à noite).' },
+    { q:'Como dizer "estou estudando japonês"?', options:[ {t:'Nihongo o benkyou shiteimasu',ok:true}, {t:'Nihongo wa daijoubu desu',ok:false}, {t:'Nihongo wa wakarimasen',ok:false}, {t:'Nihongo desu ka?',ok:false} ], hint:'<em>~teimasu</em> = ação em andamento.' },
+    { q:'"Eigo, daijoubu desu ka?" pergunta:', options:[ {t:'Você fala/está bem com inglês?',ok:true}, {t:'Você é da Inglaterra?',ok:false}, {t:'É britânico?',ok:false}, {t:'Pode escrever em inglês?',ok:false} ], hint:'<em>eigo</em> = inglês.' },
+    { q:'"Koko ni kaite kudasai" significa:', options:[ {t:'Por favor, escreva aqui',ok:true}, {t:'Por favor, leia aqui',ok:false}, {t:'Por favor, espere aqui',ok:false}, {t:'Por favor, sente aqui',ok:false} ], hint:'<em>kaku</em> = escrever.' },
+    { q:'"Hajimete" significa:', options:[ {t:'Pela primeira vez',ok:true}, {t:'Sempre',ok:false}, {t:'Nunca',ok:false}, {t:'De vez em quando',ok:false} ], hint:'Não confundir com <em>hajimemashite</em> (apresentação).' },
+    { q:'"Nihon wa hajimete desu ka?" pergunta:', options:[ {t:'É a sua primeira vez no Japão?',ok:true}, {t:'Você é japonês?',ok:false}, {t:'Já foi ao Japão antes?',ok:false}, {t:'Vai ao Japão?',ok:false} ], hint:'<em>~hajimete desu</em> = "primeira vez".' },
+    { q:'Para chamar a atenção do atendente educadamente:', options:[ {t:'Sumimasen',ok:true}, {t:'Hai',ok:false}, {t:'Onegaishimasu',ok:false}, {t:'Oi',ok:false} ], hint:'"Oi" em japonês soa rude!' },
+    { q:'"Kore wa nan desu ka?" significa:', options:[ {t:'O que é isto?',ok:true}, {t:'Quanto custa isto?',ok:false}, {t:'Onde está isto?',ok:false}, {t:'Quem é este?',ok:false} ], hint:'<em>nan</em> = o quê?' },
+    { q:'"Doko ni ikimasu ka?" significa:', options:[ {t:'Para onde vai?',ok:true}, {t:'De onde vem?',ok:false}, {t:'Onde está?',ok:false}, {t:'Onde mora?',ok:false} ], hint:'<em>~ni ikimasu</em> = "vou para ~".' },
+    { q:'"Pasupo-to, onegaishimasu" — o oficial pede:', options:[ {t:'O passaporte, por favor',ok:true}, {t:'Tem passaporte?',ok:false}, {t:'Onde está o passaporte?',ok:false}, {t:'Quer um passaporte?',ok:false} ], hint:'<em>~, onegaishimasu</em> = "~, por favor".' },
+    { q:'"Ryokou desu" significa:', options:[ {t:'É (uma) viagem (a turismo)',ok:true}, {t:'É um restaurante',ok:false}, {t:'É um trabalho',ok:false}, {t:'É uma escola',ok:false} ], hint:'<em>ryokou</em> = viagem.' },
+    { q:'"Onegaishimasu" se usa para:', options:[ {t:'Pedir um favor / "por favor"',ok:true}, {t:'Agradecer',ok:false}, {t:'Cumprimentar',ok:false}, {t:'Despedir-se',ok:false} ], hint:'É a base do "por favor" educado.' }
   ];
 
-  const QUIZ_SIZE = 10;
   const LETTERS = ['A', 'B', 'C', 'D', 'E'];
+  const state = { picked: [], idx: 0, score: 0, answered: false };
 
   function shuffle(arr) {
     const a = arr.slice();
@@ -1994,131 +2242,201 @@
     return a;
   }
 
-  function renderQuiz() {
-    const container = document.getElementById('quizQuestions');
-    const score = document.getElementById('quizScore');
-    score.classList.remove('show');
-    container.innerHTML = '';
+  function startQuiz() {
+    const size = parseInt(document.getElementById('quizSize').value, 10) || 10;
+    const count = Math.min(size, QUESTIONS.length);
+    state.picked = shuffle(QUESTIONS).slice(0, count).map(item => ({
+      q: item.q,
+      hint: item.hint || '',
+      options: shuffle(item.options)
+    }));
+    state.idx = 0;
+    state.score = 0;
+    state.answered = false;
 
-    const picked = shuffle(QUESTIONS).slice(0, Math.min(QUIZ_SIZE, QUESTIONS.length));
-    document.getElementById('scoreTotal').textContent = picked.length;
-
-    picked.forEach((item, idx) => {
-      const shuffledOpts = shuffle(item.options);
-      const block = document.createElement('div');
-      block.className = 'quiz-question';
-      block.dataset.qIndex = idx;
-
-      const num = document.createElement('span');
-      num.className = 'q-num';
-      num.textContent = 'Pergunta ' + String(idx + 1).padStart(2, '0');
-      block.appendChild(num);
-
-      const qText = document.createElement('div');
-      qText.className = 'q-text';
-      qText.innerHTML = item.q;
-      block.appendChild(qText);
-
-      const ul = document.createElement('ul');
-      ul.className = 'quiz-options';
-
-      shuffledOpts.forEach((opt, oi) => {
-        const li = document.createElement('li');
-        const label = document.createElement('label');
-        label.className = 'quiz-option';
-
-        const input = document.createElement('input');
-        input.type = 'radio';
-        input.name = 'q' + idx;
-        input.value = opt.ok ? '1' : '0';
-
-        const letter = document.createElement('span');
-        letter.className = 'opt-letter';
-        letter.textContent = LETTERS[oi] + '.';
-
-        const txt = document.createElement('span');
-        txt.innerHTML = opt.t;
-
-        label.appendChild(input);
-        label.appendChild(letter);
-        label.appendChild(txt);
-        li.appendChild(label);
-        ul.appendChild(li);
-      });
-
-      block.appendChild(ul);
-
-      const fb = document.createElement('div');
-      fb.className = 'quiz-feedback';
-      fb.dataset.hint = item.hint || '';
-      block.appendChild(fb);
-
-      container.appendChild(block);
-    });
+    document.getElementById('qTotal').textContent = count;
+    document.getElementById('quizScore').classList.remove('show');
+    document.getElementById('quizCard').style.display = '';
+    renderQuestion();
   }
 
-  function checkQuiz() {
-    const blocks = document.querySelectorAll('.quiz-question');
-    let correct = 0;
-    let answered = 0;
+  function renderQuestion() {
+    const item = state.picked[state.idx];
+    state.answered = false;
 
-    blocks.forEach(block => {
-      const inputs = block.querySelectorAll('input[type=radio]');
-      const fb = block.querySelector('.quiz-feedback');
-      let chosen = null;
-      inputs.forEach(inp => {
-        inp.parentElement.classList.remove('correct', 'wrong');
-        if (inp.checked) chosen = inp;
-      });
+    document.getElementById('qNow').textContent = state.idx + 1;
+    document.getElementById('qScore').textContent = state.score;
+    const pct = ((state.idx) / state.picked.length) * 100;
+    document.getElementById('progBar').style.width = pct + '%';
 
-      inputs.forEach(inp => {
-        if (inp.value === '1') {
-          inp.parentElement.classList.add('correct');
-        }
-      });
+    document.getElementById('qText').innerHTML = item.q;
 
-      if (chosen) {
-        answered++;
-        if (chosen.value === '1') {
-          correct++;
-          fb.className = 'quiz-feedback show ok';
-          fb.innerHTML = '✓ Correto. ' + (fb.dataset.hint || '');
-        } else {
-          chosen.parentElement.classList.add('wrong');
-          fb.className = 'quiz-feedback show no';
-          fb.innerHTML = '✗ A resposta correta está destacada. ' + (fb.dataset.hint || '');
-        }
-      } else {
-        fb.className = 'quiz-feedback show no';
-        fb.innerHTML = '— Sem resposta. A correta está destacada.';
-      }
+    const opts = document.getElementById('qOpts');
+    opts.innerHTML = '';
+    item.options.forEach((opt, oi) => {
+      const li = document.createElement('li');
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'quiz-option';
+      btn.dataset.ok = opt.ok ? '1' : '0';
+
+      const letter = document.createElement('span');
+      letter.className = 'opt-letter';
+      letter.textContent = LETTERS[oi] + '.';
+
+      const txt = document.createElement('span');
+      txt.className = 'opt-text';
+      txt.innerHTML = opt.t;
+
+      btn.appendChild(letter);
+      btn.appendChild(txt);
+      btn.addEventListener('click', () => onAnswer(btn));
+      li.appendChild(btn);
+      opts.appendChild(li);
     });
 
+    const fb = document.getElementById('qFb');
+    fb.className = 'quiz-feedback';
+    fb.innerHTML = '';
+
+    const next = document.getElementById('btnNext');
+    next.disabled = true;
+    next.textContent = (state.idx === state.picked.length - 1) ? 'Ver resultado →' : 'Próxima →';
+  }
+
+  function onAnswer(btn) {
+    if (state.answered) return;
+    state.answered = true;
+
+    const all = document.querySelectorAll('#qOpts .quiz-option');
+    all.forEach(b => {
+      b.disabled = true;
+      if (b.dataset.ok === '1') b.classList.add('correct');
+    });
+    const wasRight = btn.dataset.ok === '1';
+    if (!wasRight) btn.classList.add('wrong');
+    else state.score++;
+
+    document.getElementById('qScore').textContent = state.score;
+
+    const fb = document.getElementById('qFb');
+    const hint = state.picked[state.idx].hint;
+    if (wasRight) {
+      fb.className = 'quiz-feedback show ok';
+      fb.innerHTML = '✓ Correto. ' + hint;
+    } else {
+      fb.className = 'quiz-feedback show no';
+      fb.innerHTML = '✗ A resposta correta está destacada em verde. ' + hint;
+    }
+
+    const pct = ((state.idx + 1) / state.picked.length) * 100;
+    document.getElementById('progBar').style.width = pct + '%';
+    document.getElementById('btnNext').disabled = false;
+  }
+
+  function nextQuestion() {
+    if (!state.answered) return;
+    if (state.idx >= state.picked.length - 1) {
+      showResult();
+    } else {
+      state.idx++;
+      renderQuestion();
+    }
+  }
+
+  function showResult() {
+    document.getElementById('quizCard').style.display = 'none';
     const score = document.getElementById('quizScore');
-    const total = blocks.length;
-    document.getElementById('scoreNum').textContent = correct;
+    const total = state.picked.length;
+    document.getElementById('scoreNum').textContent = state.score;
     document.getElementById('scoreTotal').textContent = total;
 
-    const pct = total ? correct / total : 0;
+    const pct = total ? state.score / total : 0;
     let msg;
     if (pct === 1) msg = '完璧！ Perfeito — você está pronto para a viagem.';
     else if (pct >= 0.8) msg = 'すごい！ Muito bem. Revise só os pontos que escaparam.';
     else if (pct >= 0.6) msg = 'いいね。 Bom progresso. Releia as cenas relacionadas e tente de novo.';
     else if (pct >= 0.4) msg = 'がんばって！ Vale uma releitura das aulas 0–5 antes de repetir.';
     else msg = 'もういちど！ Sem stress — abra a apostila do começo, depois volte.';
-
     document.getElementById('scoreMsg').textContent = msg;
+
     score.classList.add('show');
     score.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    renderQuiz();
-    document.getElementById('btnCheck').addEventListener('click', checkQuiz);
-    document.getElementById('btnReset').addEventListener('click', function() {
-      renderQuiz();
-      window.scrollTo({ top: document.getElementById('quiz').offsetTop - 20, behavior: 'smooth' });
+    startQuiz();
+    document.getElementById('btnNext').addEventListener('click', nextQuestion);
+    document.getElementById('btnNew').addEventListener('click', () => {
+      startQuiz();
+      document.getElementById('quiz').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+    document.getElementById('btnAgain').addEventListener('click', () => {
+      startQuiz();
+      document.getElementById('quiz').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    document.getElementById('quizSize').addEventListener('change', startQuiz);
+  });
+})();
+</script>
+
+<script>
+(function() {
+  function initCarousel(root) {
+    const track = root.querySelector('.carousel-track');
+    const slides = Array.from(root.querySelectorAll('.carousel-slide'));
+    const prev = root.querySelector('.carousel-arrow.prev');
+    const next = root.querySelector('.carousel-arrow.next');
+    const dotsWrap = root.querySelector('.carousel-dots');
+    const cur = root.querySelector('.carousel-counter .cur');
+    const tot = root.querySelector('.carousel-counter .tot');
+    let idx = 0;
+
+    if (tot) tot.textContent = slides.length;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Ir para imagem ' + (i + 1));
+      dot.addEventListener('click', () => go(i));
+      dotsWrap.appendChild(dot);
+    });
+
+    function go(n) {
+      idx = (n + slides.length) % slides.length;
+      track.style.transform = 'translateX(' + (-idx * 100) + '%)';
+      dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === idx);
+      });
+      if (cur) cur.textContent = idx + 1;
+      prev.disabled = idx === 0;
+      next.disabled = idx === slides.length - 1;
+    }
+
+    prev.addEventListener('click', () => go(idx - 1));
+    next.addEventListener('click', () => go(idx + 1));
+
+    root.tabIndex = 0;
+    root.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(idx - 1); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); go(idx + 1); }
+    });
+
+    let touchStart = null;
+    root.addEventListener('touchstart', e => { touchStart = e.touches[0].clientX; }, { passive: true });
+    root.addEventListener('touchend', e => {
+      if (touchStart === null) return;
+      const dx = e.changedTouches[0].clientX - touchStart;
+      if (Math.abs(dx) > 40) go(idx + (dx < 0 ? 1 : -1));
+      touchStart = null;
+    });
+
+    go(0);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-carousel]').forEach(initCarousel);
   });
 })();
 </script>
