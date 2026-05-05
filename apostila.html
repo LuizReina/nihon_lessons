@@ -1,0 +1,2131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本語会話 — Conversações de Japonês</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=Noto+Serif+JP:wght@400;500;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f6efe3;
+    --paper-warm: #efe5d2;
+    --ink: #1f1a14;
+    --ink-soft: #4a4036;
+    --vermilion: #b8392b;
+    --vermilion-soft: #d65a48;
+    --sumi: #2a241d;
+    --sage: #6b7d5e;
+    --gold: #a88848;
+    --line: #cdbfa7;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Manrope', 'Noto Serif JP', sans-serif;
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(184, 57, 43, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(168, 136, 72, 0.05) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.10 0 0 0 0 0.08 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    color: var(--ink);
+    line-height: 1.65;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 80px 40px 120px;
+  }
+
+  /* ── HEADER ──────────────────────────────────── */
+  header {
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+  }
+
+  .stamp {
+    display: inline-block;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 700;
+    color: var(--paper);
+    background: var(--vermilion);
+    padding: 8px 18px;
+    font-size: 1.4rem;
+    letter-spacing: 0.15em;
+    transform: rotate(-2deg);
+    box-shadow: 2px 2px 0 var(--sumi);
+    margin-bottom: 32px;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--sumi);
+    margin-bottom: 12px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--vermilion);
+    font-weight: 400;
+  }
+
+  .subtitle {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+    letter-spacing: 0.05em;
+  }
+
+  .intro {
+    max-width: 580px;
+    margin: 0 auto;
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+    line-height: 1.75;
+    padding: 28px 32px;
+    border-left: 2px solid var(--vermilion);
+    background: rgba(255,255,255,0.35);
+    text-align: left;
+  }
+
+  /* ── INDEX ──────────────────────────────────── */
+  .index {
+    margin: 60px 0 80px;
+    padding: 32px 36px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.4);
+  }
+
+  .index h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--vermilion);
+    margin-bottom: 20px;
+  }
+
+  .index ol {
+    list-style: none;
+    columns: 2;
+    column-gap: 40px;
+  }
+
+  .index li {
+    padding: 6px 0;
+    font-size: 0.95rem;
+    counter-increment: item;
+    position: relative;
+    padding-left: 32px;
+    break-inside: avoid;
+  }
+
+  .index li::before {
+    content: counter(item, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 0.85rem;
+  }
+
+  .index a {
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .index a:hover { color: var(--vermilion); }
+
+  .index ol { counter-reset: item; }
+
+  /* ── SECTIONS ───────────────────────────────── */
+  section.scene {
+    margin-bottom: 90px;
+    scroll-margin-top: 40px;
+  }
+
+  .scene-header {
+    margin-bottom: 36px;
+    padding-bottom: 18px;
+    border-bottom: 1px dashed var(--line);
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .scene-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  .scene-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 500;
+    font-size: 1.6rem;
+    color: var(--sumi);
+  }
+
+  .scene-pt {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: var(--vermilion);
+  }
+
+  .setting {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin-bottom: 28px;
+    padding-left: 18px;
+    border-left: 2px solid var(--gold);
+  }
+
+  /* ── DIALOGUE ───────────────────────────────── */
+  .dialogue {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 36px 40px;
+    margin-bottom: 24px;
+    position: relative;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+  }
+
+  .dialogue::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 3px;
+    background: var(--vermilion);
+    opacity: 0.7;
+  }
+
+  .turn {
+    margin-bottom: 22px;
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 18px;
+    align-items: baseline;
+  }
+
+  .turn:last-child { margin-bottom: 0; }
+
+  .speaker {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--vermilion);
+    letter-spacing: 0.05em;
+    text-align: right;
+    padding-top: 4px;
+    border-right: 1px solid var(--line);
+    padding-right: 12px;
+  }
+
+  .speaker.b { color: var(--sage); }
+
+  .lines .jp {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.1rem;
+    color: var(--sumi);
+    line-height: 1.5;
+    margin-bottom: 4px;
+  }
+
+  .lines .romaji {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .lines .pt {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+
+  /* ── NOTES BOX ──────────────────────────────── */
+  .note {
+    margin-top: 24px;
+    padding: 22px 26px;
+    background: var(--paper-warm);
+    border: 1px solid var(--line);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    position: relative;
+  }
+
+  .note::before {
+    content: 'メモ';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--paper);
+    padding: 0 10px;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.8rem;
+    color: var(--vermilion);
+    letter-spacing: 0.1em;
+  }
+
+  .note strong {
+    color: var(--sumi);
+    font-weight: 600;
+  }
+
+  .note ul {
+    margin-top: 8px;
+    padding-left: 18px;
+  }
+
+  .note li { margin-bottom: 4px; }
+
+  /* ── REFERENCE TABLES ───────────────────────── */
+  .ref-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    font-size: 0.88rem;
+    background: rgba(255,255,255,0.5);
+  }
+
+  .ref-table th {
+    text-align: left;
+    padding: 8px 14px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--gold);
+    width: 80px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(168, 136, 72, 0.05);
+  }
+
+  .ref-table td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+  }
+
+  .ref-table td em {
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    color: var(--sumi);
+  }
+
+  .ref-table .jp-cell {
+    font-family: 'Noto Serif JP', serif;
+    color: var(--sumi);
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .ref-table tr:last-child th,
+  .ref-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .ref-table tr.irreg th {
+    color: var(--vermilion);
+    font-weight: 700;
+  }
+
+  .ref-table tr.irreg td .jp-cell,
+  .ref-table tr.irreg td em {
+    color: var(--vermilion);
+  }
+
+  .ref-table tr.irreg {
+    background: rgba(184, 57, 43, 0.04);
+  }
+
+  /* ── VARIATIONS ─────────────────────────────── */
+  .variations {
+    margin-top: 18px;
+    padding: 18px 24px;
+    border-left: 2px solid var(--sage);
+    background: rgba(107, 125, 94, 0.06);
+    font-size: 0.92rem;
+  }
+
+  .variations h4 {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--sage);
+    margin-bottom: 10px;
+  }
+
+  .variations p {
+    margin-bottom: 6px;
+    color: var(--ink-soft);
+  }
+
+  .variations p .jp-inline {
+    font-family: 'Noto Serif JP', serif;
+    color: var(--sumi);
+    font-weight: 500;
+  }
+
+  /* ── DIVIDER ────────────────────────────────── */
+  .divider {
+    text-align: center;
+    margin: 60px 0;
+    color: var(--gold);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.5em;
+  }
+
+  /* ── FINAL TIPS ─────────────────────────────── */
+  .final-tips {
+    margin-top: 80px;
+    padding: 40px 44px;
+    background: var(--sumi);
+    color: var(--paper);
+  }
+
+  .final-tips h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    color: var(--paper);
+  }
+
+  .final-tips h2 em {
+    color: var(--vermilion-soft);
+    font-style: italic;
+  }
+
+  .final-tips .ja {
+    font-family: 'Noto Serif JP', serif;
+    color: var(--vermilion-soft);
+    font-size: 1.1rem;
+    margin-bottom: 24px;
+    letter-spacing: 0.1em;
+  }
+
+  .final-tips ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .final-tips li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(246, 239, 227, 0.1);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding-left: 28px;
+    position: relative;
+  }
+
+  .final-tips li::before {
+    content: '◯';
+    position: absolute;
+    left: 0;
+    color: var(--vermilion-soft);
+    font-size: 0.7rem;
+    top: 16px;
+  }
+
+  .final-tips li:last-child { border-bottom: none; }
+
+  /* ── FOOTER ─────────────────────────────────── */
+  footer {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid var(--line);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.15em;
+  }
+
+  /* ── COVERAGE NOTICE ────────────────────────── */
+  .coverage {
+    max-width: 580px;
+    margin: 28px auto 0;
+    padding: 18px 24px;
+    background: rgba(168, 136, 72, 0.10);
+    border: 1px dashed var(--gold);
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    text-align: left;
+    position: relative;
+  }
+
+  .coverage::before {
+    content: '版';
+    position: absolute;
+    top: -12px;
+    left: 18px;
+    background: var(--paper);
+    padding: 0 10px;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.85rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  .coverage strong {
+    color: var(--vermilion);
+    font-weight: 600;
+  }
+
+  /* ── QUIZ ───────────────────────────────────── */
+  .quiz {
+    margin-top: 80px;
+    padding: 44px 44px 40px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid var(--line);
+    position: relative;
+  }
+
+  .quiz-head {
+    text-align: center;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .quiz-head .ja {
+    font-family: 'Noto Serif JP', serif;
+    color: var(--vermilion);
+    font-size: 1rem;
+    letter-spacing: 0.25em;
+    margin-bottom: 8px;
+  }
+
+  .quiz-head h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 2rem;
+    color: var(--sumi);
+    margin-bottom: 10px;
+  }
+
+  .quiz-head h2 em {
+    font-style: italic;
+    color: var(--vermilion);
+  }
+
+  .quiz-head p {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .quiz-question {
+    margin-bottom: 28px;
+    padding: 24px 28px;
+    background: rgba(246, 239, 227, 0.5);
+    border-left: 3px solid var(--gold);
+  }
+
+  .quiz-question .q-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .quiz-question .q-text {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    color: var(--sumi);
+    margin-bottom: 16px;
+    line-height: 1.45;
+  }
+
+  .quiz-question .q-text .jp-inline {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 500;
+  }
+
+  .quiz-options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .quiz-options li {
+    margin-bottom: 8px;
+  }
+
+  .quiz-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid var(--line);
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--ink);
+    transition: background 0.15s, border-color 0.15s;
+    line-height: 1.45;
+  }
+
+  .quiz-option:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--gold);
+  }
+
+  .quiz-option input {
+    margin-top: 4px;
+    accent-color: var(--vermilion);
+    flex-shrink: 0;
+  }
+
+  .quiz-option.correct {
+    background: rgba(107, 125, 94, 0.18);
+    border-color: var(--sage);
+    color: var(--sumi);
+  }
+
+  .quiz-option.wrong {
+    background: rgba(184, 57, 43, 0.10);
+    border-color: var(--vermilion);
+    color: var(--sumi);
+  }
+
+  .quiz-option .opt-letter {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--gold);
+    flex-shrink: 0;
+    min-width: 18px;
+  }
+
+  .quiz-feedback {
+    margin-top: 12px;
+    font-size: 0.88rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    padding-left: 4px;
+    display: none;
+  }
+
+  .quiz-feedback.show { display: block; }
+
+  .quiz-feedback.ok { color: var(--sage); }
+  .quiz-feedback.no { color: var(--vermilion); }
+
+  .quiz-controls {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 32px;
+  }
+
+  .quiz-btn {
+    font-family: 'Fraunces', serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    padding: 12px 28px;
+    border: 1px solid var(--sumi);
+    background: var(--sumi);
+    color: var(--paper);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .quiz-btn:hover {
+    background: var(--vermilion);
+    border-color: var(--vermilion);
+  }
+
+  .quiz-btn.secondary {
+    background: transparent;
+    color: var(--sumi);
+  }
+
+  .quiz-btn.secondary:hover {
+    background: var(--sumi);
+    color: var(--paper);
+  }
+
+  .quiz-score {
+    margin-top: 32px;
+    padding: 28px 32px;
+    background: var(--sumi);
+    color: var(--paper);
+    text-align: center;
+    display: none;
+  }
+
+  .quiz-score.show { display: block; }
+
+  .quiz-score .ja {
+    font-family: 'Noto Serif JP', serif;
+    color: var(--vermilion-soft);
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 8px;
+  }
+
+  .quiz-score .big {
+    font-family: 'Fraunces', serif;
+    font-size: 2.6rem;
+    font-weight: 300;
+    color: var(--paper);
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .quiz-score .big em {
+    color: var(--vermilion-soft);
+    font-style: italic;
+  }
+
+  .quiz-score .msg {
+    font-size: 0.95rem;
+    color: rgba(246, 239, 227, 0.85);
+    font-style: italic;
+  }
+
+  /* ── RESPONSIVE ─────────────────────────────── */
+  @media (max-width: 640px) {
+    .container { padding: 50px 20px 80px; }
+    .index ol { columns: 1; }
+    .turn { grid-template-columns: 1fr; }
+    .speaker {
+      text-align: left;
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+      padding-right: 0;
+      padding-bottom: 4px;
+      margin-bottom: 4px;
+    }
+    .dialogue { padding: 26px 22px; }
+    .final-tips { padding: 30px 24px; }
+    .quiz { padding: 28px 22px; }
+    .quiz-question { padding: 20px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+  <div class="stamp">日本語会話</div>
+  <h1>Conversações em <em>japonês</em></h1>
+  <p class="subtitle">旅行のための日本語 — Japonês para viagens</p>
+  <div class="intro">
+    Este material reúne diálogos curtos baseados nas aulas 0 a 5. Cada cena foi montada com o vocabulário que você já viu — para que você possa ler em voz alta, treinar a entonação e se acostumar com as combinações naturais de palavras. Use os diálogos como roteiro: leia o japonês, depois confira o romaji e a tradução.
+  </div>
+  <div class="coverage">
+    Esta versão da apostila contempla o conteúdo até a <strong>Aula 5</strong>. Conforme novas aulas forem acontecendo, este aviso e os diálogos abaixo serão atualizados. No final há um <strong>quiz interativo</strong> — perguntas e alternativas mudam de ordem a cada execução, então não tem como decorar pela posição.
+  </div>
+</header>
+
+<nav class="index">
+  <h3>Índice — 目次</h3>
+  <ol>
+    <li><a href="#cena1">Na imigração</a></li>
+    <li><a href="#cena2">Procurando o banheiro no aeroporto</a></li>
+    <li><a href="#cena3">Entrando no restaurante</a></li>
+    <li><a href="#cena4">Pedindo no restaurante</a></li>
+    <li><a href="#cena5">Pagando a conta</a></li>
+    <li><a href="#cena6">Konbini — cartão de pontos</a></li>
+    <li><a href="#cena7">Konbini — esquentar e sacola</a></li>
+    <li><a href="#cena8">Konbini — comprando bebida</a></li>
+    <li><a href="#cena9">Conhecendo alguém</a></li>
+    <li><a href="#cena10">Na izakaya</a></li>
+    <li><a href="#cena11">Falando da viagem</a></li>
+    <li><a href="#cena12">Quando não entendi</a></li>
+    <li><a href="#cena13">Em sala de aula</a></li>
+    <li><a href="#quiz">Quiz — teste seus conhecimentos</a></li>
+  </ol>
+</nav>
+
+<!-- ─────────────────────────── CENA 1 ─────────────────────────── -->
+<section class="scene" id="cena1">
+  <div class="scene-header">
+    <span class="scene-num">場面 01</span>
+    <span class="scene-jp">空港で</span>
+    <span class="scene-pt">No aeroporto</span>
+  </div>
+  <p class="setting">Você acabou de desembarcar. O oficial da imigração olha o seu passaporte.</p>
+
+  <div class="dialogue">
+    <div class="turn">
+      <div class="speaker">Oficial</div>
+      <div class="lines">
+        <div class="jp">こんにちは。パスポート、おねがいします。</div>
+        <div class="romaji">Konnichiwa. Pasupo-to, onegaishimasu.</div>
+        <div class="pt">Boa tarde. Passaporte, por favor.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">はい、どうぞ。</div>
+        <div class="romaji">Hai, douzo.</div>
+        <div class="pt">Sim, aqui está.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Oficial</div>
+      <div class="lines">
+        <div class="jp">りょこうですか？</div>
+        <div class="romaji">Ryokou desu ka?</div>
+        <div class="pt">É viagem (a turismo)?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">はい、りょこうです。</div>
+        <div class="romaji">Hai, ryokou desu.</div>
+        <div class="pt">Sim, é viagem.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Oficial</div>
+      <div class="lines">
+        <div class="jp">ありがとうございます。</div>
+        <div class="romaji">Arigatougozaimasu.</div>
+        <div class="pt">Obrigado.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Vocabulário-chave:</strong> <em>ryokou</em> (viagem), <em>pasupo-to</em> (passaporte), <em>kuukou</em> (aeroporto), <em>hikouki</em> (avião). Repare que <em>~desu ka?</em> transforma qualquer afirmação em pergunta.
+  </div>
+</section>
+
+<!-- ─────────────────────────── CENA 2 ─────────────────────────── -->
+<section class="scene" id="cena2">
+  <div class="scene-header">
+    <span class="scene-num">場面 02</span>
+    <span class="scene-jp">トイレはどこですか？</span>
+    <span class="scene-pt">Onde fica o banheiro?</span>
+  </div>
+  <p class="setting">Ainda no aeroporto, você procura o banheiro.</p>
+
+  <div class="dialogue">
+    <div class="turn">
+      <div class="speaker">Você</div>
+      <div class="lines">
+        <div class="jp">すみません、トイレはどこですか？</div>
+        <div class="romaji">Sumimasen, toire wa doko desu ka?</div>
+        <div class="pt">Com licença, onde fica o banheiro?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Pessoa</div>
+      <div class="lines">
+        <div class="jp">あそこです。</div>
+        <div class="romaji">Asoko desu.</div>
+        <div class="pt">É ali.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Você</div>
+      <div class="lines">
+        <div class="jp">ありがとうございます。</div>
+        <div class="romaji">Arigatougozaimasu.</div>
+        <div class="pt">Obrigado.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Pessoa</div>
+      <div class="lines">
+        <div class="jp">どういたしまして。</div>
+        <div class="romaji">Dou itashimashite.</div>
+        <div class="pt">De nada.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="variations">
+    <h4>Variações para treinar</h4>
+    <p><span class="jp-inline">レジはどこですか？</span> — <em>Reji wa doko desu ka?</em> — Onde fica o caixa?</p>
+    <p><span class="jp-inline">じはんきはどこですか？</span> — <em>Jihanki wa doko desu ka?</em> — Onde fica a máquina de venda?</p>
+    <p><span class="jp-inline">ここ／そこ／あそこ</span> — <em>koko / soko / asoko</em> — aqui / aí / ali</p>
+  </div>
+</section>
+
+<!-- ─────────────────────────── CENA 3 ─────────────────────────── -->
+<section class="scene" id="cena3">
+  <div class="scene-header">
+    <span class="scene-num">場面 03</span>
+    <span class="scene-jp">レストランに入る</span>
+    <span class="scene-pt">Entrando no restaurante</span>
+  </div>
+  <p class="setting">Você chega num restaurante com um amigo. Funcionária recebe vocês na porta.</p>
+
+  <div class="dialogue">
+    <div class="turn">
+      <div class="speaker">Atendente</div>
+      <div class="lines">
+        <div class="jp">いらっしゃいませ！何名様ですか？</div>
+        <div class="romaji">Irasshaimase! Nanmei sama desu ka?</div>
+        <div class="pt">Bem-vindos! Quantas pessoas?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">ふたりです。</div>
+        <div class="romaji">Futari desu.</div>
+        <div class="pt">Somos dois.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Atendente</div>
+      <div class="lines">
+        <div class="jp">テーブルせき、おざしき、カウンターせき、どちらがよろしいですか？</div>
+        <div class="romaji">Teeburu seki, ozashiki, kauntaa seki, dochira ga yoroshii desu ka?</div>
+        <div class="pt">Mesa, sala tatami ou balcão — qual prefere?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">テーブルせき、おねがいします。</div>
+        <div class="romaji">Teeburu seki, onegaishimasu.</div>
+        <div class="pt">Mesa, por favor.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Atendente</div>
+      <div class="lines">
+        <div class="jp">かしこまりました。こちらへどうぞ。ごあんないいたします。</div>
+        <div class="romaji">Kashikomarimashita. Kochira e douzo. Goannai itashimasu.</div>
+        <div class="pt">Entendido. Por aqui, por favor. Vou acompanhá-los.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Contagem de pessoas — lista completa</strong>
+    <table class="ref-table">
+      <tr><th>1</th><td><span class="jp-cell">一人 ・ ひとり</span></td><td><em>hitori</em></td><td>uma pessoa</td></tr>
+      <tr><th>2</th><td><span class="jp-cell">二人 ・ ふたり</span></td><td><em>futari</em></td><td>duas pessoas</td></tr>
+      <tr><th>3</th><td><span class="jp-cell">三人 ・ さんにん</span></td><td><em>sannin</em></td><td>três pessoas</td></tr>
+      <tr><th>4</th><td><span class="jp-cell">四人 ・ よにん</span></td><td><em>yonin</em></td><td>quatro pessoas</td></tr>
+      <tr><th>5</th><td><span class="jp-cell">五人 ・ ごにん</span></td><td><em>gonin</em></td><td>cinco pessoas</td></tr>
+      <tr><th>6</th><td><span class="jp-cell">六人 ・ ろくにん</span></td><td><em>rokunin</em></td><td>seis pessoas</td></tr>
+      <tr><th>7</th><td><span class="jp-cell">七人 ・ しちにん／ななにん</span></td><td><em>shichinin / nananin</em></td><td>sete pessoas</td></tr>
+      <tr><th>8</th><td><span class="jp-cell">八人 ・ はちにん</span></td><td><em>hachinin</em></td><td>oito pessoas</td></tr>
+      <tr><th>9</th><td><span class="jp-cell">九人 ・ きゅうにん</span></td><td><em>kyuunin</em></td><td>nove pessoas</td></tr>
+      <tr><th>10</th><td><span class="jp-cell">十人 ・ じゅうにん</span></td><td><em>juunin</em></td><td>dez pessoas</td></tr>
+    </table>
+    <p style="margin-top:14px;"><strong>Os irregulares</strong> são <em>hitori</em> (1) e <em>futari</em> (2) — daí em diante o padrão é <em>número + nin</em>. Se o lugar estiver lotado, o atendente diz: <em>manseki desu</em>.</p>
+  </div>
+</section>
+
+<!-- ─────────────────────────── CENA 4 ─────────────────────────── -->
+<section class="scene" id="cena4">
+  <div class="scene-header">
+    <span class="scene-num">場面 04</span>
+    <span class="scene-jp">注文します</span>
+    <span class="scene-pt">Fazendo o pedido</span>
+  </div>
+  <p class="setting">Vocês estão na mesa. O atendente entrega o cardápio: <em>kochira ga menyuu desu</em>.</p>
+
+  <div class="dialogue">
+    <div class="turn">
+      <div class="speaker">Você</div>
+      <div class="lines">
+        <div class="jp">すみません、ちゅうもん おねがいします。</div>
+        <div class="romaji">Sumimasen, chuumon onegaishimasu.</div>
+        <div class="pt">Com licença, gostaria de pedir.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Atendente</div>
+      <div class="lines">
+        <div class="jp">はい。おすすめはありますよ。</div>
+        <div class="romaji">Hai. Osusume wa arimasu yo.</div>
+        <div class="pt">Sim. Temos recomendação.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Você</div>
+      <div class="lines">
+        <div class="jp">すみません、これはなんですか？</div>
+        <div class="romaji">Sumimasen, kore wa nan desu ka?</div>
+        <div class="pt">Desculpe, o que é isto?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Atendente</div>
+      <div class="lines">
+        <div class="jp">たまごサンドです。</div>
+        <div class="romaji">Tamago sando desu.</div>
+        <div class="pt">É um sanduíche de ovo.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Você</div>
+      <div class="lines">
+        <div class="jp">じゃあ、これ ひとつ おねがいします。これも ふたつ おねがいします。</div>
+        <div class="romaji">Jaa, kore hitotsu onegaishimasu. Kore mo futatsu onegaishimasu.</div>
+        <div class="pt">Então, um destes, por favor. E também dois destes aqui.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Atendente</div>
+      <div class="lines">
+        <div class="jp">いじょうでよろしいでしょうか？</div>
+        <div class="romaji">Ijou de yoroshii deshou ka?</div>
+        <div class="pt">É só isso?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Você</div>
+      <div class="lines">
+        <div class="jp">はい。あ、すみません、おみず おねがいします。</div>
+        <div class="romaji">Hai. A, sumimasen, omizu onegaishimasu.</div>
+        <div class="pt">Sim. Ah, desculpe — uma água, por favor.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Contadores genéricos — para "coisas" em geral</strong>
+    <table class="ref-table">
+      <tr><th>1</th><td><span class="jp-cell">一つ ・ ひとつ</span></td><td><em>hitotsu</em></td><td>um(a)</td></tr>
+      <tr><th>2</th><td><span class="jp-cell">二つ ・ ふたつ</span></td><td><em>futatsu</em></td><td>dois (duas)</td></tr>
+      <tr><th>3</th><td><span class="jp-cell">三つ ・ みっつ</span></td><td><em>mittsu</em></td><td>três</td></tr>
+      <tr><th>4</th><td><span class="jp-cell">四つ ・ よっつ</span></td><td><em>yottsu</em></td><td>quatro</td></tr>
+      <tr><th>5</th><td><span class="jp-cell">五つ ・ いつつ</span></td><td><em>itsutsu</em></td><td>cinco</td></tr>
+      <tr><th>6</th><td><span class="jp-cell">六つ ・ むっつ</span></td><td><em>muttsu</em></td><td>seis</td></tr>
+      <tr><th>7</th><td><span class="jp-cell">七つ ・ ななつ</span></td><td><em>nanatsu</em></td><td>sete</td></tr>
+      <tr><th>8</th><td><span class="jp-cell">八つ ・ やっつ</span></td><td><em>yattsu</em></td><td>oito</td></tr>
+      <tr><th>9</th><td><span class="jp-cell">九つ ・ ここのつ</span></td><td><em>kokonotsu</em></td><td>nove</td></tr>
+      <tr><th>10</th><td><span class="jp-cell">十 ・ とお</span></td><td><em>too</em></td><td>dez</td></tr>
+    </table>
+    <p style="margin-top:14px;"><strong>Padrão útil:</strong> <em>[item] o [contador], onegaishimasu</em>. Esses contadores funcionam para quase tudo em viagem (comida, bebida, lembranças). Acima de 10, usa-se o número normal: <em>juuichi</em>, <em>juuni</em>…</p>
+  </div>
+</section>
+
+<!-- ─────────────────────────── CENA 5 ─────────────────────────── -->
+<section class="scene" id="cena5">
+  <div class="scene-header">
+    <span class="scene-num">場面 05</span>
+    <span class="scene-jp">お会計</span>
+    <span class="scene-pt">A conta</span>
+  </div>
+  <p class="setting">Vocês terminaram a refeição. Hora de pagar.</p>
+
+  <div class="dialogue">
+    <div class="turn">
+      <div class="speaker">Você</div>
+      <div class="lines">
+        <div class="jp">すみません、おかいけい おねがいします。</div>
+        <div class="romaji">Sumimasen, okaikei onegaishimasu.</div>
+        <div class="pt">Com licença, a conta, por favor.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Atendente</div>
+      <div class="lines">
+        <div class="jp">はい。さんぜん ごひゃくえん です。しはらいほうほうは？</div>
+        <div class="romaji">Hai. Sanzen gohyaku en desu. Shiharai houhou wa?</div>
+        <div class="pt">Sim. São 3.500 ienes. Forma de pagamento?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Você</div>
+      <div class="lines">
+        <div class="jp">げんきんで おねがいします。こぜに、あります。</div>
+        <div class="romaji">Genkin de onegaishimasu. Kozeni, arimasu.</div>
+        <div class="pt">Em dinheiro, por favor. Tenho moedas.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Atendente</div>
+      <div class="lines">
+        <div class="jp">ありがとうございます。レシートです。</div>
+        <div class="romaji">Arigatougozaimasu. Reshiito desu.</div>
+        <div class="pt">Obrigada. Aqui está o recibo.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Você</div>
+      <div class="lines">
+        <div class="jp">ごちそうさまでした。おいしかったです！</div>
+        <div class="romaji">Gochisousama deshita. Oishikatta desu!</div>
+        <div class="pt">Obrigado pela refeição. Estava delicioso!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Dinheiro japonês — referência completa</strong>
+    <p style="margin-top:10px;">Os irregulares estão destacados em <span style="color:var(--vermilion); font-weight:600;">vermelho</span> — vale memorizá-los porque aparecem em qualquer preço.</p>
+
+    <p style="margin-top:18px; font-family:'Fraunces',serif; font-style:italic; color:var(--sumi);">Centenas (百 — <em>hyaku</em>)</p>
+    <table class="ref-table">
+      <tr><th>100</th><td><span class="jp-cell">ひゃく</span></td><td><em>hyaku en</em></td></tr>
+      <tr><th>200</th><td><span class="jp-cell">にひゃく</span></td><td><em>nihyaku en</em></td></tr>
+      <tr class="irreg"><th>300</th><td><span class="jp-cell">さんびゃく</span></td><td><em>sanbyaku en</em></td></tr>
+      <tr><th>400</th><td><span class="jp-cell">よんひゃく</span></td><td><em>yonhyaku en</em></td></tr>
+      <tr><th>500</th><td><span class="jp-cell">ごひゃく</span></td><td><em>gohyaku en</em></td></tr>
+      <tr class="irreg"><th>600</th><td><span class="jp-cell">ろっぴゃく</span></td><td><em>roppyaku en</em></td></tr>
+      <tr><th>700</th><td><span class="jp-cell">ななひゃく</span></td><td><em>nanahyaku en</em></td></tr>
+      <tr class="irreg"><th>800</th><td><span class="jp-cell">はっぴゃく</span></td><td><em>happyaku en</em></td></tr>
+      <tr><th>900</th><td><span class="jp-cell">きゅうひゃく</span></td><td><em>kyuuhyaku en</em></td></tr>
+    </table>
+
+    <p style="margin-top:18px; font-family:'Fraunces',serif; font-style:italic; color:var(--sumi);">Milhares (千 — <em>sen</em>)</p>
+    <table class="ref-table">
+      <tr><th>1.000</th><td><span class="jp-cell">せん</span></td><td><em>sen en</em></td></tr>
+      <tr><th>2.000</th><td><span class="jp-cell">にせん</span></td><td><em>nisen en</em></td></tr>
+      <tr class="irreg"><th>3.000</th><td><span class="jp-cell">さんぜん</span></td><td><em>sanzen en</em></td></tr>
+      <tr><th>4.000</th><td><span class="jp-cell">よんせん</span></td><td><em>yonsen en</em></td></tr>
+      <tr><th>5.000</th><td><span class="jp-cell">ごせん</span></td><td><em>gosen en</em></td></tr>
+      <tr><th>6.000</th><td><span class="jp-cell">ろくせん</span></td><td><em>rokusen en</em></td></tr>
+      <tr><th>7.000</th><td><span class="jp-cell">ななせん</span></td><td><em>nanasen en</em></td></tr>
+      <tr class="irreg"><th>8.000</th><td><span class="jp-cell">はっせん</span></td><td><em>hassen en</em></td></tr>
+      <tr><th>9.000</th><td><span class="jp-cell">きゅうせん</span></td><td><em>kyuusen en</em></td></tr>
+      <tr class="irreg"><th>10.000</th><td><span class="jp-cell">いちまん</span></td><td><em>ichiman en</em></td></tr>
+    </table>
+
+    <p style="margin-top:18px; font-family:'Fraunces',serif; font-style:italic; color:var(--sumi);">Moedas — 硬貨 (<em>kouka</em>) ・ 小銭 (<em>kozeni</em>)</p>
+    <table class="ref-table">
+      <tr><th>1円</th><td><em>ichi en dama</em></td><td>一円玉</td></tr>
+      <tr><th>5円</th><td><em>go en dama</em></td><td>五円玉</td></tr>
+      <tr><th>10円</th><td><em>juu en dama</em></td><td>十円玉</td></tr>
+      <tr><th>50円</th><td><em>gojuu en dama</em></td><td>五十円玉</td></tr>
+      <tr><th>100円</th><td><em>hyaku en dama</em></td><td>百円玉</td></tr>
+      <tr><th>500円</th><td><em>gohyaku en dama</em></td><td>五百円玉</td></tr>
+    </table>
+
+    <p style="margin-top:18px; font-family:'Fraunces',serif; font-style:italic; color:var(--sumi);">Notas — お札 (<em>osatsu</em>)</p>
+    <table class="ref-table">
+      <tr><th>1.000円</th><td><em>sen en satsu</em></td><td>千円札</td></tr>
+      <tr><th>2.000円</th><td><em>nisen en satsu</em></td><td>二千円札 (rara)</td></tr>
+      <tr><th>5.000円</th><td><em>gosen en satsu</em></td><td>五千円札</td></tr>
+      <tr><th>10.000円</th><td><em>ichiman en satsu</em></td><td>一万円札</td></tr>
+    </table>
+
+    <p style="margin-top:18px;"><strong>Como combinar valores:</strong> os preços se constroem juntando as partes — <em>3.500</em> = <em>sanzen gohyaku en</em> ・ <em>1.280</em> = <em>sen nihyaku hachijuu en</em> ・ <em>15.000</em> = <em>ichiman gosen en</em>. A vírgula portuguesa do milhar = ponto japonês mental: você lê bloco por bloco.</p>
+  </div>
+</section>
+
+<!-- ─────────────────────────── CENA 6 ─────────────────────────── -->
+<section class="scene" id="cena6">
+  <div class="scene-header">
+    <span class="scene-num">場面 06</span>
+    <span class="scene-jp">コンビニで（ポイントカード）</span>
+    <span class="scene-pt">No konbini — cartão de pontos</span>
+  </div>
+  <p class="setting">Você está no caixa do konbini com algumas compras.</p>
+
+  <div class="dialogue">
+    <div class="turn">
+      <div class="speaker">Atendente</div>
+      <div class="lines">
+        <div class="jp">いらっしゃいませ。ポイントカード、ありますか？</div>
+        <div class="romaji">Irasshaimase. Pointo ka-do, arimasu ka?</div>
+        <div class="pt">Bem-vindo. Tem cartão de pontos?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">いいえ、ありません。</div>
+        <div class="romaji">Iie, arimasen.</div>
+        <div class="pt">Não, não tenho.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Atendente</div>
+      <div class="lines">
+        <div class="jp">おつくり しましょうか？</div>
+        <div class="romaji">Otsukuri shimashou ka?</div>
+        <div class="pt">Quer que eu faça (um cartão)?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">むりょうですか？</div>
+        <div class="romaji">Muryou desu ka?</div>
+        <div class="pt">É gratuito?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Atendente</div>
+      <div class="lines">
+        <div class="jp">はい、むりょうです。</div>
+        <div class="romaji">Hai, muryou desu.</div>
+        <div class="pt">Sim, é gratuito.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">あ、だいじょうぶです。ありがとうございます。</div>
+        <div class="romaji">A, daijoubu desu. Arigatougozaimasu.</div>
+        <div class="pt">Ah, está tudo bem (não precisa). Obrigado.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>muryou</strong> (gratuito) ↔ <strong>yuuryou</strong> (pago). E lembre: <em>daijoubu desu</em> também é uma forma educada de recusar — quase um "não, obrigado".
+  </div>
+</section>
+
+<!-- ─────────────────────────── CENA 7 ─────────────────────────── -->
+<section class="scene" id="cena7">
+  <div class="scene-header">
+    <span class="scene-num">場面 07</span>
+    <span class="scene-jp">あたためますか？</span>
+    <span class="scene-pt">Esquentar e sacola</span>
+  </div>
+  <p class="setting">Continuando no caixa, você comprou um <em>tamago sando</em> e uma bebida gelada.</p>
+
+  <div class="dialogue">
+    <div class="turn">
+      <div class="speaker">Atendente</div>
+      <div class="lines">
+        <div class="jp">あたためますか？</div>
+        <div class="romaji">Atatame masu ka?</div>
+        <div class="pt">Quer esquentar?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">はい、おねがいします。</div>
+        <div class="romaji">Hai, onegaishimasu.</div>
+        <div class="pt">Sim, por favor.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Atendente</div>
+      <div class="lines">
+        <div class="jp">レジぶくろは？</div>
+        <div class="romaji">Reji bukuro wa?</div>
+        <div class="pt">E sacola?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">はい、ちいさいふくろ おねがいします。ゆうりょうですか？</div>
+        <div class="romaji">Hai, chiisai hukuro onegaishimasu. Yuuryou desu ka?</div>
+        <div class="pt">Sim, sacola pequena, por favor. É paga?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Atendente</div>
+      <div class="lines">
+        <div class="jp">はい、ゆうりょうです。さんえんです。</div>
+        <div class="romaji">Hai, yuuryou desu. San en desu.</div>
+        <div class="pt">Sim, é paga. São 3 ienes.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="variations">
+    <h4>Outras respostas possíveis</h4>
+    <p><span class="jp-inline">いいえ、だいじょうぶです。</span> — <em>Iie, daijoubu desu.</em> — Não, está tudo bem.</p>
+    <p><span class="jp-inline">おおきいふくろ、おねがいします。</span> — <em>Ookii hukuro, onegaishimasu.</em> — Sacola grande, por favor.</p>
+    <p><span class="jp-inline">SサイズのMサイズ？</span> — Tamanhos: <em>S (esu) / M (emu) / L (eru) saizu</em>.</p>
+  </div>
+</section>
+
+<!-- ─────────────────────────── CENA 8 ─────────────────────────── -->
+<section class="scene" id="cena8">
+  <div class="scene-header">
+    <span class="scene-num">場面 08</span>
+    <span class="scene-jp">じはんきで</span>
+    <span class="scene-pt">Na máquina de bebida</span>
+  </div>
+  <p class="setting">Você quer uma bebida, mas não sabe qual escolher na <em>jihanki</em>.</p>
+
+  <div class="dialogue">
+    <div class="turn">
+      <div class="speaker">Você</div>
+      <div class="lines">
+        <div class="jp">すみません、これはなんですか？</div>
+        <div class="romaji">Sumimasen, kore wa nan desu ka?</div>
+        <div class="pt">Com licença, o que é isto?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Amigo</div>
+      <div class="lines">
+        <div class="jp">ポカリスエットです。</div>
+        <div class="romaji">Pokari suetto desu.</div>
+        <div class="pt">É Pocari Sweat.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Você</div>
+      <div class="lines">
+        <div class="jp">それは？</div>
+        <div class="romaji">Sore wa?</div>
+        <div class="pt">E isso aí?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Amigo</div>
+      <div class="lines">
+        <div class="jp">アクエリアスです。</div>
+        <div class="romaji">Akueriasu desu.</div>
+        <div class="pt">Aquarius.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Você</div>
+      <div class="lines">
+        <div class="jp">じゃあ、これ ひとつ。ひゃくごじゅうえん…？</div>
+        <div class="romaji">Jaa, kore hitotsu. Hyaku gojuu en…?</div>
+        <div class="pt">Então um destes. 150 ienes…?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Amigo</div>
+      <div class="lines">
+        <div class="jp">そうです。コインで だいじょうぶです。</div>
+        <div class="romaji">Sou desu. Koin de daijoubu desu.</div>
+        <div class="pt">Isso. Pode ser com moedas.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Pronomes demonstrativos:</strong> <em>kore</em> (isto, perto de mim), <em>sore</em> (isso, perto de você), <em>are</em> (aquilo, longe dos dois), <em>dore</em> (qual?).
+  </div>
+</section>
+
+<div class="divider">・・・</div>
+
+<!-- ─────────────────────────── CENA 9 ─────────────────────────── -->
+<section class="scene" id="cena9">
+  <div class="scene-header">
+    <span class="scene-num">場面 09</span>
+    <span class="scene-jp">はじめまして</span>
+    <span class="scene-pt">Conhecendo alguém</span>
+  </div>
+  <p class="setting">Numa izakaya, alguém na mesa ao lado começa a conversar.</p>
+
+  <div class="dialogue">
+    <div class="turn">
+      <div class="speaker">Pessoa</div>
+      <div class="lines">
+        <div class="jp">こんばんは。はじめまして。おなまえは？</div>
+        <div class="romaji">Konbanwa. Hajimemashite. Onamae wa?</div>
+        <div class="pt">Boa noite. Prazer. Seu nome?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">ルイスです。はじめまして。おなまえは なんですか？</div>
+        <div class="romaji">Luis desu. Hajimemashite. Onamae wa nan desu ka?</div>
+        <div class="pt">Sou o Luis. Prazer. Qual é o seu nome?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Pessoa</div>
+      <div class="lines">
+        <div class="jp">たなかです。どこから きましたか？</div>
+        <div class="romaji">Tanaka desu. Doko kara kimashita ka?</div>
+        <div class="pt">Sou o Tanaka. De onde você veio?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">ブラジルから きました。ブラジルじんです。</div>
+        <div class="romaji">Burajiru kara kimashita. Burajiru-jin desu.</div>
+        <div class="pt">Vim do Brasil. Sou brasileiro.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Pessoa</div>
+      <div class="lines">
+        <div class="jp">ブラジルの どこですか？</div>
+        <div class="romaji">Burajiru no doko desu ka?</div>
+        <div class="pt">De onde no Brasil?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">サンパウロしゅっしんです。たなかさんは？</div>
+        <div class="romaji">San Pauro shusshin desu. Tanaka-san wa?</div>
+        <div class="pt">Sou de São Paulo. E você, Tanaka-san?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Tanaka</div>
+      <div class="lines">
+        <div class="jp">とうきょうしゅっしんです。</div>
+        <div class="romaji">Toukyou shusshin desu.</div>
+        <div class="pt">Sou de Tóquio.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Duas formas de dizer "venho de…":</strong>
+    <ul>
+      <li><em>Burajiru kara kimashita</em> — "Vim do Brasil" (ação, no passado)</li>
+      <li><em>Burajiru shusshin desu</em> — "Sou natural do Brasil" (origem)</li>
+      <li><em>Burajiru-jin desu</em> — "Sou brasileiro" (nacionalidade)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─────────────────────────── CENA 10 ─────────────────────────── -->
+<section class="scene" id="cena10">
+  <div class="scene-header">
+    <span class="scene-num">場面 10</span>
+    <span class="scene-jp">いざかやで</span>
+    <span class="scene-pt">Na izakaya</span>
+  </div>
+  <p class="setting">Vocês acabaram de sentar e o atendente vem anotar o pedido.</p>
+
+  <div class="dialogue">
+    <div class="turn">
+      <div class="speaker">Atendente</div>
+      <div class="lines">
+        <div class="jp">いらっしゃいませ。ごちゅうもんは？</div>
+        <div class="romaji">Irasshaimase. Gochuumon wa?</div>
+        <div class="pt">Bem-vindos. O que vão pedir?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">なまビール ふたつ おねがいします。</div>
+        <div class="romaji">Nama bi-ru futatsu, onegaishimasu.</div>
+        <div class="pt">Duas chopes, por favor.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Atendente</div>
+      <div class="lines">
+        <div class="jp">かしこまりました。おつまみは？</div>
+        <div class="romaji">Kashikomarimashita. Otsumami wa?</div>
+        <div class="pt">Entendido. E os petiscos?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Amigo</div>
+      <div class="lines">
+        <div class="jp">おすすめは ありますか？</div>
+        <div class="romaji">Osusume wa arimasu ka?</div>
+        <div class="pt">Tem recomendação?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Atendente</div>
+      <div class="lines">
+        <div class="jp">はい、こちらです。</div>
+        <div class="romaji">Hai, kochira desu.</div>
+        <div class="pt">Sim, é este aqui.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Amigo</div>
+      <div class="lines">
+        <div class="jp">じゃあ、これ ひとつ おねがいします。</div>
+        <div class="romaji">Jaa, kore hitotsu onegaishimasu.</div>
+        <div class="pt">Então um destes, por favor.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Atendente</div>
+      <div class="lines">
+        <div class="jp">いじょうで よろしいでしょうか？</div>
+        <div class="romaji">Ijou de yoroshii deshou ka?</div>
+        <div class="pt">É só isso?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">はい、だいじょうぶです。</div>
+        <div class="romaji">Hai, daijoubu desu.</div>
+        <div class="pt">Sim, está bom.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Bebidas:</strong> <em>bi-ru</em> (cerveja), <em>nama bi-ru</em> (chope), <em>nihon-shu / sake</em> (saquê), <em>arukooru</em> (álcool em geral).
+  </div>
+</section>
+
+<!-- ─────────────────────────── CENA 11 ─────────────────────────── -->
+<section class="scene" id="cena11">
+  <div class="scene-header">
+    <span class="scene-num">場面 11</span>
+    <span class="scene-jp">日本ははじめてですか？</span>
+    <span class="scene-pt">Falando sobre a viagem</span>
+  </div>
+  <p class="setting">A conversa com o Tanaka continua.</p>
+
+  <div class="dialogue">
+    <div class="turn">
+      <div class="speaker">Tanaka</div>
+      <div class="lines">
+        <div class="jp">にほんは はじめてですか？</div>
+        <div class="romaji">Nihon wa hajimete desu ka?</div>
+        <div class="pt">É a primeira vez no Japão?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">はい、はじめてです。</div>
+        <div class="romaji">Hai, hajimete desu.</div>
+        <div class="pt">Sim, é a primeira vez.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Tanaka</div>
+      <div class="lines">
+        <div class="jp">どこに いきますか？</div>
+        <div class="romaji">Doko ni ikimasu ka?</div>
+        <div class="pt">Para onde vai?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">おおさかと きょうとと ならに いきます。</div>
+        <div class="romaji">Oosaka to Kyouto to Nara ni ikimasu.</div>
+        <div class="pt">Vou para Osaka, Kyoto e Nara.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Tanaka</div>
+      <div class="lines">
+        <div class="jp">いいですね！どうですか、にほんは？</div>
+        <div class="romaji">Ii desu ne! Dou desu ka, Nihon wa?</div>
+        <div class="pt">Que bom! E aí, o que está achando do Japão?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">あたたかいです。でも、すきです！</div>
+        <div class="romaji">Atatakai desu. Demo, suki desu!</div>
+        <div class="pt">Está quente. Mas eu gosto!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="variations">
+    <h4>Conjugações de <em>ikimasu</em> (ir)</h4>
+    <p><em>ikimasu</em> — vou / vai (presente afirmativo)</p>
+    <p><em>ikimasen</em> — não vou / não vai</p>
+    <p><em>ikimashita</em> — fui / foi (passado)</p>
+    <p><em>ikimasen deshita</em> — não fui / não foi</p>
+  </div>
+</section>
+
+<!-- ─────────────────────────── CENA 12 ─────────────────────────── -->
+<section class="scene" id="cena12">
+  <div class="scene-header">
+    <span class="scene-num">場面 12</span>
+    <span class="scene-jp">わかりません</span>
+    <span class="scene-pt">Quando não entendi</span>
+  </div>
+  <p class="setting">Alguém te diz algo muito rápido. Você precisa pedir para repetir.</p>
+
+  <div class="dialogue">
+    <div class="turn">
+      <div class="speaker">Pessoa</div>
+      <div class="lines">
+        <div class="jp">（fala rápida demais）</div>
+        <div class="romaji">…</div>
+        <div class="pt">…</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">すみません、わかりません。もういちど、ゆっくり、おねがいします。</div>
+        <div class="romaji">Sumimasen, wakarimasen. Mouichido, yukkuri, onegaishimasu.</div>
+        <div class="pt">Desculpe, não entendi. Mais uma vez, devagar, por favor.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Pessoa</div>
+      <div class="lines">
+        <div class="jp">（repete devagar）</div>
+        <div class="romaji">…</div>
+        <div class="pt">…</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">えいご、だいじょうぶですか？</div>
+        <div class="romaji">Eigo, daijoubu desu ka?</div>
+        <div class="pt">Inglês está ok?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Pessoa</div>
+      <div class="lines">
+        <div class="jp">いいえ、すみません。</div>
+        <div class="romaji">Iie, sumimasen.</div>
+        <div class="pt">Não, desculpe.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">だいじょうぶです。いま、にほんごを べんきょうしています。ここに かいてください。</div>
+        <div class="romaji">Daijoubu desu. Ima, nihongo o benkyou shiteimasu. Koko ni kaite kudasai.</div>
+        <div class="pt">Tudo bem. Estou estudando japonês agora. Pode escrever aqui, por favor?</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Kit de sobrevivência para não entender:</strong>
+    <ul>
+      <li><em>Sumimasen, wakarimasen.</em> — Desculpe, não entendi.</li>
+      <li><em>Mouichido, onegaishimasu.</em> — Mais uma vez, por favor.</li>
+      <li><em>Yukkuri, onegaishimasu.</em> — Devagar, por favor.</li>
+      <li><em>○○ wa nihongo de nan desu ka?</em> — Como se diz ○○ em japonês?</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─────────────────────────── CENA 13 ─────────────────────────── -->
+<section class="scene" id="cena13">
+  <div class="scene-header">
+    <span class="scene-num">場面 13</span>
+    <span class="scene-jp">じゅぎょうで</span>
+    <span class="scene-pt">Na sala de aula</span>
+  </div>
+  <p class="setting">Frases que o professor (sensei) usa em aula — e como você pode responder.</p>
+
+  <div class="dialogue">
+    <div class="turn">
+      <div class="speaker">Sensei</div>
+      <div class="lines">
+        <div class="jp">はじめましょう。</div>
+        <div class="romaji">Hajimemashou.</div>
+        <div class="pt">Vamos começar.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Aluno</div>
+      <div class="lines">
+        <div class="jp">はい。</div>
+        <div class="romaji">Hai.</div>
+        <div class="pt">Sim.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Sensei</div>
+      <div class="lines">
+        <div class="jp">みえますか？きこえますか？</div>
+        <div class="romaji">Miemasu ka? Kikoemasu ka?</div>
+        <div class="pt">Conseguem ver? Conseguem ouvir?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Aluno</div>
+      <div class="lines">
+        <div class="jp">はい、みえます。はい、きこえます。</div>
+        <div class="romaji">Hai, miemasu. Hai, kikoemasu.</div>
+        <div class="pt">Sim, vejo. Sim, ouço.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Sensei</div>
+      <div class="lines">
+        <div class="jp">わかりますか？</div>
+        <div class="romaji">Wakarimasu ka?</div>
+        <div class="pt">Entendem?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Aluno</div>
+      <div class="lines">
+        <div class="jp">いいえ、わかりません。すみません、もういちど おねがいします。</div>
+        <div class="romaji">Iie, wakarimasen. Sumimasen, mouichido onegaishimasu.</div>
+        <div class="pt">Não, não entendo. Desculpe, mais uma vez, por favor.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Sensei</div>
+      <div class="lines">
+        <div class="jp">なにか しつもんが ありますか？</div>
+        <div class="romaji">Nanika shitsumon ga arimasu ka?</div>
+        <div class="pt">Alguma pergunta?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Aluno</div>
+      <div class="lines">
+        <div class="jp">いいえ、ありません。</div>
+        <div class="romaji">Iie, arimasen.</div>
+        <div class="pt">Não, nenhuma.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Sensei</div>
+      <div class="lines">
+        <div class="jp">じゃあ、おわりましょう。おつかれさまでした。</div>
+        <div class="romaji">Jaa, owarimashou. Otsukaresama deshita.</div>
+        <div class="pt">Então, vamos terminar. Bom trabalho!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Padrão importante</strong> — verbos no presente terminam em <em>~masu</em> (afirmativo) e <em>~masen</em> (negativo). No passado: <em>~mashita</em> e <em>~masen deshita</em>. Isso vale para <em>ikimasu, tabemasu, wakarimasu, kikoemasu, miemasu</em>…
+  </div>
+</section>
+
+<!-- ─────────────────────────── FINAL TIPS ─────────────────────────── -->
+<div class="final-tips">
+  <h2>Como <em>treinar</em></h2>
+  <p class="ja">勉強の仕方</p>
+  <ul>
+    <li><strong>Leia em voz alta.</strong> Comece por uma cena por dia, lendo as falas das duas pessoas. O som ajuda a memorizar mais que ler em silêncio.</li>
+    <li><strong>Tape uma das colunas.</strong> Cubra o português, leia o romaji, e tente traduzir. Depois cubra o romaji, olhe só o japonês.</li>
+    <li><strong>Substitua palavras.</strong> No diálogo do konbini, troque <em>tamago sando</em> por <em>onigiri</em>; troque <em>chiisai hukuro</em> por <em>ookii hukuro</em>. As estruturas se repetem — explore isso.</li>
+    <li><strong>Treine os números.</strong> Olhe um preço qualquer (em recibo, app) e tente falar em japonês. Os irregulares (<em>sanbyaku, roppyaku, happyaku, sanzen, hassen</em>) merecem atenção extra.</li>
+    <li><strong>Quando travar, lembre do kit de emergência:</strong> <em>sumimasen, wakarimasen, mouichido onegaishimasu, yukkuri onegaishimasu</em>. Com essas quatro frases você sai de quase tudo.</li>
+  </ul>
+</div>
+
+<!-- ─────────────────────────── QUIZ ─────────────────────────── -->
+<section class="quiz" id="quiz">
+  <div class="quiz-head">
+    <div class="ja">小テスト</div>
+    <h2>Quiz — <em>teste seus conhecimentos</em></h2>
+    <p>Dez perguntas sorteadas do banco a cada execução. A ordem das alternativas também muda — recarregue a página (ou clique em <em>Novo quiz</em>) para um conjunto diferente.</p>
+  </div>
+
+  <form id="quizForm" onsubmit="return false;">
+    <div id="quizQuestions"></div>
+    <div class="quiz-controls">
+      <button type="button" class="quiz-btn" id="btnCheck">Verificar respostas</button>
+      <button type="button" class="quiz-btn secondary" id="btnReset">Novo quiz</button>
+    </div>
+    <div class="quiz-score" id="quizScore">
+      <div class="ja">けっか — Resultado</div>
+      <div class="big"><span id="scoreNum">0</span> <em>/</em> <span id="scoreTotal">10</span></div>
+      <div class="msg" id="scoreMsg"></div>
+    </div>
+  </form>
+</section>
+
+<script>
+(function() {
+  const QUESTIONS = [
+    {
+      q: 'Como se diz "por favor" (ao pedir algo) em japonês?',
+      options: [
+        { t: 'Onegaishimasu', ok: true },
+        { t: 'Arigatougozaimasu', ok: false },
+        { t: 'Sumimasen', ok: false },
+        { t: 'Douzo', ok: false }
+      ],
+      hint: '<em>Douzo</em> é usado ao oferecer algo; <em>onegaishimasu</em> ao pedir.'
+    },
+    {
+      q: 'Qual a forma correta de perguntar "Onde fica o banheiro?"',
+      options: [
+        { t: 'Toire wa doko desu ka?', ok: true },
+        { t: 'Toire desu ka?', ok: false },
+        { t: 'Toire o onegaishimasu', ok: false },
+        { t: 'Toire wa nan desu ka?' , ok: false }
+      ],
+      hint: '<em>doko</em> = onde; <em>~wa doko desu ka?</em> é o padrão para "onde fica?"'
+    },
+    {
+      q: 'O que significa <span class="jp-inline">ふたり</span> (<em>futari</em>)?',
+      options: [
+        { t: 'Duas pessoas', ok: true },
+        { t: 'Dois objetos', ok: false },
+        { t: 'Dois ienes', ok: false },
+        { t: 'Segunda-feira', ok: false }
+      ],
+      hint: 'Para coisas em geral, "dois" é <em>futatsu</em>.'
+    },
+    {
+      q: 'Como se diz "três coisas" (contador genérico)?',
+      options: [
+        { t: 'Mittsu', ok: true },
+        { t: 'Sannin', ok: false },
+        { t: 'Sanbyaku', ok: false },
+        { t: 'Sanzen', ok: false }
+      ],
+      hint: '<em>sannin</em> = três pessoas; <em>sanbyaku</em> = 300; <em>sanzen</em> = 3.000.'
+    },
+    {
+      q: 'Qual é a leitura correta de <strong>300</strong> ienes?',
+      options: [
+        { t: 'Sanbyaku en', ok: true },
+        { t: 'Sanhyaku en', ok: false },
+        { t: 'Sanpyaku en', ok: false },
+        { t: 'Mittsu en', ok: false }
+      ],
+      hint: '300, 600 e 800 são irregulares: <em>sanbyaku, roppyaku, happyaku</em>.'
+    },
+    {
+      q: 'Qual é a leitura correta de <strong>3.000</strong> ienes?',
+      options: [
+        { t: 'Sanzen en', ok: true },
+        { t: 'Sansen en', ok: false },
+        { t: 'Sanbyaku en', ok: false },
+        { t: 'Mittsen en', ok: false }
+      ],
+      hint: 'Nos milhares, 3.000 e 8.000 são irregulares: <em>sanzen, hassen</em>.'
+    },
+    {
+      q: 'O que significa <em>muryou</em>?',
+      options: [
+        { t: 'Gratuito', ok: true },
+        { t: 'Pago', ok: false },
+        { t: 'Caro', ok: false },
+        { t: 'Barato', ok: false }
+      ],
+      hint: 'O oposto é <em>yuuryou</em> (pago).'
+    },
+    {
+      q: 'No konbini, o atendente pergunta <em>"Atatame masu ka?"</em>. Ele quer saber:',
+      options: [
+        { t: 'Se você quer esquentar (o produto)', ok: true },
+        { t: 'Se você quer uma sacola', ok: false },
+        { t: 'Se você tem cartão de pontos', ok: false },
+        { t: 'Como você vai pagar', ok: false }
+      ],
+      hint: '<em>atatameru</em> = esquentar.'
+    },
+    {
+      q: 'Qual o demonstrativo certo para "isto" (algo perto de quem fala)?',
+      options: [
+        { t: 'Kore', ok: true },
+        { t: 'Sore', ok: false },
+        { t: 'Are', ok: false },
+        { t: 'Dore', ok: false }
+      ],
+      hint: '<em>kore</em> (perto de mim) ・ <em>sore</em> (perto de você) ・ <em>are</em> (longe).'
+    },
+    {
+      q: 'Qual o demonstrativo certo para "aquilo" (longe dos dois)?',
+      options: [
+        { t: 'Are', ok: true },
+        { t: 'Kore', ok: false },
+        { t: 'Sore', ok: false },
+        { t: 'Dore', ok: false }
+      ],
+      hint: '<em>dore</em> = qual? (entre opções).'
+    },
+    {
+      q: 'Como se diz "Sou brasileiro" (nacionalidade)?',
+      options: [
+        { t: 'Burajiru-jin desu', ok: true },
+        { t: 'Burajiru desu', ok: false },
+        { t: 'Burajiru shusshin', ok: false },
+        { t: 'Burajiru kara', ok: false }
+      ],
+      hint: 'O sufixo <em>~jin</em> indica nacionalidade. <em>shusshin</em> = origem regional.'
+    },
+    {
+      q: 'O que significa "Doko kara kimashita ka?"',
+      options: [
+        { t: 'De onde você veio?', ok: true },
+        { t: 'Para onde você vai?', ok: false },
+        { t: 'Onde você está?', ok: false },
+        { t: 'Onde você mora?', ok: false }
+      ],
+      hint: '<em>kimashita</em> é o passado de <em>kimasu</em> (vir).'
+    },
+    {
+      q: 'Qual é a forma negativa de <em>ikimasu</em> (ir) no presente?',
+      options: [
+        { t: 'Ikimasen', ok: true },
+        { t: 'Ikimashita', ok: false },
+        { t: 'Ikimasen deshita', ok: false },
+        { t: 'Ikanai', ok: false }
+      ],
+      hint: 'Padrão: <em>~masu</em> (afirmativo) ↔ <em>~masen</em> (negativo).'
+    },
+    {
+      q: 'Como pedir educadamente para alguém repetir devagar?',
+      options: [
+        { t: 'Mouichido, yukkuri, onegaishimasu', ok: true },
+        { t: 'Sumimasen, wakarimasen', ok: false },
+        { t: 'Yukkuri desu', ok: false },
+        { t: 'Mouichido kudasai dake', ok: false }
+      ],
+      hint: '<em>mouichido</em> = mais uma vez ・ <em>yukkuri</em> = devagar.'
+    },
+    {
+      q: 'O que o atendente quer saber com "Ijou de yoroshii deshou ka?"',
+      options: [
+        { t: 'Se você quer mais alguma coisa (ou se é só isso)', ok: true },
+        { t: 'Se você quer esquentar', ok: false },
+        { t: 'Se é gratuito', ok: false },
+        { t: 'Qual a forma de pagamento', ok: false }
+      ],
+      hint: '<em>ijou</em> = "isso é tudo"; ele confirma se o pedido encerrou.'
+    },
+    {
+      q: 'Quando se diz "Gochisousama deshita"?',
+      options: [
+        { t: 'Após terminar a refeição', ok: true },
+        { t: 'Antes de começar a comer', ok: false },
+        { t: 'Ao entrar no restaurante', ok: false },
+        { t: 'Para chamar o atendente', ok: false }
+      ],
+      hint: 'Antes da refeição diz-se <em>itadakimasu</em>.'
+    },
+    {
+      q: 'O que significa "Onamae wa nan desu ka?"',
+      options: [
+        { t: 'Qual é o seu nome?', ok: true },
+        { t: 'Quantos anos você tem?', ok: false },
+        { t: 'De onde você é?', ok: false },
+        { t: 'O que você gosta?', ok: false }
+      ],
+      hint: '<em>namae</em> = nome (com o prefixo respeitoso <em>o-</em>).'
+    },
+    {
+      q: 'O que significa <em>osusume</em>?',
+      options: [
+        { t: 'Recomendação (do dia / da casa)', ok: true },
+        { t: 'Conta', ok: false },
+        { t: 'Cardápio', ok: false },
+        { t: 'Pedido', ok: false }
+      ],
+      hint: '<em>okaikei</em> = conta; <em>menyuu</em> = cardápio; <em>chuumon</em> = pedido.'
+    },
+    {
+      q: 'Para responder "Quantas pessoas?" sendo 4, você diz:',
+      options: [
+        { t: 'Yonin desu', ok: true },
+        { t: 'Yottsu desu', ok: false },
+        { t: 'Yonhyaku desu', ok: false },
+        { t: 'Shinin desu', ok: false }
+      ],
+      hint: 'Pessoas: <em>~nin</em> (com irregulares <em>hitori, futari</em>). 4 evita <em>shi</em> (=morte).'
+    },
+    {
+      q: 'Como se diz "está tudo bem / não precisa, obrigado" educadamente?',
+      options: [
+        { t: 'Daijoubu desu', ok: true },
+        { t: 'Genkin desu', ok: false },
+        { t: 'Wakarimasen', ok: false },
+        { t: 'Sumimasen deshita', ok: false }
+      ],
+      hint: '<em>daijoubu desu</em> também serve como recusa educada.'
+    },
+    {
+      q: 'Como você diria "Sou de São Paulo" (origem)?',
+      options: [
+        { t: 'San Pauro shusshin desu', ok: true },
+        { t: 'San Pauro ni ikimasu', ok: false },
+        { t: 'San Pauro desu ka?', ok: false },
+        { t: 'San Pauro no doko desu', ok: false }
+      ],
+      hint: '<em>shusshin</em> indica de onde a pessoa é natural.'
+    },
+    {
+      q: 'Em sala, o sensei pergunta "Miemasu ka? Kikoemasu ka?". Ele quer saber se vocês:',
+      options: [
+        { t: 'Conseguem ver e ouvir', ok: true },
+        { t: 'Entenderam a matéria', ok: false },
+        { t: 'Têm alguma pergunta', ok: false },
+        { t: 'Querem fazer uma pausa', ok: false }
+      ],
+      hint: '<em>mieru</em> = conseguir ver ・ <em>kikoeru</em> = conseguir ouvir.'
+    }
+  ];
+
+  const QUIZ_SIZE = 10;
+  const LETTERS = ['A', 'B', 'C', 'D', 'E'];
+
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function renderQuiz() {
+    const container = document.getElementById('quizQuestions');
+    const score = document.getElementById('quizScore');
+    score.classList.remove('show');
+    container.innerHTML = '';
+
+    const picked = shuffle(QUESTIONS).slice(0, Math.min(QUIZ_SIZE, QUESTIONS.length));
+    document.getElementById('scoreTotal').textContent = picked.length;
+
+    picked.forEach((item, idx) => {
+      const shuffledOpts = shuffle(item.options);
+      const block = document.createElement('div');
+      block.className = 'quiz-question';
+      block.dataset.qIndex = idx;
+
+      const num = document.createElement('span');
+      num.className = 'q-num';
+      num.textContent = 'Pergunta ' + String(idx + 1).padStart(2, '0');
+      block.appendChild(num);
+
+      const qText = document.createElement('div');
+      qText.className = 'q-text';
+      qText.innerHTML = item.q;
+      block.appendChild(qText);
+
+      const ul = document.createElement('ul');
+      ul.className = 'quiz-options';
+
+      shuffledOpts.forEach((opt, oi) => {
+        const li = document.createElement('li');
+        const label = document.createElement('label');
+        label.className = 'quiz-option';
+
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'q' + idx;
+        input.value = opt.ok ? '1' : '0';
+
+        const letter = document.createElement('span');
+        letter.className = 'opt-letter';
+        letter.textContent = LETTERS[oi] + '.';
+
+        const txt = document.createElement('span');
+        txt.innerHTML = opt.t;
+
+        label.appendChild(input);
+        label.appendChild(letter);
+        label.appendChild(txt);
+        li.appendChild(label);
+        ul.appendChild(li);
+      });
+
+      block.appendChild(ul);
+
+      const fb = document.createElement('div');
+      fb.className = 'quiz-feedback';
+      fb.dataset.hint = item.hint || '';
+      block.appendChild(fb);
+
+      container.appendChild(block);
+    });
+  }
+
+  function checkQuiz() {
+    const blocks = document.querySelectorAll('.quiz-question');
+    let correct = 0;
+    let answered = 0;
+
+    blocks.forEach(block => {
+      const inputs = block.querySelectorAll('input[type=radio]');
+      const fb = block.querySelector('.quiz-feedback');
+      let chosen = null;
+      inputs.forEach(inp => {
+        inp.parentElement.classList.remove('correct', 'wrong');
+        if (inp.checked) chosen = inp;
+      });
+
+      inputs.forEach(inp => {
+        if (inp.value === '1') {
+          inp.parentElement.classList.add('correct');
+        }
+      });
+
+      if (chosen) {
+        answered++;
+        if (chosen.value === '1') {
+          correct++;
+          fb.className = 'quiz-feedback show ok';
+          fb.innerHTML = '✓ Correto. ' + (fb.dataset.hint || '');
+        } else {
+          chosen.parentElement.classList.add('wrong');
+          fb.className = 'quiz-feedback show no';
+          fb.innerHTML = '✗ A resposta correta está destacada. ' + (fb.dataset.hint || '');
+        }
+      } else {
+        fb.className = 'quiz-feedback show no';
+        fb.innerHTML = '— Sem resposta. A correta está destacada.';
+      }
+    });
+
+    const score = document.getElementById('quizScore');
+    const total = blocks.length;
+    document.getElementById('scoreNum').textContent = correct;
+    document.getElementById('scoreTotal').textContent = total;
+
+    const pct = total ? correct / total : 0;
+    let msg;
+    if (pct === 1) msg = '完璧！ Perfeito — você está pronto para a viagem.';
+    else if (pct >= 0.8) msg = 'すごい！ Muito bem. Revise só os pontos que escaparam.';
+    else if (pct >= 0.6) msg = 'いいね。 Bom progresso. Releia as cenas relacionadas e tente de novo.';
+    else if (pct >= 0.4) msg = 'がんばって！ Vale uma releitura das aulas 0–5 antes de repetir.';
+    else msg = 'もういちど！ Sem stress — abra a apostila do começo, depois volte.';
+
+    document.getElementById('scoreMsg').textContent = msg;
+    score.classList.add('show');
+    score.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    renderQuiz();
+    document.getElementById('btnCheck').addEventListener('click', checkQuiz);
+    document.getElementById('btnReset').addEventListener('click', function() {
+      renderQuiz();
+      window.scrollTo({ top: document.getElementById('quiz').offsetTop - 20, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+<footer>頑張ってください！ — Boa sorte nos estudos.</footer>
+
+</div>
+
+</body>
+</html>
