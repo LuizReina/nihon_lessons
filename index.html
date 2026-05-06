@@ -1015,6 +1015,65 @@
     font-style: italic;
   }
 
+  /* ── QUIZ — modo conversação ────────────────── */
+  .quiz-prompt {
+    display: block;
+    margin: 14px 0;
+    padding: 16px 20px;
+    background: rgba(184, 57, 43, 0.07);
+    border-left: 3px solid var(--vermilion);
+    font-family: 'Noto Serif JP', serif;
+    color: var(--sumi);
+    font-size: 1.18rem;
+    line-height: 1.55;
+  }
+
+  .quiz-prompt .who {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--vermilion);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .quiz-prompt .ro {
+    display: block;
+    margin-top: 6px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .quiz-prompt .pt {
+    display: block;
+    margin-top: 4px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  .quiz-option .opt-text .opt-ja {
+    display: block;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.02rem;
+    color: var(--sumi);
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+
+  .quiz-option .opt-text .opt-ro {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.88rem;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
   /* ── RESPONSIVE ─────────────────────────────── */
   @media (max-width: 640px) {
     .container { padding: 50px 20px 80px; }
@@ -2100,6 +2159,14 @@
 
   <div class="quiz-config">
     <label>
+      Tipo:
+      <select id="quizMode">
+        <option value="vocab" selected>Vocabulário</option>
+        <option value="conv">Conversação (responder ao atendente)</option>
+        <option value="mixed">Misturado</option>
+      </select>
+    </label>
+    <label>
       Quantas perguntas:
       <select id="quizSize">
         <option value="5">5</option>
@@ -2230,6 +2297,345 @@
     { q:'"Onegaishimasu" se usa para:', options:[ {t:'Pedir um favor / "por favor"',ok:true}, {t:'Agradecer',ok:false}, {t:'Cumprimentar',ok:false}, {t:'Despedir-se',ok:false} ], hint:'É a base do "por favor" educado.' }
   ];
 
+  // Helpers para construir as perguntas de conversação
+  function prompt(who, ja, ro, pt) {
+    return '<span class="quiz-prompt"><span class="who">' + who + '</span>' + ja +
+      '<span class="ro">' + ro + '</span>' +
+      '<span class="pt">' + pt + '</span></span>';
+  }
+  function opt(ja, ro, ok) {
+    return {
+      t: '<span class="opt-ja">' + ja + '</span>' +
+         '<span class="opt-ro">' + ro + '</span>',
+      ok: !!ok
+    };
+  }
+
+  const CONV_QUESTIONS = [
+    {
+      q: 'Você acabou de desembarcar. O oficial da imigração diz:' +
+         prompt('Oficial', 'こんにちは。パスポート、おねがいします。', 'Konnichiwa. Pasupo-to, onegaishimasu.', 'Boa tarde. Passaporte, por favor.') +
+         'Como você responde?',
+      options: [
+        opt('はい、どうぞ。', 'Hai, douzo.', true),
+        opt('はい、おねがいします。', 'Hai, onegaishimasu.', false),
+        opt('こんにちは。', 'Konnichiwa.', false),
+        opt('すみません、どこですか？', 'Sumimasen, doko desu ka?', false)
+      ],
+      hint: '<em>Douzo</em> é o que se diz ao oferecer/entregar algo a alguém.'
+    },
+    {
+      q: 'O oficial olha o passaporte e pergunta:' +
+         prompt('Oficial', 'りょこうですか？', 'Ryokou desu ka?', 'É viagem (a turismo)?') +
+         'Como confirmar?',
+      options: [
+        opt('はい、りょこうです。', 'Hai, ryokou desu.', true),
+        opt('はい、どうぞ。', 'Hai, douzo.', false),
+        opt('ブラジルから きました。', 'Burajiru kara kimashita.', false),
+        opt('はじめまして。', 'Hajimemashite.', false)
+      ],
+      hint: 'Reaproveite a palavra-chave da pergunta: <em>ryokou desu ka? → ryokou desu</em>.'
+    },
+    {
+      q: 'No restaurante, a atendente recebe vocês na porta:' +
+         prompt('Atendente', 'いらっしゃいませ！何名様ですか？', 'Irasshaimase! Nanmei sama desu ka?', 'Bem-vindos! Quantas pessoas?') +
+         'Vocês são duas pessoas. O que você diz?',
+      options: [
+        opt('ふたりです。', 'Futari desu.', true),
+        opt('ふたつです。', 'Futatsu desu.', false),
+        opt('にじです。', 'Niji desu.', false),
+        opt('にひゃくです。', 'Nihyaku desu.', false)
+      ],
+      hint: 'Para pessoas: <em>hitori, futari, sannin, yonin</em>. <em>Futatsu</em> é para objetos.'
+    },
+    {
+      q: 'Ainda na entrada do restaurante:' +
+         prompt('Atendente', 'テーブルせき、おざしき、カウンターせき、どちらがよろしいですか？', 'Teeburu seki, ozashiki, kauntaa seki, dochira ga yoroshii desu ka?', 'Mesa, sala tatami ou balcão — qual prefere?') +
+         'Você quer mesa. Como pedir?',
+      options: [
+        opt('テーブルせき、おねがいします。', 'Teeburu seki, onegaishimasu.', true),
+        opt('はい、はじめてです。', 'Hai, hajimete desu.', false),
+        opt('よにんです。', 'Yonin desu.', false),
+        opt('どういたしまして。', 'Dou itashimashite.', false)
+      ],
+      hint: 'Padrão de pedido: <em>[item], onegaishimasu</em>.'
+    },
+    {
+      q: 'A atendente confirma e pede para acompanhar:' +
+         prompt('Atendente', 'かしこまりました。こちらへどうぞ。', 'Kashikomarimashita. Kochira e douzo.', 'Entendido. Por aqui, por favor.') +
+         'Resposta natural ao ser conduzido à mesa?',
+      options: [
+        opt('ありがとうございます。', 'Arigatougozaimasu.', true),
+        opt('いいえ、いきません。', 'Iie, ikimasen.', false),
+        opt('もういちど おねがいします。', 'Mouichido onegaishimasu.', false),
+        opt('はじめまして。', 'Hajimemashite.', false)
+      ],
+      hint: '<em>Kashikomarimashita</em> = "entendido", forma muito polida usada por atendentes.'
+    },
+    {
+      q: 'Após você pedir alguns pratos, o atendente pergunta:' +
+         prompt('Atendente', 'いじょうでよろしいでしょうか？', 'Ijou de yoroshii deshou ka?', 'É só isso?') +
+         'Você está satisfeito com o pedido. Como confirmar?',
+      options: [
+        opt('はい、だいじょうぶです。', 'Hai, daijoubu desu.', true),
+        opt('いいえ、りょこうです。', 'Iie, ryokou desu.', false),
+        opt('すみません、わかりません。', 'Sumimasen, wakarimasen.', false),
+        opt('こんばんは。', 'Konbanwa.', false)
+      ],
+      hint: '<em>Ijou</em> = "isso é tudo". <em>Daijoubu desu</em> aqui significa "tá ok, pode encerrar".'
+    },
+    {
+      q: 'Hora de pagar. O atendente diz:' +
+         prompt('Atendente', 'さんぜんごひゃくえんです。しはらいほうほうは？', 'Sanzen gohyaku en desu. Shiharai houhou wa?', 'São 3.500 ienes. Forma de pagamento?') +
+         'Você quer pagar em dinheiro. Como dizer?',
+      options: [
+        opt('げんきんで おねがいします。', 'Genkin de onegaishimasu.', true),
+        opt('さんにんです。', 'Sannin desu.', false),
+        opt('ブラジルから きました。', 'Burajiru kara kimashita.', false),
+        opt('すみません、わかりません。', 'Sumimasen, wakarimasen.', false)
+      ],
+      hint: '<em>Genkin de</em> = "em dinheiro" (a partícula <em>de</em> indica meio).'
+    },
+    {
+      q: 'A atendente entrega o recibo:' +
+         prompt('Atendente', 'ありがとうございます。レシートです。', 'Arigatougozaimasu. Reshiito desu.', 'Obrigada. Aqui está o recibo.') +
+         'O que se diz ao terminar uma refeição?',
+      options: [
+        opt('ごちそうさまでした。', 'Gochisousama deshita.', true),
+        opt('いただきます。', 'Itadakimasu.', false),
+        opt('はじめまして。', 'Hajimemashite.', false),
+        opt('さようなら。', 'Sayounara.', false)
+      ],
+      hint: '<em>Itadakimasu</em> abre a refeição; <em>gochisousama deshita</em> encerra.'
+    },
+    {
+      q: 'No konbini, no caixa:' +
+         prompt('Atendente', 'いらっしゃいませ。ポイントカード、ありますか？', 'Irasshaimase. Pointo ka-do, arimasu ka?', 'Bem-vindo. Tem cartão de pontos?') +
+         'Você não tem. Como dizer?',
+      options: [
+        opt('いいえ、ありません。', 'Iie, arimasen.', true),
+        opt('はい、どうぞ。', 'Hai, douzo.', false),
+        opt('むりょうです。', 'Muryou desu.', false),
+        opt('だいじょうぶでした。', 'Daijoubu deshita.', false)
+      ],
+      hint: 'Para "ter (objeto)": <em>arimasu</em> / <em>arimasen</em>.'
+    },
+    {
+      q: 'Você disse que não tem cartão. A atendente oferece fazer um:' +
+         prompt('Atendente', 'おつくり しましょうか？', 'Otsukuri shimashou ka?', 'Quer que eu faça (um cartão) para você?') +
+         'Você quer recusar educadamente. Como dizer?',
+      options: [
+        opt('あ、だいじょうぶです。', 'A, daijoubu desu.', true),
+        opt('はい、ふたりです。', 'Hai, futari desu.', false),
+        opt('げんきんで おねがいします。', 'Genkin de onegaishimasu.', false),
+        opt('もういちど、おねがいします。', 'Mouichido, onegaishimasu.', false)
+      ],
+      hint: '<em>Daijoubu desu</em> também é a recusa educada padrão — quase um "não, obrigado".'
+    },
+    {
+      q: 'Você comprou um sanduíche. A atendente pergunta:' +
+         prompt('Atendente', 'あたためますか？', 'Atatame masu ka?', 'Quer esquentar?') +
+         'Sim, quer esquentar. Como responder?',
+      options: [
+        opt('はい、おねがいします。', 'Hai, onegaishimasu.', true),
+        opt('いいえ、ありません。', 'Iie, arimasen.', false),
+        opt('すみません、はじめてです。', 'Sumimasen, hajimete desu.', false),
+        opt('ゆっくり、おねがいします。', 'Yukkuri, onegaishimasu.', false)
+      ],
+      hint: 'Para aceitar: <em>hai, onegaishimasu</em>. Para recusar: <em>iie, daijoubu desu</em>.'
+    },
+    {
+      q: 'Ainda no konbini, a atendente pergunta sobre sacola:' +
+         prompt('Atendente', 'レジぶくろは？', 'Reji bukuro wa?', 'E sacola?') +
+         'Você quer uma sacola pequena. Como pedir?',
+      options: [
+        opt('はい、ちいさいふくろ おねがいします。', 'Hai, chiisai hukuro onegaishimasu.', true),
+        opt('はい、ふたりです。', 'Hai, futari desu.', false),
+        opt('いいえ、いきません。', 'Iie, ikimasen.', false),
+        opt('ブラジルじんです。', 'Burajiru-jin desu.', false)
+      ],
+      hint: '<em>chiisai</em> = pequeno, <em>ookii</em> = grande, <em>fukuro/bukuro</em> = sacola.'
+    },
+    {
+      q: 'Numa izakaya, alguém na mesa ao lado começa a conversa:' +
+         prompt('Pessoa', 'こんばんは。はじめまして。おなまえは？', 'Konbanwa. Hajimemashite. Onamae wa?', 'Boa noite. Prazer. Seu nome?') +
+         'Como se apresentar (você é Luis)?',
+      options: [
+        opt('ルイスです。はじめまして。', 'Luis desu. Hajimemashite.', true),
+        opt('ブラジルから きました。', 'Burajiru kara kimashita.', false),
+        opt('げんきんで おねがいします。', 'Genkin de onegaishimasu.', false),
+        opt('コンビニです。', 'Konbini desu.', false)
+      ],
+      hint: 'Padrão de apresentação: <em>[Nome] desu. Hajimemashite.</em>'
+    },
+    {
+      q: 'A pessoa pergunta de onde você veio:' +
+         prompt('Pessoa', 'どこから きましたか？', 'Doko kara kimashita ka?', 'De onde você veio?') +
+         'Você vem do Brasil. O que dizer?',
+      options: [
+        opt('ブラジルから きました。', 'Burajiru kara kimashita.', true),
+        opt('こんばんは。', 'Konbanwa.', false),
+        opt('いいえ、ありません。', 'Iie, arimasen.', false),
+        opt('とうきょうに いきます。', 'Toukyou ni ikimasu.', false)
+      ],
+      hint: '<em>~kara kimashita</em> = "vim de ~". Reaproveite a estrutura da pergunta.'
+    },
+    {
+      q: 'A pessoa quer saber mais detalhes:' +
+         prompt('Pessoa', 'ブラジルの どこですか？', 'Burajiru no doko desu ka?', 'De onde no Brasil?') +
+         'Você é de São Paulo. O que dizer?',
+      options: [
+        opt('サンパウロしゅっしんです。', 'San Pauro shusshin desu.', true),
+        opt('ブラジルじんです。', 'Burajiru-jin desu.', false),
+        opt('はじめてです。', 'Hajimete desu.', false),
+        opt('だいじょうぶです。', 'Daijoubu desu.', false)
+      ],
+      hint: '<em>shusshin</em> = origem/local de nascimento.'
+    },
+    {
+      q: 'Numa izakaya, o atendente pergunta:' +
+         prompt('Atendente', 'いらっしゃいませ。ごちゅうもんは？', 'Irasshaimase. Gochuumon wa?', 'Bem-vindos. O que vão pedir?') +
+         'Você quer dois chopes. Como pedir?',
+      options: [
+        opt('なまビール ふたつ おねがいします。', 'Nama bi-ru futatsu, onegaishimasu.', true),
+        opt('いいえ、ありません。', 'Iie, arimasen.', false),
+        opt('すみません、どこですか？', 'Sumimasen, doko desu ka?', false),
+        opt('はい、どうぞ。', 'Hai, douzo.', false)
+      ],
+      hint: 'Padrão: <em>[item] [contador], onegaishimasu</em>. <em>Futatsu</em> = duas unidades.'
+    },
+    {
+      q: 'Depois das bebidas, o atendente pergunta sobre petiscos:' +
+         prompt('Atendente', 'かしこまりました。おつまみは？', 'Kashikomarimashita. Otsumami wa?', 'Entendido. E os petiscos?') +
+         'Você não sabe o que pedir. O que perguntar?',
+      options: [
+        opt('おすすめは ありますか？', 'Osusume wa arimasu ka?', true),
+        opt('まんせきです。', 'Manseki desu.', false),
+        opt('もういちど おねがいします。', 'Mouichido onegaishimasu.', false),
+        opt('えいご、だいじょうぶですか？', 'Eigo, daijoubu desu ka?', false)
+      ],
+      hint: '<em>osusume</em> = recomendação (do dia/da casa).'
+    },
+    {
+      q: 'Tanaka, conhecido na izakaya, pergunta:' +
+         prompt('Tanaka', 'にほんは はじめてですか？', 'Nihon wa hajimete desu ka?', 'É a primeira vez no Japão?') +
+         'É a sua primeira vez. Como confirmar?',
+      options: [
+        opt('はい、はじめてです。', 'Hai, hajimete desu.', true),
+        opt('はい、どうぞ。', 'Hai, douzo.', false),
+        opt('ブラジルじんです。', 'Burajiru-jin desu.', false),
+        opt('さんにんです。', 'Sannin desu.', false)
+      ],
+      hint: 'Não confunda <em>hajimete</em> (primeira vez) com <em>hajimemashite</em> (apresentação).'
+    },
+    {
+      q: 'Tanaka continua a conversa:' +
+         prompt('Tanaka', 'どこに いきますか？', 'Doko ni ikimasu ka?', 'Para onde vai?') +
+         'Você vai para Osaka, Kyoto e Nara. O que dizer?',
+      options: [
+        opt('おおさかと きょうとと ならに いきます。', 'Oosaka to Kyouto to Nara ni ikimasu.', true),
+        opt('ブラジルから きました。', 'Burajiru kara kimashita.', false),
+        opt('サンパウロしゅっしんです。', 'San Pauro shusshin desu.', false),
+        opt('だいじょうぶです。', 'Daijoubu desu.', false)
+      ],
+      hint: '<em>~ni ikimasu</em> = "vou para ~". <em>~to ~to ~</em> = "~, ~ e ~" (lista de itens).'
+    },
+    {
+      q: 'Tanaka quer saber sua impressão:' +
+         prompt('Tanaka', 'いいですね！どうですか、にほんは？', 'Ii desu ne! Dou desu ka, Nihon wa?', 'Que bom! E aí, o que está achando do Japão?') +
+         'Está calor mas você está gostando. Como dizer?',
+      options: [
+        opt('あたたかいです。でも、すきです！', 'Atatakai desu. Demo, suki desu!', true),
+        opt('こんばんは。', 'Konbanwa.', false),
+        opt('いいえ、いきません でした。', 'Iie, ikimasen deshita.', false),
+        opt('もういちど、ゆっくり。', 'Mouichido, yukkuri.', false)
+      ],
+      hint: '<em>demo</em> = "mas". <em>suki desu</em> = "eu gosto".'
+    },
+    {
+      q: 'Alguém te disse algo muito rápido. Você não entendeu nada. Como pedir para repetir devagar?',
+      options: [
+        opt('すみません、わかりません。もういちど、ゆっくり、おねがいします。', 'Sumimasen, wakarimasen. Mouichido, yukkuri, onegaishimasu.', true),
+        opt('はやく、おねがいします。', 'Hayaku, onegaishimasu.', false),
+        opt('だいじょうぶです、ありがとう。', 'Daijoubu desu, arigatou.', false),
+        opt('さようなら。', 'Sayounara.', false)
+      ],
+      hint: '<em>mouichido</em> = mais uma vez ・ <em>yukkuri</em> = devagar (oposto de <em>hayaku</em>).'
+    },
+    {
+      q: 'O sensei pergunta no meio da aula:' +
+         prompt('Sensei', 'わかりますか？', 'Wakarimasu ka?', 'Vocês entenderam?') +
+         'Você não entendeu. O que dizer?',
+      options: [
+        opt('いいえ、わかりません。すみません、もういちど おねがいします。', 'Iie, wakarimasen. Sumimasen, mouichido onegaishimasu.', true),
+        opt('はい、ふたりです。', 'Hai, futari desu.', false),
+        opt('いいえ、いきません。', 'Iie, ikimasen.', false),
+        opt('だいじょうぶでした。', 'Daijoubu deshita.', false)
+      ],
+      hint: '<em>wakarimasu/wakarimasen</em> = entendo / não entendo.'
+    },
+    {
+      q: 'O sensei verifica se há dúvidas:' +
+         prompt('Sensei', 'なにか しつもんが ありますか？', 'Nanika shitsumon ga arimasu ka?', 'Alguma pergunta?') +
+         'Você não tem perguntas. O que responder?',
+      options: [
+        opt('いいえ、ありません。', 'Iie, arimasen.', true),
+        opt('はい、ふたりです。', 'Hai, futari desu.', false),
+        opt('いいえ、いきません。', 'Iie, ikimasen.', false),
+        opt('ブラジルから きました。', 'Burajiru kara kimashita.', false)
+      ],
+      hint: '<em>shitsumon</em> = pergunta. Como é "coisa", usa <em>arimasu/arimasen</em>.'
+    },
+    {
+      q: 'Antes de começar a aula, o sensei testa o áudio/vídeo:' +
+         prompt('Sensei', 'みえますか？きこえますか？', 'Miemasu ka? Kikoemasu ka?', 'Conseguem ver? Conseguem ouvir?') +
+         'Está tudo certo. Como confirmar?',
+      options: [
+        opt('はい、みえます。はい、きこえます。', 'Hai, miemasu. Hai, kikoemasu.', true),
+        opt('いいえ、いきません。', 'Iie, ikimasen.', false),
+        opt('はい、はじめてです。', 'Hai, hajimete desu.', false),
+        opt('すみません、わかりません。', 'Sumimasen, wakarimasen.', false)
+      ],
+      hint: 'Reaproveite os verbos da pergunta: <em>miemasu</em> e <em>kikoemasu</em>.'
+    },
+    {
+      q: 'Fim da aula. O sensei se despede:' +
+         prompt('Sensei', 'じゃあ、おわりましょう。おつかれさまでした。', 'Jaa, owarimashou. Otsukaresama deshita.', 'Então, vamos terminar. Bom trabalho!') +
+         'Como retribuir?',
+      options: [
+        opt('おつかれさまでした。', 'Otsukaresama deshita.', true),
+        opt('いただきます。', 'Itadakimasu.', false),
+        opt('はじめまして。', 'Hajimemashite.', false),
+        opt('ごちそうさまでした。', 'Gochisousama deshita.', false)
+      ],
+      hint: '<em>Otsukaresama deshita</em> é tanto saudação quanto resposta.'
+    },
+    {
+      q: 'Você perguntou onde fica o banheiro. A pessoa responde:' +
+         prompt('Pessoa', 'あそこです。', 'Asoko desu.', 'É ali.') +
+         'O que dizer?',
+      options: [
+        opt('ありがとうございます。', 'Arigatougozaimasu.', true),
+        opt('いいえ、ありません。', 'Iie, arimasen.', false),
+        opt('あそこですか？', 'Asoko desu ka?', false),
+        opt('だいじょうぶです。', 'Daijoubu desu.', false)
+      ],
+      hint: 'Sempre agradeça quando alguém te ajuda na rua: <em>arigatougozaimasu</em>.'
+    },
+    {
+      q: 'No konbini, a atendente confirma o valor da sacola:' +
+         prompt('Atendente', 'はい、ゆうりょうです。さんえんです。', 'Hai, yuuryou desu. San en desu.', 'Sim, é paga. São 3 ienes.') +
+         'Você aceita o custo. Como confirmar?',
+      options: [
+        opt('はい、だいじょうぶです。', 'Hai, daijoubu desu.', true),
+        opt('いいえ、ありません。', 'Iie, arimasen.', false),
+        opt('もういちど おねがいします。', 'Mouichido onegaishimasu.', false),
+        opt('いただきます。', 'Itadakimasu.', false)
+      ],
+      hint: '<em>Daijoubu desu</em> aqui = "tudo bem, pode ser" (aceitando).'
+    }
+  ];
+
   const LETTERS = ['A', 'B', 'C', 'D', 'E'];
   const state = { picked: [], idx: 0, score: 0, answered: false };
 
@@ -2242,10 +2648,18 @@
     return a;
   }
 
+  function getPool() {
+    const mode = document.getElementById('quizMode').value;
+    if (mode === 'conv') return CONV_QUESTIONS;
+    if (mode === 'mixed') return QUESTIONS.concat(CONV_QUESTIONS);
+    return QUESTIONS;
+  }
+
   function startQuiz() {
     const size = parseInt(document.getElementById('quizSize').value, 10) || 10;
-    const count = Math.min(size, QUESTIONS.length);
-    state.picked = shuffle(QUESTIONS).slice(0, count).map(item => ({
+    const pool = getPool();
+    const count = Math.min(size, pool.length);
+    state.picked = shuffle(pool).slice(0, count).map(item => ({
       q: item.q,
       hint: item.hint || '',
       options: shuffle(item.options)
@@ -2376,6 +2790,7 @@
       document.getElementById('quiz').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
     document.getElementById('quizSize').addEventListener('change', startQuiz);
+    document.getElementById('quizMode').addEventListener('change', startQuiz);
   });
 })();
 </script>
