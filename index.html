@@ -266,6 +266,26 @@
     color: var(--ink-soft);
   }
 
+  /* ── SPOILER — traduções em PT ocultas ──────── */
+  .lines .pt,
+  .quiz-prompt .pt {
+    cursor: pointer;
+    transition: filter 0.25s ease, opacity 0.25s ease;
+  }
+
+  .lines .pt:not(.revealed),
+  .quiz-prompt .pt:not(.revealed) {
+    filter: blur(5px);
+    opacity: 0.7;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .lines .pt:not(.revealed):hover,
+  .quiz-prompt .pt:not(.revealed):hover {
+    opacity: 1;
+  }
+
   /* ── NOTES BOX ──────────────────────────────── */
   .note {
     margin-top: 24px;
@@ -1128,7 +1148,7 @@
   <h1>Conversações em <em>japonês</em></h1>
   <p class="subtitle">旅行のための日本語 — Japonês para viagens</p>
   <div class="intro">
-    Este material reúne diálogos curtos baseados nas aulas 0 a 7. Cada cena foi montada com o vocabulário que você já viu — para que você possa ler em voz alta, treinar a entonação e se acostumar com as combinações naturais de palavras. Use os diálogos como roteiro: leia o japonês, depois confira o romaji e a tradução.
+    Este material reúne diálogos curtos baseados nas aulas 0 a 7. Cada cena foi montada com o vocabulário que você já viu — para que você possa ler em voz alta, treinar a entonação e se acostumar com as combinações naturais de palavras. Use os diálogos como roteiro: leia o japonês, depois confira o romaji e a tradução. As traduções em português aparecem <strong>borradas</strong> — tente traduzir por conta própria e clique em qualquer uma para revelá-la (clique de novo para ocultar).
   </div>
   <div class="coverage">
     Esta versão da apostila contempla o conteúdo até a <strong>Aula 7</strong>. Conforme novas aulas forem acontecendo, este aviso e os diálogos abaixo serão atualizados. No final há um <strong>quiz interativo</strong> — perguntas e alternativas mudam de ordem a cada execução, então não tem como decorar pela posição.
@@ -3084,9 +3104,11 @@
 
   // Helpers para construir as perguntas de conversação
   function prompt(who, ja, ro, pt) {
+    const ptSpan = (pt && pt !== '—')
+      ? '<span class="pt" title="Clique para revelar / ocultar a tradução">' + pt + '</span>'
+      : '';
     return '<span class="quiz-prompt"><span class="who">' + who + '</span>' + ja +
-      '<span class="ro">' + ro + '</span>' +
-      '<span class="pt">' + pt + '</span></span>';
+      '<span class="ro">' + ro + '</span>' + ptSpan + '</span>';
   }
   function opt(ja, ro, ok) {
     return {
@@ -3929,6 +3951,22 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-carousel]').forEach(initCarousel);
+  });
+})();
+</script>
+
+<script>
+(function() {
+  // Traduções em PT começam ocultas (borradas); clique revela/oculta.
+  document.addEventListener('click', function(e) {
+    const el = e.target.closest('.lines .pt, .quiz-prompt .pt');
+    if (el) el.classList.toggle('revealed');
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.lines .pt').forEach(function(el) {
+      el.title = 'Clique para revelar / ocultar a tradução';
+    });
   });
 })();
 </script>
