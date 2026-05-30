@@ -383,6 +383,135 @@
     background: rgba(184, 57, 43, 0.04);
   }
 
+  /* ── ADJECTIVE EXPLORER ─────────────────────── */
+  .adj-explorer { margin-top: 28px; }
+
+  .adj-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .adj-search {
+    flex: 1 1 220px;
+    padding: 10px 14px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    background: rgba(255,255,255,0.7);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+  }
+
+  .adj-search:focus {
+    outline: none;
+    border-color: var(--vermilion);
+  }
+
+  .adj-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .adj-count {
+    font-size: 0.82rem;
+    color: var(--gold);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+  }
+
+  .adj-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+  }
+
+  table.adj-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+    background: rgba(255,255,255,0.5);
+    min-width: 720px;
+  }
+
+  table.adj-table thead th {
+    position: sticky;
+    top: 0;
+    text-align: left;
+    padding: 10px 12px;
+    background: var(--paper-warm);
+    border-bottom: 2px solid var(--line);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--vermilion);
+    white-space: nowrap;
+  }
+
+  table.adj-table thead th .form-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-style: normal;
+    color: var(--sumi);
+    font-size: 0.95rem;
+    margin-right: 6px;
+  }
+
+  table.adj-table tbody td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    color: var(--ink);
+  }
+
+  table.adj-table tbody tr:nth-child(even) { background: rgba(168, 136, 72, 0.05); }
+  table.adj-table tbody tr:hover { background: rgba(184, 57, 43, 0.06); }
+
+  table.adj-table .cell-jp {
+    display: block;
+    font-family: 'Noto Serif JP', serif;
+    color: var(--sumi);
+    font-size: 0.98rem;
+    font-weight: 500;
+  }
+
+  table.adj-table .cell-ro {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+
+  table.adj-table.hide-romaji .cell-ro { display: none; }
+
+  table.adj-table .col-base .cell-pt {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--gold);
+    margin-top: 3px;
+    font-style: italic;
+  }
+
+  table.adj-table tr.irreg .cell-jp { color: var(--vermilion); }
+  table.adj-table tr.irreg td:first-child::after {
+    content: ' 不規則';
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.7rem;
+    color: var(--vermilion);
+  }
+
+  .adj-empty {
+    padding: 24px;
+    text-align: center;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
   /* ── VARIATIONS ─────────────────────────────── */
   .variations {
     margin-top: 18px;
@@ -1138,6 +1267,8 @@
     <li><a href="#cena17">No provador</a></li>
     <li><a href="#cena18">Café sem cafeína</a></li>
     <li><a href="#cena19">Comprando roupa</a></li>
+    <li><a href="#cena20">Adjetivos no dia a dia</a></li>
+    <li><a href="#adjetivos">Tabela de adjetivos い</a></li>
     <li><a href="#quiz">Quiz</a></li>
   </ol>
 </aside>
@@ -1149,10 +1280,10 @@
   <h1>Conversações em <em>japonês</em></h1>
   <p class="subtitle">旅行のための日本語 — Japonês para viagens</p>
   <div class="intro">
-    Este material reúne diálogos curtos baseados nas aulas 0 a 8. Cada cena foi montada com o vocabulário que você já viu — para que você possa ler em voz alta, treinar a entonação e se acostumar com as combinações naturais de palavras. Use os diálogos como roteiro: leia o japonês, depois confira o romaji e a tradução. As traduções em português aparecem <strong>borradas</strong> — tente traduzir por conta própria e clique em qualquer uma para revelá-la (clique de novo para ocultar).
+    Este material reúne diálogos curtos baseados nas aulas 0 a 9. Cada cena foi montada com o vocabulário que você já viu — para que você possa ler em voz alta, treinar a entonação e se acostumar com as combinações naturais de palavras. Use os diálogos como roteiro: leia o japonês, depois confira o romaji e a tradução. As traduções em português aparecem <strong>borradas</strong> — tente traduzir por conta própria e clique em qualquer uma para revelá-la (clique de novo para ocultar).
   </div>
   <div class="coverage">
-    Esta versão da apostila contempla o conteúdo até a <strong>Aula 8</strong>. Conforme novas aulas forem acontecendo, este aviso e os diálogos abaixo serão atualizados. No final há um <strong>quiz interativo</strong> — perguntas e alternativas mudam de ordem a cada execução, então não tem como decorar pela posição.
+    Esta versão da apostila contempla o conteúdo até a <strong>Aula 9</strong>. Conforme novas aulas forem acontecendo, este aviso e os diálogos abaixo serão atualizados. A Aula 9 traz os <strong>adjetivos い</strong>: há uma <strong>tabela completa e pesquisável</strong> com todas as conjugações geradas automaticamente. No final há um <strong>quiz interativo</strong> — perguntas e alternativas mudam de ordem a cada execução, então não tem como decorar pela posição.
   </div>
 </header>
 
@@ -1178,6 +1309,8 @@
     <li><a href="#cena17">No provador</a></li>
     <li><a href="#cena18">No café — pedindo sem cafeína</a></li>
     <li><a href="#cena19">Comprando roupa — tipos de peça e verbos de vestir</a></li>
+    <li><a href="#cena20">Adjetivos no dia a dia — elogios e impressões</a></li>
+    <li><a href="#adjetivos">Tabela completa de adjetivos い — conjugação e busca</a></li>
     <li><a href="#quiz">Quiz — teste seus conhecimentos</a></li>
   </ol>
 </nav>
@@ -3000,6 +3133,158 @@
   </div>
 </section>
 
+<!-- ─────────────────────────── CENA 20 ─────────────────────────── -->
+<section class="scene" id="cena20">
+  <div class="scene-header">
+    <span class="scene-num">場面 20</span>
+    <span class="scene-jp">けいようし — かんそうを いう</span>
+    <span class="scene-pt">Adjetivos — dando sua impressão</span>
+  </div>
+  <p class="setting">Você e um amigo japonês passam por um <em>yatai</em> (barraquinha). Ele te apresenta a um <em>ramen-ya</em> e, de quebra, comenta sobre a sua altura.</p>
+
+  <div class="dialogue">
+    <div class="turn">
+      <div class="speaker">Amigo</div>
+      <div class="lines">
+        <div class="jp">せが たかいですね！なんセンチですか？</div>
+        <div class="romaji">Se ga takai desu ne! Nan senchi desu ka?</div>
+        <div class="pt">Você é alto, né! Qual é a sua altura?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">いちきゅうさんです。あしが ながいと よく いわれます。</div>
+        <div class="romaji">Hyaku kyuujuu san desu. Ashi ga nagai to yoku iwaremasu.</div>
+        <div class="pt">1,93 m. Costumam dizer que minhas pernas são longas.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Amigo</div>
+      <div class="lines">
+        <div class="jp">あたまに きを つけてね。… おいしい ラーメンやさんは ありますよ。</div>
+        <div class="romaji">Atama ni ki o tsukete ne. … Oishii raamen ya san wa arimasu yo.</div>
+        <div class="pt">Cuidado com a cabeça, hein. … Tem uma boa loja de ramen aqui.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">いいですね。これは なんですか？</div>
+        <div class="romaji">Ii desu ne. Kore wa nan desu ka?</div>
+        <div class="pt">Que bom! O que é isto?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Amigo</div>
+      <div class="lines">
+        <div class="jp">やきとりです。あつくて おいしいですよ。どうですか？</div>
+        <div class="romaji">Yakitori desu. Atsukute oishii desu yo. Dou desu ka?</div>
+        <div class="pt">É yakitori (espetinho). Está quentinho e gostoso. O que acha?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">おいしいです！たかくないですね。</div>
+        <div class="romaji">Oishii desu! Takakunai desu ne.</div>
+        <div class="pt">Está gostoso! E não é caro, né.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Amigo</div>
+      <div class="lines">
+        <div class="jp">りょくちゃも どうぞ。つめたくて おいしいです。</div>
+        <div class="romaji">Ryokucha mo douzo. Tsumetakute oishii desu.</div>
+        <div class="pt">Tome chá verde também. Está gelado e gostoso.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">どうでしたか、きょうの りょこうは？— とても たのしかったです！</div>
+        <div class="romaji">Dou deshita ka, kyou no ryokou wa? — Totemo tanoshikatta desu!</div>
+        <div class="pt">Como foi o passeio de hoje? — Foi muito divertido!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>『い けいようし』— o adjetivo い e suas 5 formas</strong>
+    <p style="margin-top:8px;">Adjetivo い (<em>i-keiyoushi</em>) é o que termina em <strong>い</strong> na forma de dicionário. Ele <strong>se conjuga sozinho</strong> (sem precisar de <em>desu</em> para mudar de tempo). A regra é trocar o い final:</p>
+    <table class="ref-table">
+      <tr><th>Forma</th><td><span class="jp-cell">たかい</span> (takai = alto/caro)</td><td>Significado</td></tr>
+      <tr><th>です</th><td><span class="jp-cell">たかいです</span> <em>takai desu</em></td><td>é/está (afirmativo)</td></tr>
+      <tr><th>ない</th><td><span class="jp-cell">たか<strong>くない</strong>です</span> <em>takakunai desu</em></td><td>não é/está (い→くない)</td></tr>
+      <tr><th>て</th><td><span class="jp-cell">たか<strong>くて</strong></span> <em>takakute</em></td><td>ligação: "é alto e…" (い→くて)</td></tr>
+      <tr><th>た</th><td><span class="jp-cell">たか<strong>かった</strong>です</span> <em>takakatta desu</em></td><td>era/foi (い→かった)</td></tr>
+      <tr><th>なかった</th><td><span class="jp-cell">たか<strong>くなかった</strong>です</span> <em>takakunakatta desu</em></td><td>não era/foi (い→くなかった)</td></tr>
+    </table>
+    <p style="margin-top:12px;"><strong>O único irregular é いい (bom):</strong> ele vira <em>よ</em> em tudo, menos no afirmativo presente — <em>ii desu</em>, mas <em>yokunai / yokute / yokatta / yokunakatta</em>. <span class="jp-inline">よかった！</span> = "que bom!".</p>
+    <p style="margin-top:10px; font-size:0.9em;">A tabela completa, com todas as conjugações de cada adjetivo, está logo abaixo — e você pode filtrá-la.</p>
+  </div>
+
+  <div class="note">
+    <strong>Vocabulário da cena</strong>
+    <table class="ref-table">
+      <tr><th>背が高い</th><td><span class="jp-cell">せが たかい</span></td><td><em>se ga takai</em></td><td>ser alto (de estatura)</td></tr>
+      <tr><th>何センチ</th><td><span class="jp-cell">なんセンチ</span></td><td><em>nan senchi</em></td><td>quantos centímetros / qual altura</td></tr>
+      <tr><th>頭に気をつけて</th><td><span class="jp-cell">あたまに きを つけて</span></td><td><em>atama ni ki o tsukete</em></td><td>cuidado com a cabeça</td></tr>
+      <tr><th>足が長い</th><td><span class="jp-cell">あしが ながい</span></td><td><em>ashi ga nagai</em></td><td>ter pernas longas</td></tr>
+      <tr><th>ラーメン屋</th><td><span class="jp-cell">ラーメンや</span></td><td><em>raamen ya</em></td><td>loja de ramen</td></tr>
+      <tr><th>屋台</th><td><span class="jp-cell">やたい</span></td><td><em>yatai</em></td><td>barraquinha de comida</td></tr>
+      <tr><th>焼き鳥</th><td><span class="jp-cell">やきとり</span></td><td><em>yakitori</em></td><td>espetinho de frango grelhado</td></tr>
+      <tr><th>緑茶</th><td><span class="jp-cell">りょくちゃ</span></td><td><em>ryokucha</em></td><td>chá verde</td></tr>
+      <tr><th>どうですか</th><td><span class="jp-cell">どうですか</span></td><td><em>dou desu ka?</em></td><td>como está? / o que acha?</td></tr>
+      <tr><th>どうでしたか</th><td><span class="jp-cell">どうでしたか</span></td><td><em>dou deshita ka?</em></td><td>como foi? (passado)</td></tr>
+      <tr><th>教えてください</th><td><span class="jp-cell">おしえて ください</span></td><td><em>oshiete kudasai</em></td><td>por favor, me ensine / me diga</td></tr>
+    </table>
+  </div>
+
+  <div class="variations">
+    <h4>Variações para treinar</h4>
+    <p><span class="jp-inline">これは おいしいですか？</span> — <em>Kore wa oishii desu ka?</em> — "Isto é gostoso?"</p>
+    <p><span class="jp-inline">どうでしたか？— おいしかったです。</span> — <em>Dou deshita ka? — Oishikatta desu.</em> — "Como foi? — Estava gostoso."</p>
+    <p><span class="jp-inline">あつくて おいしいです。</span> — <em>Atsukute oishii desu.</em> — Use a forma <em>~くて</em> para encadear dois adjetivos: "quente e gostoso".</p>
+  </div>
+</section>
+
+<!-- ─────────────────────────── ADJETIVOS — TABELA COMPLETA ─────────────────────────── -->
+<section class="scene" id="adjetivos">
+  <div class="scene-header">
+    <span class="scene-num">付録</span>
+    <span class="scene-jp">い けいようし いちらん</span>
+    <span class="scene-pt">Tabela completa de adjetivos い</span>
+  </div>
+  <p class="setting">Todos os adjetivos い da Aula 9, com as cinco conjugações geradas automaticamente. Use a busca para encontrar por português, romaji ou kana. À medida que novas aulas trouxerem mais adjetivos, basta acrescentá-los à lista — a conjugação sai sozinha.</p>
+
+  <div class="adj-explorer">
+    <div class="adj-controls">
+      <input type="text" class="adj-search" id="adjSearch" placeholder="Buscar… (ex.: caro, takai, たかい)" aria-label="Buscar adjetivo">
+      <label class="adj-toggle">
+        <input type="checkbox" id="adjRomaji" checked> mostrar romaji
+      </label>
+      <span class="adj-count" id="adjCount"></span>
+    </div>
+    <div class="adj-table-wrap">
+      <table class="adj-table" id="adjTable">
+        <thead>
+          <tr>
+            <th>Adjetivo</th>
+            <th><span class="form-jp">です</span>afirmativo</th>
+            <th><span class="form-jp">ない</span>negativo</th>
+            <th><span class="form-jp">て</span>ligação</th>
+            <th><span class="form-jp">た</span>passado</th>
+            <th><span class="form-jp">なかった</span>passado neg.</th>
+          </tr>
+        </thead>
+        <tbody id="adjBody"></tbody>
+      </table>
+    </div>
+    <div class="adj-empty" id="adjEmpty" style="display:none;">Nenhum adjetivo encontrado.</div>
+  </div>
+</section>
+
 <!-- ─────────────────────────── FINAL TIPS ─────────────────────────── -->
 <div class="final-tips">
   <h2>Como <em>treinar</em></h2>
@@ -3257,7 +3542,36 @@
     { q:'<em>Wai shatsu</em> (Yシャツ) é:', options:[ {t:'Camisa social',ok:true}, {t:'Camiseta (T-shirt)',ok:false}, {t:'Blusa',ok:false}, {t:'Suéter',ok:false} ], hint:'<em>Tii shatsu</em> (Tシャツ) = camiseta comum.' },
     { q:'"Issho ni haraimasu" significa:', options:[ {t:'Pagar junto',ok:true}, {t:'Pagar separado',ok:false}, {t:'Pagar em dinheiro',ok:false}, {t:'Pagar depois',ok:false} ], hint:'Oposto: <em>betsubetsu ni haraimasu</em>.' },
     { q:'"Betsubetsu ni haraimasu" significa:', options:[ {t:'Pagar separado (cada um o seu)',ok:true}, {t:'Pagar junto',ok:false}, {t:'Pagar em duas vezes',ok:false}, {t:'Dividir igualmente',ok:false} ], hint:'<em>Betsubetsu</em> = "cada um por si".' },
-    { q:'"Oshiharai wa go-issho desu ka, betsubetsu desu ka?" pergunta:', options:[ {t:'O pagamento é junto ou separado?',ok:true}, {t:'Vai pagar em dinheiro ou cartão?',ok:false}, {t:'Quer dividir em parcelas?',ok:false}, {t:'É para presente?',ok:false} ], hint:'<em>Oshiharai</em> (お支払い) = o pagamento.' }
+    { q:'"Oshiharai wa go-issho desu ka, betsubetsu desu ka?" pergunta:', options:[ {t:'O pagamento é junto ou separado?',ok:true}, {t:'Vai pagar em dinheiro ou cartão?',ok:false}, {t:'Quer dividir em parcelas?',ok:false}, {t:'É para presente?',ok:false} ], hint:'<em>Oshiharai</em> (お支払い) = o pagamento.' },
+    { q:'O que é um <em>i-keiyoushi</em> (い形容詞)?', options:[ {t:'Adjetivo que termina em い e se conjuga sozinho',ok:true}, {t:'Adjetivo que sempre precisa de な',ok:false}, {t:'Um tipo de verbo',ok:false}, {t:'Um contador',ok:false} ], hint:'O い muda de forma conforme o tempo, sem precisar de <em>desu</em> para isso.' },
+    { q:'Forma negativa de <em>takai</em> (caro):', options:[ {t:'Takakunai (desu)',ok:true}, {t:'Takai janai',ok:false}, {t:'Takai desu masen',ok:false}, {t:'Takanai',ok:false} ], hint:'い → くない. <em>takai → takakunai</em>.' },
+    { q:'Forma passada de <em>oishii</em> (gostoso):', options:[ {t:'Oishikatta (desu)',ok:true}, {t:'Oishii deshita',ok:false}, {t:'Oishide',ok:false}, {t:'Oishiku',ok:false} ], hint:'い → かった. Cuidado: NÃO se diz "oishii deshita".' },
+    { q:'Forma passada negativa de <em>samui</em> (frio):', options:[ {t:'Samukunakatta (desu)',ok:true}, {t:'Samui janakatta',ok:false}, {t:'Samukatta nai',ok:false}, {t:'Samukunai deshita',ok:false} ], hint:'い → くなかった. <em>samui → samukunakatta</em>.' },
+    { q:'Forma て (ligação) de <em>atsui</em> (quente):', options:[ {t:'Atsukute',ok:true}, {t:'Atsui de',ok:false}, {t:'Atsute',ok:false}, {t:'Atsukutte',ok:false} ], hint:'い → くて. Serve para encadear: <em>atsukute oishii</em> = "quente e gostoso".' },
+    { q:'Qual adjetivo é IRREGULAR na conjugação?', options:[ {t:'いい (ii — bom)',ok:true}, {t:'たかい (takai)',ok:false}, {t:'おいしい (oishii)',ok:false}, {t:'ながい (nagai)',ok:false} ], hint:'<em>ii</em> vira <em>yo~</em> em tudo, menos no afirmativo presente.' },
+    { q:'Forma passada de <em>ii</em> (bom) — "que bom!":', options:[ {t:'Yokatta',ok:true}, {t:'Iikatta',ok:false}, {t:'Ikatta',ok:false}, {t:'Iideshita',ok:false} ], hint:'O irregular: <em>ii → yokatta</em> (não "iikatta").' },
+    { q:'Forma negativa de <em>ii</em> (bom):', options:[ {t:'Yokunai',ok:true}, {t:'Iikunai',ok:false}, {t:'Ikunai',ok:false}, {t:'Ii janai',ok:false} ], hint:'<em>ii → yokunai / yokute / yokatta / yokunakatta</em>.' },
+    { q:'"Oishikatta desu" significa:', options:[ {t:'Estava gostoso',ok:true}, {t:'Está gostoso',ok:false}, {t:'Não está gostoso',ok:false}, {t:'Ficará gostoso',ok:false} ], hint:'É o passado de <em>oishii desu</em>.' },
+    { q:'"Dou desu ka?" pergunta:', options:[ {t:'Como está? / O que acha?',ok:true}, {t:'Onde está?',ok:false}, {t:'Quanto custa?',ok:false}, {t:'Quem é?',ok:false} ], hint:'No passado: <em>dou deshita ka?</em> = "como foi?".' },
+    { q:'"Dou deshita ka?" pergunta:', options:[ {t:'Como foi? (passado)',ok:true}, {t:'Como está agora?',ok:false}, {t:'Para onde foi?',ok:false}, {t:'O que é?',ok:false} ], hint:'Passado de <em>dou desu ka?</em>.' },
+    { q:'<em>Takai</em> (高い) pode significar:', options:[ {t:'Alto OU caro',ok:true}, {t:'Apenas alto',ok:false}, {t:'Apenas caro',ok:false}, {t:'Barato',ok:false} ], hint:'O contexto decide. Oposto de "caro": <em>yasui</em>; de "alto": <em>hikui</em>.' },
+    { q:'O oposto de <em>takai</em> no sentido de "caro" é:', options:[ {t:'Yasui (barato)',ok:true}, {t:'Hikui (baixo)',ok:false}, {t:'Chiisai (pequeno)',ok:false}, {t:'Mijikai (curto)',ok:false} ], hint:'<em>Hikui</em> é o oposto de "alto"; <em>yasui</em>, o de "caro".' },
+    { q:'<em>Nagai</em> (長い) e <em>mijikai</em> (短い) são:', options:[ {t:'Comprido e curto',ok:true}, {t:'Grande e pequeno',ok:false}, {t:'Alto e baixo',ok:false}, {t:'Caro e barato',ok:false} ], hint:'<em>Ookii / chiisai</em> = grande / pequeno.' },
+    { q:'<em>Ooi</em> (多い) e <em>sukunai</em> (少ない) significam:', options:[ {t:'Muito e pouco (em quantidade)',ok:true}, {t:'Grande e pequeno',ok:false}, {t:'Rápido e devagar',ok:false}, {t:'Caro e barato',ok:false} ], hint:'Quantidade, não tamanho.' },
+    { q:'<em>Hayai</em> (早い) significa:', options:[ {t:'Rápido / cedo',ok:true}, {t:'Devagar / tarde',ok:false}, {t:'Difícil',ok:false}, {t:'Novo',ok:false} ], hint:'Oposto: <em>osoi</em> (devagar / tarde).' },
+    { q:'<em>Atarashii</em> (新しい) e <em>furui</em> (古い) são:', options:[ {t:'Novo e velho',ok:true}, {t:'Limpo e sujo',ok:false}, {t:'Bom e ruim',ok:false}, {t:'Caro e barato',ok:false} ], hint:'<em>Warui</em> = ruim; <em>ii</em> = bom.' },
+    { q:'<em>Omoshiroi</em> (面白い) significa:', options:[ {t:'Interessante / engraçado',ok:true}, {t:'Chato',ok:false}, {t:'Difícil',ok:false}, {t:'Caro',ok:false} ], hint:'<em>Tanoshii</em> = divertido (de fazer); <em>omoshiroi</em> = interessante/engraçado.' },
+    { q:'<em>Muzukashii</em> (難しい) significa:', options:[ {t:'Difícil',ok:true}, {t:'Fácil',ok:false}, {t:'Divertido',ok:false}, {t:'Ocupado',ok:false} ], hint:'<em>Yasashii</em> pode significar "fácil" (e também "bondoso").' },
+    { q:'<em>Isogashii</em> (忙しい) significa:', options:[ {t:'Ocupado / atarefado',ok:true}, {t:'Cansado',ok:false}, {t:'Entediado',ok:false}, {t:'Rápido',ok:false} ], hint:'<em>Isogashikatta desu</em> = "foi um dia corrido".' },
+    { q:'A cor <em>shiroi</em> (白い) é:', options:[ {t:'Branco',ok:true}, {t:'Preto',ok:false}, {t:'Azul',ok:false}, {t:'Vermelho',ok:false} ], hint:'Como adjetivo い: <em>shiroi</em>; como substantivo: <em>shiro</em>.' },
+    { q:'A cor <em>akai</em> (赤い) é:', options:[ {t:'Vermelho',ok:true}, {t:'Azul',ok:false}, {t:'Preto',ok:false}, {t:'Branco',ok:false} ], hint:'<em>aka</em> (substantivo) → <em>akai</em> (adjetivo い).' },
+    { q:'"Atsukute oishii desu" significa:', options:[ {t:'Está quente e gostoso',ok:true}, {t:'Está frio mas gostoso',ok:false}, {t:'Está quente demais',ok:false}, {t:'Não está gostoso',ok:false} ], hint:'A forma <em>~kute</em> liga dois adjetivos い.' },
+    { q:'"Se ga takai desu ne" é um comentário sobre:', options:[ {t:'A altura da pessoa (você é alto)',ok:true}, {t:'O preço de algo',ok:false}, {t:'A comida estar cara',ok:false}, {t:'A voz estar alta',ok:false} ], hint:'<em>Se</em> (背) = estatura. Para preço seria sobre um objeto, não sobre a pessoa.' },
+    { q:'"Nan senchi desu ka?" pergunta:', options:[ {t:'Qual é a sua altura (em cm)?',ok:true}, {t:'Quanto custa?',ok:false}, {t:'Que horas são?',ok:false}, {t:'Quantos anos tem?',ok:false} ], hint:'<em>Senchi</em> = centímetros.' },
+    { q:'"Atama ni ki o tsukete" significa:', options:[ {t:'Cuidado com a cabeça',ok:true}, {t:'Use o chapéu',ok:false}, {t:'Pense bem',ok:false}, {t:'Levante a cabeça',ok:false} ], hint:'<em>Ki o tsukeru</em> = tomar cuidado; <em>atama</em> = cabeça.' },
+    { q:'"Ashi ga nagai" significa:', options:[ {t:'As pernas são longas',ok:true}, {t:'O pé é grande',ok:false}, {t:'O caminho é longo',ok:false}, {t:'Está cansado',ok:false} ], hint:'<em>Ashi</em> = perna/pé; <em>nagai</em> = comprido.' },
+    { q:'Diferença entre <em>atsui</em> (暑い) e <em>atsui</em> (熱い):', options:[ {t:'暑い = clima quente; 熱い = objeto/comida quente',ok:true}, {t:'São exatamente a mesma coisa',ok:false}, {t:'暑い é frio; 熱い é quente',ok:false}, {t:'Um é adjetivo, o outro é verbo',ok:false} ], hint:'Mesma leitura (<em>atsui</em>), kanji diferente conforme o sentido.' },
+    { q:'Para dizer "não estava gostoso", use:', options:[ {t:'Oishikunakatta desu',ok:true}, {t:'Oishii janakatta',ok:false}, {t:'Oishikatta nai',ok:false}, {t:'Oishikunai deshita',ok:false} ], hint:'Passado negativo do い: い → くなかった.' }
   ];
 
   // Helpers para construir as perguntas de conversação
@@ -3956,6 +4270,66 @@
         opt('Para comprar sapatos', 'Comprar sapatos', false)
       ],
       hint: '<em>Nugu</em> (脱ぐ) = tirar ・ <em>~te kudasai</em> = "por favor, faça ~".'
+    },
+    {
+      q: 'Seu amigo japonês repara na sua altura e comenta:' +
+         prompt('Amigo', 'せが たかいですね！なんセンチですか？', 'Se ga takai desu ne! Nan senchi desu ka?', 'Você é alto, né! Qual é a sua altura?') +
+         'Você tem 1,93 m. Como responder?',
+      options: [
+        opt('いちきゅうさんです。', 'Hyaku kyuujuu san desu.', true),
+        opt('せんきゅうさんえんです。', 'Sen kyuujuu san en desu.', false),
+        opt('たかいです。', 'Takai desu.', false),
+        opt('さんじです。', 'Sanji desu.', false)
+      ],
+      hint: 'Para altura, dê o número em cm. <em>~en</em> seria preço; <em>~ji</em> seria hora.'
+    },
+    {
+      q: 'Você prova um espetinho na barraquinha e o amigo pergunta:' +
+         prompt('Amigo', 'どうですか？', 'Dou desu ka?', 'O que acha?') +
+         'Está gostoso. Como elogiar?',
+      options: [
+        opt('おいしいです！', 'Oishii desu!', true),
+        opt('おいしいでした。', 'Oishii deshita.', false),
+        opt('たかいです。', 'Takai desu.', false),
+        opt('さむいです。', 'Samui desu.', false)
+      ],
+      hint: 'No presente é <em>oishii desu</em> — NÃO se diz "oishii deshita".'
+    },
+    {
+      q: 'No fim do passeio, o amigo pergunta como foi o dia:' +
+         prompt('Amigo', 'きょうの りょこうは どうでしたか？', 'Kyou no ryokou wa dou deshita ka?', 'Como foi o passeio de hoje?') +
+         'Foi muito divertido. Como dizer (no passado)?',
+      options: [
+        opt('とても たのしかったです。', 'Totemo tanoshikatta desu.', true),
+        opt('とても たのしいでした。', 'Totemo tanoshii deshita.', false),
+        opt('とても たのしくないです。', 'Totemo tanoshikunai desu.', false),
+        opt('とても たかかったです。', 'Totemo takakatta desu.', false)
+      ],
+      hint: 'Passado do い: <em>tanoshii → tanoshikatta</em> (nunca "tanoshii deshita").'
+    },
+    {
+      q: 'A comida chegou quentinha e saborosa. Você quer dizer "está quente e gostoso" numa frase só:' +
+         prompt('Você', '…', '…', '—') +
+         'Qual forma encadeia os dois adjetivos corretamente?',
+      options: [
+        opt('あつくて おいしいです。', 'Atsukute oishii desu.', true),
+        opt('あつい おいしいです。', 'Atsui oishii desu.', false),
+        opt('あつくない おいしいです。', 'Atsukunai oishii desu.', false),
+        opt('あつかった おいしいです。', 'Atsukatta oishii desu.', false)
+      ],
+      hint: 'Para ligar dois adjetivos い use a forma <em>~くて</em>: <em>atsui → atsukute</em>.'
+    },
+    {
+      q: 'Você acha o preço justo e quer dizer que "não é caro". Como fica?' +
+         prompt('Você', '…', '…', '—') +
+         'Escolha a forma negativa de <em>takai</em>:',
+      options: [
+        opt('たかくないです。', 'Takakunai desu.', true),
+        opt('たかいじゃないです。', 'Takai janai desu.', false),
+        opt('たかいですません。', 'Takai desu masen.', false),
+        opt('たからないです。', 'Takaranai desu.', false)
+      ],
+      hint: 'Adjetivo い no negativo: い → くない. <em>takai → takakunai</em>.'
     }
   ];
 
@@ -4192,6 +4566,114 @@
       el.title = 'Clique para revelar / ocultar a tradução';
     });
   });
+})();
+</script>
+
+<script>
+(function() {
+  // Lista de adjetivos い (Aula 9). Para adicionar novos no futuro,
+  // basta acrescentar { kanji, kana, romaji, pt } — a conjugação é gerada aqui.
+  // irreg: true apenas para いい (único irregular).
+  const ADJ = [
+    { kanji:'美味しい', kana:'おいしい', romaji:'oishii', pt:'gostoso' },
+    { kanji:'可愛い', kana:'かわいい', romaji:'kawaii', pt:'fofo' },
+    { kanji:'暑い', kana:'あつい', romaji:'atsui', pt:'quente (clima)' },
+    { kanji:'寒い', kana:'さむい', romaji:'samui', pt:'frio (clima)' },
+    { kanji:'冷たい', kana:'つめたい', romaji:'tsumetai', pt:'gelado (ao tato)' },
+    { kanji:'高い', kana:'たかい', romaji:'takai', pt:'alto / caro' },
+    { kanji:'安い', kana:'やすい', romaji:'yasui', pt:'barato' },
+    { kanji:'低い', kana:'ひくい', romaji:'hikui', pt:'baixo' },
+    { kanji:'長い', kana:'ながい', romaji:'nagai', pt:'comprido' },
+    { kanji:'短い', kana:'みじかい', romaji:'mijikai', pt:'curto' },
+    { kanji:'大きい', kana:'おおきい', romaji:'ookii', pt:'grande' },
+    { kanji:'小さい', kana:'ちいさい', romaji:'chiisai', pt:'pequeno' },
+    { kanji:'早い', kana:'はやい', romaji:'hayai', pt:'rápido / cedo' },
+    { kanji:'遅い', kana:'おそい', romaji:'osoi', pt:'devagar / tarde' },
+    { kanji:'多い', kana:'おおい', romaji:'ooi', pt:'muito / bastante' },
+    { kanji:'少ない', kana:'すくない', romaji:'sukunai', pt:'pouco' },
+    { kanji:'忙しい', kana:'いそがしい', romaji:'isogashii', pt:'ocupado' },
+    { kanji:'新しい', kana:'あたらしい', romaji:'atarashii', pt:'novo' },
+    { kanji:'古い', kana:'ふるい', romaji:'furui', pt:'velho' },
+    { kanji:'いい', kana:'いい', romaji:'ii', pt:'bom', irreg:true },
+    { kanji:'悪い', kana:'わるい', romaji:'warui', pt:'ruim' },
+    { kanji:'難しい', kana:'むずかしい', romaji:'muzukashii', pt:'difícil' },
+    { kanji:'優しい', kana:'やさしい', romaji:'yasashii', pt:'bondoso / fácil' },
+    { kanji:'面白い', kana:'おもしろい', romaji:'omoshiroi', pt:'interessante / engraçado' },
+    { kanji:'楽しい', kana:'たのしい', romaji:'tanoshii', pt:'divertido' },
+    { kanji:'白い', kana:'しろい', romaji:'shiroi', pt:'branco' },
+    { kanji:'赤い', kana:'あかい', romaji:'akai', pt:'vermelho' },
+    { kanji:'黒い', kana:'くろい', romaji:'kuroi', pt:'preto' },
+    { kanji:'青い', kana:'あおい', romaji:'aoi', pt:'azul' }
+  ];
+
+  // Conjuga um adjetivo い trocando o い final. Retorna { jp, ro } por forma.
+  function conjugate(a) {
+    if (a.irreg) { // いい → よ~
+      return {
+        desu:    { jp:'いいです',        ro:'ii desu' },
+        nai:     { jp:'よくないです',    ro:'yokunai desu' },
+        te:      { jp:'よくて',          ro:'yokute' },
+        ta:      { jp:'よかったです',    ro:'yokatta desu' },
+        nakatta: { jp:'よくなかったです', ro:'yokunakatta desu' }
+      };
+    }
+    const jStem = a.kana.slice(0, -1);   // remove 「い」
+    const rStem = a.romaji.slice(0, -1); // remove o "i" final
+    return {
+      desu:    { jp:a.kana + 'です',        ro:a.romaji + ' desu' },
+      nai:     { jp:jStem + 'くないです',    ro:rStem + 'kunai desu' },
+      te:      { jp:jStem + 'くて',          ro:rStem + 'kute' },
+      ta:      { jp:jStem + 'かったです',    ro:rStem + 'katta desu' },
+      nakatta: { jp:jStem + 'くなかったです', ro:rStem + 'kunakatta desu' }
+    };
+  }
+
+  const body = document.getElementById('adjBody');
+  const search = document.getElementById('adjSearch');
+  const romajiToggle = document.getElementById('adjRomaji');
+  const countEl = document.getElementById('adjCount');
+  const emptyEl = document.getElementById('adjEmpty');
+  const table = document.getElementById('adjTable');
+
+  function cell(form, extraClass) {
+    return '<td class="' + (extraClass || '') + '">' +
+      '<span class="cell-jp">' + form.jp + '</span>' +
+      '<span class="cell-ro">' + form.ro + '</span></td>';
+  }
+
+  function rowHtml(a) {
+    const c = conjugate(a);
+    const base =
+      '<td class="col-base">' +
+        '<span class="cell-jp">' + a.kanji + '</span>' +
+        '<span class="cell-ro">' + a.romaji + '</span>' +
+        '<span class="cell-pt">' + a.pt + '</span>' +
+      '</td>';
+    return '<tr class="' + (a.irreg ? 'irreg' : '') + '">' +
+      base + cell(c.desu) + cell(c.nai) + cell(c.te) + cell(c.ta) + cell(c.nakatta) +
+      '</tr>';
+  }
+
+  function render(filter) {
+    const f = (filter || '').trim().toLowerCase();
+    const list = f
+      ? ADJ.filter(a =>
+          a.romaji.toLowerCase().includes(f) ||
+          a.pt.toLowerCase().includes(f) ||
+          a.kana.includes(f) ||
+          a.kanji.includes(f))
+      : ADJ;
+    body.innerHTML = list.map(rowHtml).join('');
+    countEl.textContent = list.length + ' / ' + ADJ.length + ' adjetivos';
+    emptyEl.style.display = list.length ? 'none' : '';
+  }
+
+  search.addEventListener('input', () => render(search.value));
+  romajiToggle.addEventListener('change', () => {
+    table.classList.toggle('hide-romaji', !romajiToggle.checked);
+  });
+
+  render('');
 })();
 </script>
 
