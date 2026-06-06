@@ -512,6 +512,63 @@
     font-style: italic;
   }
 
+  /* ── VOCAB TABLE (listas longas: tempo, dias) ── */
+  .vocab-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-size: 0.9rem;
+    background: rgba(255,255,255,0.5);
+  }
+
+  .vocab-table th {
+    text-align: left;
+    padding: 7px 14px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    border-bottom: 1px solid var(--line);
+    background: rgba(168, 136, 72, 0.06);
+  }
+
+  .vocab-table td {
+    padding: 7px 14px;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+    vertical-align: baseline;
+  }
+
+  .vocab-table .vt-kana,
+  .vocab-table .vt-kanji {
+    font-family: 'Noto Serif JP', serif;
+    color: var(--sumi);
+    font-weight: 500;
+  }
+
+  .vocab-table .vt-ro {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  .vocab-table tbody tr:hover { background: rgba(184, 57, 43, 0.06); }
+
+  .vocab-table tr.vt-group td {
+    background: rgba(107, 125, 94, 0.1);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--sage);
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* destaque para o "agora/passado" relativo */
+  .vocab-table tr.vt-now td { background: rgba(184, 57, 43, 0.07); }
+
   /* ── VARIATIONS ─────────────────────────────── */
   .variations {
     margin-top: 18px;
@@ -1268,7 +1325,11 @@
     <li><a href="#cena18">Café sem cafeína</a></li>
     <li><a href="#cena19">Comprando roupa</a></li>
     <li><a href="#cena20">Adjetivos no dia a dia</a></li>
+    <li><a href="#cena21">Sair e voltar para casa</a></li>
     <li><a href="#adjetivos">Tabela de adjetivos い</a></li>
+    <li><a href="#adjetivos-na">Tabela de adjetivos な</a></li>
+    <li><a href="#tempo">Expressões de tempo</a></li>
+    <li><a href="#youbi">Dias da semana</a></li>
     <li><a href="#quiz">Quiz</a></li>
   </ol>
 </aside>
@@ -1280,10 +1341,10 @@
   <h1>Conversações em <em>japonês</em></h1>
   <p class="subtitle">旅行のための日本語 — Japonês para viagens</p>
   <div class="intro">
-    Este material reúne diálogos curtos baseados nas aulas 0 a 9. Cada cena foi montada com o vocabulário que você já viu — para que você possa ler em voz alta, treinar a entonação e se acostumar com as combinações naturais de palavras. Use os diálogos como roteiro: leia o japonês, depois confira o romaji e a tradução. As traduções em português aparecem <strong>borradas</strong> — tente traduzir por conta própria e clique em qualquer uma para revelá-la (clique de novo para ocultar).
+    Este material reúne diálogos curtos baseados nas aulas 0 a 10. Cada cena foi montada com o vocabulário que você já viu — para que você possa ler em voz alta, treinar a entonação e se acostumar com as combinações naturais de palavras. Use os diálogos como roteiro: leia o japonês, depois confira o romaji e a tradução. As traduções em português aparecem <strong>borradas</strong> — tente traduzir por conta própria e clique em qualquer uma para revelá-la (clique de novo para ocultar).
   </div>
   <div class="coverage">
-    Esta versão da apostila contempla o conteúdo até a <strong>Aula 9</strong>. Conforme novas aulas forem acontecendo, este aviso e os diálogos abaixo serão atualizados. A Aula 9 traz os <strong>adjetivos い</strong>: há uma <strong>tabela completa e pesquisável</strong> com todas as conjugações geradas automaticamente. No final há um <strong>quiz interativo</strong> — perguntas e alternativas mudam de ordem a cada execução, então não tem como decorar pela posição.
+    Esta versão da apostila contempla o conteúdo até a <strong>Aula 10</strong>. Conforme novas aulas forem acontecendo, este aviso e os diálogos abaixo serão atualizados. A Aula 9 traz os <strong>adjetivos い</strong>, com uma <strong>tabela completa e pesquisável</strong> e conjugação automática. A Aula 10 acrescenta os <strong>adjetivos な</strong> (em tabela separada, porque conjugam pela cópula, não pelo radical), as <strong>saudações de sair e voltar para casa</strong> e um bloco grande de <strong>expressões de tempo</strong> (hoje/amanhã, semanas, meses, anos, frequência) e os <strong>dias da semana</strong>. No final há um <strong>quiz interativo</strong> — perguntas e alternativas mudam de ordem a cada execução, então não tem como decorar pela posição.
   </div>
 </header>
 
@@ -1310,7 +1371,11 @@
     <li><a href="#cena18">No café — pedindo sem cafeína</a></li>
     <li><a href="#cena19">Comprando roupa — tipos de peça e verbos de vestir</a></li>
     <li><a href="#cena20">Adjetivos no dia a dia — elogios e impressões</a></li>
+    <li><a href="#cena21">Sair e voltar para casa — ittekimasu / tadaima</a></li>
     <li><a href="#adjetivos">Tabela completa de adjetivos い — conjugação e busca</a></li>
+    <li><a href="#adjetivos-na">Tabela de adjetivos な — conjugação e busca</a></li>
+    <li><a href="#tempo">Expressões de tempo — hoje, semanas, meses, frequência</a></li>
+    <li><a href="#youbi">Dias da semana — 曜日</a></li>
     <li><a href="#quiz">Quiz — teste seus conhecimentos</a></li>
   </ol>
 </nav>
@@ -3249,7 +3314,107 @@
   </div>
 </section>
 
-<!-- ─────────────────────────── ADJETIVOS — TABELA COMPLETA ─────────────────────────── -->
+<!-- ─────────────────────────── CENA 21 ─────────────────────────── -->
+<section class="scene" id="cena21">
+  <div class="scene-header">
+    <span class="scene-num">場面 21</span>
+    <span class="scene-jp">いってきます・ただいま</span>
+    <span class="scene-pt">Sair e voltar para casa</span>
+  </div>
+  <p class="setting">Você sai para fazer umas compras, pergunta sobre <em>tax-free</em> na loja e volta para casa. As quatro saudações de "sair e voltar" andam sempre em pares: quem sai diz uma coisa, quem fica responde com a outra.</p>
+
+  <div class="dialogue">
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">いってきます。</div>
+        <div class="romaji">Ittekimasu.</div>
+        <div class="pt">Estou saindo! (e já volto)</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Colega</div>
+      <div class="lines">
+        <div class="jp">いってらっしゃい。</div>
+        <div class="romaji">Itterasshai.</div>
+        <div class="pt">Vai com cuidado! / Volte logo!</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">すみません、Tax-free できますか？</div>
+        <div class="romaji">Sumimasen, tax-free dekimasu ka?</div>
+        <div class="pt">Com licença, dá para fazer tax-free?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Atendente</div>
+      <div class="lines">
+        <div class="jp">はい、だいじょうぶです。パスポートを おねがいします。</div>
+        <div class="romaji">Hai, daijoubu desu. Pasupo-to o onegaishimasu.</div>
+        <div class="pt">Sim, pode sim. Passaporte, por favor.</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">はい、どうぞ。こぜにを だします。</div>
+        <div class="romaji">Hai, douzo. Kozeni o dashimasu.</div>
+        <div class="pt">Aqui está. Vou pagar com o trocado (as moedas).</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">ただいま。</div>
+        <div class="romaji">Tadaima.</div>
+        <div class="pt">Cheguei!</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker">Colega</div>
+      <div class="lines">
+        <div class="jp">おかえりなさい。どうでしたか？</div>
+        <div class="romaji">Okaerinasai. Dou deshita ka?</div>
+        <div class="pt">Bem-vindo de volta! Como foi?</div>
+      </div>
+    </div>
+    <div class="turn">
+      <div class="speaker b">Você</div>
+      <div class="lines">
+        <div class="jp">たのしかったです。やすくて おいしい ものが たくさん ありました。</div>
+        <div class="romaji">Tanoshikatta desu. Yasukute oishii mono ga takusan arimashita.</div>
+        <div class="pt">Foi divertido. Tinha muita coisa barata e gostosa.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>『いってきます／ただいま』— as saudações de sair e voltar</strong>
+    <p style="margin-top:8px;">São pares fixos. Quem <strong>sai</strong> de casa diz a primeira; quem <strong>fica</strong> responde com a segunda. O mesmo na volta:</p>
+    <table class="ref-table">
+      <tr><th>Quem sai/chega</th><td><span class="jp-cell">いってきます</span> <em>ittekimasu</em></td><td>"Estou indo / já volto"</td></tr>
+      <tr><th>Quem fica</th><td><span class="jp-cell">いってらっしゃい</span> <em>itterasshai</em></td><td>"Vá com cuidado / volte logo"</td></tr>
+      <tr><th>Quem chega</th><td><span class="jp-cell">ただいま</span> <em>tadaima</em></td><td>"Cheguei!"</td></tr>
+      <tr><th>Quem recebe</th><td><span class="jp-cell">おかえりなさい</span> <em>okaerinasai</em></td><td>"Bem-vindo de volta!"</td></tr>
+    </table>
+  </div>
+
+  <div class="note">
+    <strong>Frases soltas da aula</strong>
+    <table class="ref-table">
+      <tr><th>小銭を出します</th><td><span class="jp-cell">こぜにを だします</span></td><td><em>kozeni o dashimasu</em></td><td>pagar com o trocado / tirar as moedas</td></tr>
+      <tr><th>Tax-free できますか</th><td><span class="jp-cell">Tax-free できますか</span></td><td><em>tax-free dekimasu ka?</em></td><td>dá para fazer tax-free? (免税 = <em>menzei</em>)</td></tr>
+      <tr><th>Tax-free 大丈夫ですか</th><td><span class="jp-cell">Tax-free だいじょうぶですか</span></td><td><em>tax-free daijoubu desu ka?</em></td><td>o tax-free está ok / pode fazer?</td></tr>
+      <tr><th>居酒屋</th><td><span class="jp-cell">いざかや</span></td><td><em>izakaya</em></td><td>izakaya (bar/restaurante japonês)</td></tr>
+      <tr><th>新幹線</th><td><span class="jp-cell">しんかんせん</span></td><td><em>shinkansen</em></td><td>trem-bala</td></tr>
+      <tr><th>安くて美味しい</th><td><span class="jp-cell">やすくて おいしいです</span></td><td><em>yasukute oishii desu</em></td><td>barato e gostoso (forma 〜くて ligando dois adjetivos い)</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ─────────────────────────── ADJETIVOS い — TABELA COMPLETA ─────────────────────────── -->
 <section class="scene" id="adjetivos">
   <div class="scene-header">
     <span class="scene-num">付録</span>
@@ -3283,6 +3448,136 @@
     </div>
     <div class="adj-empty" id="adjEmpty" style="display:none;">Nenhum adjetivo encontrado.</div>
   </div>
+</section>
+
+<!-- ─────────────────────────── ADJETIVOS な — TABELA ─────────────────────────── -->
+<section class="scene" id="adjetivos-na">
+  <div class="scene-header">
+    <span class="scene-num">付録</span>
+    <span class="scene-jp">な けいようし いちらん</span>
+    <span class="scene-pt">Tabela de adjetivos な</span>
+  </div>
+  <p class="setting">Os adjetivos <strong>な</strong> (<em>na-keiyoushi</em>) são da Aula 10. Tabela separada da dos い de propósito: o adjetivo い muda o próprio radical (<em>takai → takakatta</em>), mas o な <strong>não muda</strong> — quem conjuga é a cópula que vem depois (<em>です／じゃない／で／でした／じゃなかった</em>), igual a um substantivo. As colunas são as mesmas 5 formas, para você comparar lado a lado.</p>
+
+  <div class="note" style="margin-bottom:8px;">
+    <strong>O 「な」 aparece antes de substantivo</strong>
+    <p style="margin-top:8px;">O nome "adjetivo な" vem daqui: para ligar o adjetivo a um substantivo, entra um <strong>な</strong> — <span class="jp-inline">げんきな ひと</span> <em>genki na hito</em> ("uma pessoa animada"), <span class="jp-inline">ひまな とき</span> <em>hima na toki</em> ("hora vaga"). Sozinho, com a cópula, não usa o な: <span class="jp-inline">げんきです</span> <em>genki desu</em>. As formas casuais trocam <em>です→だ</em>, <em>でした→だった</em>.</p>
+  </div>
+
+  <div class="adj-explorer">
+    <div class="adj-controls">
+      <input type="text" class="adj-search" id="adjNaSearch" placeholder="Buscar… (ex.: animado, genki, げんき)" aria-label="Buscar adjetivo な">
+      <label class="adj-toggle">
+        <input type="checkbox" id="adjNaRomaji" checked> mostrar romaji
+      </label>
+      <span class="adj-count" id="adjNaCount"></span>
+    </div>
+    <div class="adj-table-wrap">
+      <table class="adj-table" id="adjNaTable">
+        <thead>
+          <tr>
+            <th>Adjetivo</th>
+            <th><span class="form-jp">です</span>afirmativo</th>
+            <th><span class="form-jp">じゃない</span>negativo</th>
+            <th><span class="form-jp">で</span>ligação</th>
+            <th><span class="form-jp">でした</span>passado</th>
+            <th><span class="form-jp">じゃなかった</span>passado neg.</th>
+          </tr>
+        </thead>
+        <tbody id="adjNaBody"></tbody>
+      </table>
+    </div>
+    <div class="adj-empty" id="adjNaEmpty" style="display:none;">Nenhum adjetivo encontrado.</div>
+  </div>
+</section>
+
+<!-- ─────────────────────────── EXPRESSÕES DE TEMPO ─────────────────────────── -->
+<section class="scene" id="tempo">
+  <div class="scene-header">
+    <span class="scene-num">付録</span>
+    <span class="scene-jp">じかんの ことば</span>
+    <span class="scene-pt">Expressões de tempo</span>
+  </div>
+  <p class="setting">O bloco de tempo da Aula 10. A lógica se repete em dia / semana / mês / ano: <em>kono~/kon~</em> = "este", <em>rai~</em> = "que vem", <em>sarai~</em> = "daqui a dois", <em>sen~/kyo~</em> = "passado", <em>sensen~/ototo~</em> = "dois atrás". A linha em destaque é o "agora" (hoje, esta semana…).</p>
+
+  <table class="vocab-table">
+    <thead>
+      <tr><th>Kana</th><th>Romaji</th><th>Kanji</th><th>Português</th></tr>
+    </thead>
+    <tbody>
+      <tr class="vt-group"><td colspan="4">Dias relativos</td></tr>
+      <tr class="vt-now"><td class="vt-kana">きょう</td><td class="vt-ro">kyou</td><td class="vt-kanji">今日</td><td>hoje</td></tr>
+      <tr><td class="vt-kana">あした</td><td class="vt-ro">ashita</td><td class="vt-kanji">明日</td><td>amanhã</td></tr>
+      <tr><td class="vt-kana">あさって</td><td class="vt-ro">asatte</td><td class="vt-kanji">明後日</td><td>depois de amanhã</td></tr>
+      <tr><td class="vt-kana">しあさって</td><td class="vt-ro">shiasatte</td><td class="vt-kanji">明明後日</td><td>daqui a três dias</td></tr>
+      <tr><td class="vt-kana">きのう</td><td class="vt-ro">kinou</td><td class="vt-kanji">昨日</td><td>ontem</td></tr>
+      <tr><td class="vt-kana">おととい</td><td class="vt-ro">ototoi</td><td class="vt-kanji">一昨日</td><td>anteontem</td></tr>
+
+      <tr class="vt-group"><td colspan="4">Semanas</td></tr>
+      <tr class="vt-now"><td class="vt-kana">こんしゅう</td><td class="vt-ro">konshuu</td><td class="vt-kanji">今週</td><td>esta semana</td></tr>
+      <tr><td class="vt-kana">らいしゅう</td><td class="vt-ro">raishuu</td><td class="vt-kanji">来週</td><td>próxima semana</td></tr>
+      <tr><td class="vt-kana">さらいしゅう</td><td class="vt-ro">saraishuu</td><td class="vt-kanji">再来週</td><td>daqui a duas semanas</td></tr>
+      <tr><td class="vt-kana">せんしゅう</td><td class="vt-ro">senshuu</td><td class="vt-kanji">先週</td><td>semana passada</td></tr>
+      <tr><td class="vt-kana">せんせんしゅう</td><td class="vt-ro">sensenshuu</td><td class="vt-kanji">先々週</td><td>duas semanas atrás</td></tr>
+
+      <tr class="vt-group"><td colspan="4">Meses</td></tr>
+      <tr class="vt-now"><td class="vt-kana">こんげつ</td><td class="vt-ro">kongetsu</td><td class="vt-kanji">今月</td><td>este mês</td></tr>
+      <tr><td class="vt-kana">らいげつ</td><td class="vt-ro">raigetsu</td><td class="vt-kanji">来月</td><td>mês que vem</td></tr>
+      <tr><td class="vt-kana">さらいげつ</td><td class="vt-ro">saraigetsu</td><td class="vt-kanji">再来月</td><td>daqui a dois meses</td></tr>
+      <tr><td class="vt-kana">せんげつ</td><td class="vt-ro">sengetsu</td><td class="vt-kanji">先月</td><td>mês passado</td></tr>
+      <tr><td class="vt-kana">せんせんげつ</td><td class="vt-ro">sensengetsu</td><td class="vt-kanji">先々月</td><td>dois meses atrás</td></tr>
+
+      <tr class="vt-group"><td colspan="4">Anos</td></tr>
+      <tr class="vt-now"><td class="vt-kana">ことし</td><td class="vt-ro">kotoshi</td><td class="vt-kanji">今年</td><td>este ano</td></tr>
+      <tr><td class="vt-kana">らいねん</td><td class="vt-ro">rainen</td><td class="vt-kanji">来年</td><td>ano que vem</td></tr>
+      <tr><td class="vt-kana">さらいねん</td><td class="vt-ro">sarainen</td><td class="vt-kanji">再来年</td><td>daqui a dois anos</td></tr>
+      <tr><td class="vt-kana">きょねん</td><td class="vt-ro">kyonen</td><td class="vt-kanji">去年</td><td>ano passado</td></tr>
+      <tr><td class="vt-kana">おととし</td><td class="vt-ro">ototoshi</td><td class="vt-kanji">一昨年</td><td>dois anos atrás</td></tr>
+
+      <tr class="vt-group"><td colspan="4">Todo / cada (毎)</td></tr>
+      <tr><td class="vt-kana">まいにち</td><td class="vt-ro">mainichi</td><td class="vt-kanji">毎日</td><td>todos os dias</td></tr>
+      <tr><td class="vt-kana">まいあさ</td><td class="vt-ro">maiasa</td><td class="vt-kanji">毎朝</td><td>toda manhã</td></tr>
+      <tr><td class="vt-kana">まいばん</td><td class="vt-ro">maiban</td><td class="vt-kanji">毎晩</td><td>toda noite</td></tr>
+      <tr><td class="vt-kana">まいしゅう</td><td class="vt-ro">maishuu</td><td class="vt-kanji">毎週</td><td>toda semana</td></tr>
+      <tr><td class="vt-kana">まいつき</td><td class="vt-ro">maitsuki</td><td class="vt-kanji">毎月</td><td>todo mês</td></tr>
+      <tr><td class="vt-kana">まいとし</td><td class="vt-ro">maitoshi</td><td class="vt-kanji">毎年</td><td>todo ano</td></tr>
+
+      <tr class="vt-group"><td colspan="4">Frequência</td></tr>
+      <tr><td class="vt-kana">いつも</td><td class="vt-ro">itsumo</td><td class="vt-kanji">—</td><td>sempre</td></tr>
+      <tr><td class="vt-kana">よく</td><td class="vt-ro">yoku</td><td class="vt-kanji">—</td><td>frequentemente</td></tr>
+      <tr><td class="vt-kana">ときどき</td><td class="vt-ro">tokidoki</td><td class="vt-kanji">時々</td><td>às vezes</td></tr>
+      <tr><td class="vt-kana">たまに</td><td class="vt-ro">tamani</td><td class="vt-kanji">—</td><td>raramente</td></tr>
+      <tr><td class="vt-kana">いま</td><td class="vt-ro">ima</td><td class="vt-kanji">今</td><td>agora</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ─────────────────────────── DIAS DA SEMANA ─────────────────────────── -->
+<section class="scene" id="youbi">
+  <div class="scene-header">
+    <span class="scene-num">付録</span>
+    <span class="scene-jp">ようび</span>
+    <span class="scene-pt">Dias da semana</span>
+  </div>
+  <p class="setting">Todo dia da semana termina em <span class="jp-inline">ようび</span> (曜日). O kanji da frente é o "elemento" do dia (月 lua, 火 fogo, 水 água…). Para perguntar: <span class="jp-inline">きょうは なんようびですか？</span> <em>Kyou wa nan-youbi desu ka?</em> — "Que dia da semana é hoje?".</p>
+
+  <table class="vocab-table">
+    <thead>
+      <tr><th>Kana</th><th>Romaji</th><th>Kanji</th><th>Português</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="vt-kana">げつようび</td><td class="vt-ro">getsu-youbi</td><td class="vt-kanji">月曜日</td><td>segunda-feira</td></tr>
+      <tr><td class="vt-kana">かようび</td><td class="vt-ro">ka-youbi</td><td class="vt-kanji">火曜日</td><td>terça-feira</td></tr>
+      <tr><td class="vt-kana">すいようび</td><td class="vt-ro">sui-youbi</td><td class="vt-kanji">水曜日</td><td>quarta-feira</td></tr>
+      <tr><td class="vt-kana">もくようび</td><td class="vt-ro">moku-youbi</td><td class="vt-kanji">木曜日</td><td>quinta-feira</td></tr>
+      <tr><td class="vt-kana">きんようび</td><td class="vt-ro">kin-youbi</td><td class="vt-kanji">金曜日</td><td>sexta-feira</td></tr>
+      <tr><td class="vt-kana">どようび</td><td class="vt-ro">do-youbi</td><td class="vt-kanji">土曜日</td><td>sábado</td></tr>
+      <tr><td class="vt-kana">にちようび</td><td class="vt-ro">nichi-youbi</td><td class="vt-kanji">日曜日</td><td>domingo</td></tr>
+      <tr class="vt-group"><td colspan="4">Relacionados</td></tr>
+      <tr><td class="vt-kana">へいじつ</td><td class="vt-ro">heijitsu</td><td class="vt-kanji">平日</td><td>dia de semana (útil)</td></tr>
+      <tr><td class="vt-kana">しゅうまつ</td><td class="vt-ro">shuumatsu</td><td class="vt-kanji">週末</td><td>fim de semana</td></tr>
+    </tbody>
+  </table>
 </section>
 
 <!-- ─────────────────────────── FINAL TIPS ─────────────────────────── -->
@@ -3571,7 +3866,31 @@
     { q:'"Atama ni ki o tsukete" significa:', options:[ {t:'Cuidado com a cabeça',ok:true}, {t:'Use o chapéu',ok:false}, {t:'Pense bem',ok:false}, {t:'Levante a cabeça',ok:false} ], hint:'<em>Ki o tsukeru</em> = tomar cuidado; <em>atama</em> = cabeça.' },
     { q:'"Ashi ga nagai" significa:', options:[ {t:'As pernas são longas',ok:true}, {t:'O pé é grande',ok:false}, {t:'O caminho é longo',ok:false}, {t:'Está cansado',ok:false} ], hint:'<em>Ashi</em> = perna/pé; <em>nagai</em> = comprido.' },
     { q:'Diferença entre <em>atsui</em> (暑い) e <em>atsui</em> (熱い):', options:[ {t:'暑い = clima quente; 熱い = objeto/comida quente',ok:true}, {t:'São exatamente a mesma coisa',ok:false}, {t:'暑い é frio; 熱い é quente',ok:false}, {t:'Um é adjetivo, o outro é verbo',ok:false} ], hint:'Mesma leitura (<em>atsui</em>), kanji diferente conforme o sentido.' },
-    { q:'Para dizer "não estava gostoso", use:', options:[ {t:'Oishikunakatta desu',ok:true}, {t:'Oishii janakatta',ok:false}, {t:'Oishikatta nai',ok:false}, {t:'Oishikunai deshita',ok:false} ], hint:'Passado negativo do い: い → くなかった.' }
+    { q:'Para dizer "não estava gostoso", use:', options:[ {t:'Oishikunakatta desu',ok:true}, {t:'Oishii janakatta',ok:false}, {t:'Oishikatta nai',ok:false}, {t:'Oishikunai deshita',ok:false} ], hint:'Passado negativo do い: い → くなかった.' },
+    { q:'Como o adjetivo な (ex.: <em>genki</em>) muda de tempo?', options:[ {t:'O radical fica igual; muda a cópula (です／でした…)',ok:true}, {t:'Troca o い final por くない etc.',ok:false}, {t:'Acrescenta ます',ok:false}, {t:'Não pode ir para o passado',ok:false} ], hint:'O な se comporta como substantivo + cópula, ao contrário do adjetivo い.' },
+    { q:'<em>Genki</em> (元気) significa:', options:[ {t:'Animado / bem disposto / saudável',ok:true}, {t:'Cansado',ok:false}, {t:'Caro',ok:false}, {t:'Ocupado',ok:false} ], hint:'<em>O-genki desu ka?</em> = "Você está bem?".' },
+    { q:'<em>Hima</em> (暇) significa:', options:[ {t:'Livre / desocupado (sem o que fazer)',ok:true}, {t:'Ocupado',ok:false}, {t:'Divertido',ok:false}, {t:'Difícil',ok:false} ], hint:'Oposto, em certo sentido, de <em>isogashii</em> (ocupado).' },
+    { q:'Forma negativa de <em>genki</em> (adjetivo な):', options:[ {t:'Genki janai (desu)',ok:true}, {t:'Genkikunai',ok:false}, {t:'Genki masen',ok:false}, {t:'Genkinai',ok:false} ], hint:'Adjetivo な nega com じゃない, igual a substantivo — não com くない.' },
+    { q:'Forma passada de <em>genki</em> (adjetivo な):', options:[ {t:'Genki deshita / genki datta',ok:true}, {t:'Genkikatta',ok:false}, {t:'Genki imashita',ok:false}, {t:'Genkide',ok:false} ], hint:'Quem vai para o passado é a cópula: です→でした (だ→だった).' },
+    { q:'Para ligar um adjetivo な a um substantivo ("uma pessoa animada"), usa-se:', options:[ {t:'Genki <strong>na</strong> hito',ok:true}, {t:'Genki <strong>i</strong> hito',ok:false}, {t:'Genki <strong>no</strong> hito',ok:false}, {t:'Genki hito',ok:false} ], hint:'É daí que vem o nome "adjetivo な".' },
+    { q:'Você sai de casa. O que diz?', options:[ {t:'Ittekimasu',ok:true}, {t:'Itterasshai',ok:false}, {t:'Tadaima',ok:false}, {t:'Okaerinasai',ok:false} ], hint:'Quem fica responde <em>itterasshai</em>.' },
+    { q:'Alguém da casa está saindo. Você, que fica, responde:', options:[ {t:'Itterasshai',ok:true}, {t:'Ittekimasu',ok:false}, {t:'Okaerinasai',ok:false}, {t:'Tadaima',ok:false} ], hint:'Par fixo: <em>ittekimasu → itterasshai</em>.' },
+    { q:'Você chega em casa. O que diz?', options:[ {t:'Tadaima',ok:true}, {t:'Okaerinasai',ok:false}, {t:'Ittekimasu',ok:false}, {t:'Konnichiwa',ok:false} ], hint:'Quem está em casa responde <em>okaerinasai</em>.' },
+    { q:'<em>Okaerinasai</em> é dito:', options:[ {t:'Para receber quem acabou de chegar',ok:true}, {t:'Para quem está saindo',ok:false}, {t:'Antes de dormir',ok:false}, {t:'Ao acordar',ok:false} ], hint:'Responde ao <em>tadaima</em> de quem chega.' },
+    { q:'<em>Kyou</em> (今日) significa:', options:[ {t:'Hoje',ok:true}, {t:'Amanhã',ok:false}, {t:'Ontem',ok:false}, {t:'Agora',ok:false} ], hint:'<em>Ashita</em> = amanhã; <em>kinou</em> = ontem.' },
+    { q:'<em>Asatte</em> (明後日) significa:', options:[ {t:'Depois de amanhã',ok:true}, {t:'Anteontem',ok:false}, {t:'Amanhã',ok:false}, {t:'Daqui a três dias',ok:false} ], hint:'Anteontem é <em>ototoi</em>; daqui a três dias, <em>shiasatte</em>.' },
+    { q:'<em>Ototoi</em> (一昨日) significa:', options:[ {t:'Anteontem',ok:true}, {t:'Depois de amanhã',ok:false}, {t:'Ontem',ok:false}, {t:'Semana passada',ok:false} ], hint:'É o "espelho" de <em>asatte</em> no passado.' },
+    { q:'<em>Raishuu</em> (来週) significa:', options:[ {t:'Próxima semana',ok:true}, {t:'Esta semana',ok:false}, {t:'Semana passada',ok:false}, {t:'Daqui a duas semanas',ok:false} ], hint:'<em>rai~</em> = "que vem"; <em>kon~</em> = "este"; <em>sen~</em> = "passado".' },
+    { q:'<em>Sengetsu</em> (先月) significa:', options:[ {t:'Mês passado',ok:true}, {t:'Mês que vem',ok:false}, {t:'Este mês',ok:false}, {t:'Daqui a dois meses',ok:false} ], hint:'<em>kongetsu</em> = este mês; <em>raigetsu</em> = mês que vem.' },
+    { q:'"Ano que vem" em japonês:', options:[ {t:'Rainen (来年)',ok:true}, {t:'Kotoshi (今年)',ok:false}, {t:'Kyonen (去年)',ok:false}, {t:'Raigetsu (来月)',ok:false} ], hint:'<em>kotoshi</em> = este ano; <em>kyonen</em> = ano passado.' },
+    { q:'<em>Mainichi</em> (毎日) significa:', options:[ {t:'Todos os dias',ok:true}, {t:'Toda semana',ok:false}, {t:'Toda manhã',ok:false}, {t:'Às vezes',ok:false} ], hint:'O prefixo 毎 (<em>mai~</em>) = "cada / todo": <em>maishuu, maitsuki, maitoshi</em>.' },
+    { q:'Ordene do mais frequente ao mais raro:', options:[ {t:'itsumo → yoku → tokidoki → tamani',ok:true}, {t:'tamani → tokidoki → yoku → itsumo',ok:false}, {t:'yoku → itsumo → tamani → tokidoki',ok:false}, {t:'tokidoki → tamani → yoku → itsumo',ok:false} ], hint:'<em>itsumo</em> (sempre) &gt; <em>yoku</em> (frequentemente) &gt; <em>tokidoki</em> (às vezes) &gt; <em>tamani</em> (raramente).' },
+    { q:'Como perguntar "Que dia da semana é hoje?":', options:[ {t:'Kyou wa nan-youbi desu ka?',ok:true}, {t:'Kyou wa nanji desu ka?',ok:false}, {t:'Kyou wa nannichi desu ka?',ok:false}, {t:'Kyou wa ikura desu ka?',ok:false} ], hint:'<em>nanji</em> = que horas; <em>nannichi</em> = que dia (do mês); <em>youbi</em> = dia da semana.' },
+    { q:'<em>Suiyoubi</em> (水曜日) é:', options:[ {t:'Quarta-feira',ok:true}, {t:'Segunda-feira',ok:false}, {t:'Sexta-feira',ok:false}, {t:'Domingo',ok:false} ], hint:'水 = água. 月=segunda, 火=terça, 水=quarta, 木=quinta, 金=sexta.' },
+    { q:'<em>Doyoubi</em> (土曜日) e <em>nichiyoubi</em> (日曜日) são:', options:[ {t:'Sábado e domingo',ok:true}, {t:'Sexta e sábado',ok:false}, {t:'Domingo e segunda',ok:false}, {t:'Quinta e sexta',ok:false} ], hint:'土 = terra (sábado); 日 = sol/dia (domingo). Juntos: <em>shuumatsu</em> (fim de semana).' },
+    { q:'<em>Heijitsu</em> (平日) significa:', options:[ {t:'Dia de semana (útil)',ok:true}, {t:'Feriado',ok:false}, {t:'Fim de semana',ok:false}, {t:'Todo dia',ok:false} ], hint:'Oposto de <em>shuumatsu</em> (週末, fim de semana).' },
+    { q:'O que significa <em>kozeni</em> (小銭)?', options:[ {t:'Trocado / moedas',ok:true}, {t:'Notas',ok:false}, {t:'Cartão',ok:false}, {t:'Conta',ok:false} ], hint:'<em>Kozeni o dashimasu</em> = pagar com o trocado.' },
+    { q:'"Tax-free dekimasu ka?" pergunta:', options:[ {t:'Dá para fazer tax-free (isenção)?',ok:true}, {t:'Quanto custa com imposto?',ok:false}, {t:'Aceita cartão?',ok:false}, {t:'Posso experimentar?',ok:false} ], hint:'Em japonês também: <em>menzei</em> (免税). <em>dekimasu ka?</em> = "é possível?".' }
   ];
 
   // Helpers para construir as perguntas de conversação
@@ -4330,6 +4649,42 @@
         opt('たからないです。', 'Takaranai desu.', false)
       ],
       hint: 'Adjetivo い no negativo: い → くない. <em>takai → takakunai</em>.'
+    },
+    {
+      q: 'Você está saindo de casa. Seu colega de quarto diz:' +
+         prompt('Colega', 'いってらっしゃい。', 'Itterasshai.', 'Vá com cuidado!') +
+         'O que você teria dito ao sair, para receber essa resposta?',
+      options: [
+        opt('いってきます。', 'Ittekimasu.', true),
+        opt('ただいま。', 'Tadaima.', false),
+        opt('おかえりなさい。', 'Okaerinasai.', false),
+        opt('おやすみなさい。', 'Oyasuminasai.', false)
+      ],
+      hint: 'Par fixo de quem sai: <em>ittekimasu → itterasshai</em>.'
+    },
+    {
+      q: 'Você acabou de chegar em casa e diz:' +
+         prompt('Você', 'ただいま。', 'Tadaima.', 'Cheguei!') +
+         'Como o colega que estava em casa responde?',
+      options: [
+        opt('おかえりなさい。', 'Okaerinasai.', true),
+        opt('いってらっしゃい。', 'Itterasshai.', false),
+        opt('いってきます。', 'Ittekimasu.', false),
+        opt('はじめまして。', 'Hajimemashite.', false)
+      ],
+      hint: 'Par fixo de quem chega: <em>tadaima → okaerinasai</em>.'
+    },
+    {
+      q: 'Na loja, você quer saber se pode comprar com isenção de imposto. Como pergunta?' +
+         prompt('Você', '…', '…', '—') +
+         'Escolha a frase certa:',
+      options: [
+        opt('すみません、Tax-free できますか？', 'Sumimasen, tax-free dekimasu ka?', true),
+        opt('すみません、Tax-free を ください。', 'Sumimasen, tax-free o kudasai.', false),
+        opt('すみません、Tax-free です。', 'Sumimasen, tax-free desu.', false),
+        opt('すみません、Tax-free は いくらですか？', 'Sumimasen, tax-free wa ikura desu ka?', false)
+      ],
+      hint: '<em>dekimasu ka?</em> = "é possível / dá para fazer?".'
     }
   ];
 
@@ -4665,6 +5020,75 @@
       : ADJ;
     body.innerHTML = list.map(rowHtml).join('');
     countEl.textContent = list.length + ' / ' + ADJ.length + ' adjetivos';
+    emptyEl.style.display = list.length ? 'none' : '';
+  }
+
+  search.addEventListener('input', () => render(search.value));
+  romajiToggle.addEventListener('change', () => {
+    table.classList.toggle('hide-romaji', !romajiToggle.checked);
+  });
+
+  render('');
+})();
+</script>
+
+<script>
+(function() {
+  // Lista de adjetivos な (Aula 10). Diferente dos い: o radical não muda,
+  // quem conjuga é a cópula depois dele (です／じゃない／で／でした／じゃなかった).
+  const ADJ_NA = [
+    { kanji:'元気', kana:'げんき', romaji:'genki', pt:'animado / bem disposto / saudável' },
+    { kanji:'暇', kana:'ひま', romaji:'hima', pt:'livre / desocupado / sem ter o que fazer' }
+  ];
+
+  // Conjuga um adjetivo な via cópula (mantém o radical intacto).
+  function conjugate(a) {
+    return {
+      desu:    { jp:a.kana + 'です',           ro:a.romaji + ' desu' },
+      nai:     { jp:a.kana + 'じゃないです',     ro:a.romaji + ' janai desu' },
+      te:      { jp:a.kana + 'で',             ro:a.romaji + ' de' },
+      ta:      { jp:a.kana + 'でした',          ro:a.romaji + ' deshita' },
+      nakatta: { jp:a.kana + 'じゃなかったです', ro:a.romaji + ' janakatta desu' }
+    };
+  }
+
+  const body = document.getElementById('adjNaBody');
+  const search = document.getElementById('adjNaSearch');
+  const romajiToggle = document.getElementById('adjNaRomaji');
+  const countEl = document.getElementById('adjNaCount');
+  const emptyEl = document.getElementById('adjNaEmpty');
+  const table = document.getElementById('adjNaTable');
+
+  function cell(form) {
+    return '<td>' +
+      '<span class="cell-jp">' + form.jp + '</span>' +
+      '<span class="cell-ro">' + form.ro + '</span></td>';
+  }
+
+  function rowHtml(a) {
+    const c = conjugate(a);
+    const base =
+      '<td class="col-base">' +
+        '<span class="cell-jp">' + a.kanji + '</span>' +
+        '<span class="cell-ro">' + a.romaji + '</span>' +
+        '<span class="cell-pt">' + a.pt + '</span>' +
+      '</td>';
+    return '<tr>' +
+      base + cell(c.desu) + cell(c.nai) + cell(c.te) + cell(c.ta) + cell(c.nakatta) +
+      '</tr>';
+  }
+
+  function render(filter) {
+    const f = (filter || '').trim().toLowerCase();
+    const list = f
+      ? ADJ_NA.filter(a =>
+          a.romaji.toLowerCase().includes(f) ||
+          a.pt.toLowerCase().includes(f) ||
+          a.kana.includes(f) ||
+          a.kanji.includes(f))
+      : ADJ_NA;
+    body.innerHTML = list.map(rowHtml).join('');
+    countEl.textContent = list.length + ' / ' + ADJ_NA.length + ' adjetivos';
     emptyEl.style.display = list.length ? 'none' : '';
   }
 
