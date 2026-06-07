@@ -3598,7 +3598,7 @@
   <div class="quiz-head">
     <div class="ja">小テスト</div>
     <h2>Quiz — <em>teste seus conhecimentos</em></h2>
-    <p>Uma pergunta por vez. Clique numa alternativa para ver na hora se acertou; depois avance. As perguntas e a ordem das alternativas mudam a cada nova rodada.</p>
+    <p>Uma pergunta por vez. Clique numa alternativa para ver na hora se acertou; depois avance. As perguntas e a ordem das alternativas são <strong>sorteadas e embaralhadas a cada nova rodada</strong> — nada de decoreba por posição. Escolha <strong>Tudo (ilimitado)</strong> para cair no banco inteiro, que cresce sozinho conforme novas aulas são adicionadas.</p>
   </div>
 
   <div class="quiz-config">
@@ -3618,6 +3618,8 @@
         <option value="15">15</option>
         <option value="20">20</option>
         <option value="30">30</option>
+        <option value="50">50</option>
+        <option value="all">Tudo (ilimitado)</option>
       </select>
     </label>
     <button type="button" class="quiz-btn secondary" id="btnNew">Novo quiz</button>
@@ -4708,9 +4710,12 @@
   }
 
   function startQuiz() {
-    const size = parseInt(document.getElementById('quizSize').value, 10) || 10;
+    const sizeVal = document.getElementById('quizSize').value;
     const pool = getPool();
-    const count = Math.min(size, pool.length);
+    // "all" = versão ilimitada: usa o banco inteiro (cresce sozinho quando novas perguntas/aulas são adicionadas).
+    const count = (sizeVal === 'all')
+      ? pool.length
+      : Math.min(parseInt(sizeVal, 10) || 10, pool.length);
     state.picked = shuffle(pool).slice(0, count).map(item => ({
       q: item.q,
       hint: item.hint || '',
