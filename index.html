@@ -4961,6 +4961,183 @@
 })();
 </script>
 
+<style>
+  .kana-quiz .kana-display {
+    font-size: 200px;
+    line-height: 1;
+    text-align: center;
+    color: var(--ink);
+    margin: 18px 0 32px;
+    font-weight: 600;
+  }
+  .kana-quiz .kana-input-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .kana-quiz input.kana-input {
+    font-size: 22px;
+    padding: 12px 16px;
+    border: 2px solid var(--gold);
+    border-radius: 8px;
+    background: var(--paper);
+    color: var(--ink);
+    text-align: center;
+    width: 220px;
+    font-family: inherit;
+  }
+  .kana-quiz input.kana-input:focus {
+    outline: none;
+    border-color: var(--vermilion);
+  }
+  .kana-quiz .kana-feedback {
+    text-align: center;
+    margin-top: 18px;
+    min-height: 26px;
+    font-size: 18px;
+  }
+  .kana-quiz .kana-feedback.ok { color: var(--sage); }
+  .kana-quiz .kana-feedback.no { color: var(--vermilion); }
+  .kana-quiz .kana-answer {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 20px;
+    color: var(--ink);
+  }
+  .kana-quiz .kana-answer em {
+    color: var(--vermilion);
+    font-style: normal;
+    font-weight: 700;
+  }
+  .kana-quiz .kana-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 22px;
+    flex-wrap: wrap;
+  }
+</style>
+
+<section class="quiz kana-quiz" id="kanaQuiz">
+  <div class="quiz-head">
+    <div class="ja">ひらがな</div>
+    <h2>Hiragana — <em>treino de leitura</em></h2>
+    <p>Digite a leitura (rōmaji) do hiragana mostrado. Vogais (<strong>あ い う え お</strong>), série K (<strong>か き く け こ</strong>) e a alternância sonora G (<strong>が ぎ ぐ げ ご</strong>). Os caracteres aparecem <strong>em ordem sorteada</strong>. Se errar, a resposta <strong>não aparece automaticamente</strong> — tente de novo ou clique em <strong>Mostrar resposta</strong>.</p>
+  </div>
+
+  <div class="quiz-card">
+    <div class="quiz-progress">
+      <div class="quiz-progress-bar"><div id="kanaProgBar"></div></div>
+      <div class="quiz-progress-label">
+        Acertos: <span id="kanaScore">0</span> ・ Tentativas: <span id="kanaTries">0</span>
+      </div>
+    </div>
+
+    <div class="kana-display" id="kanaDisplay">あ</div>
+
+    <form class="kana-input-row" id="kanaForm" autocomplete="off">
+      <input type="text" class="kana-input" id="kanaInput" placeholder="ex.: ka" autocapitalize="off" autocorrect="off" spellcheck="false">
+      <button type="submit" class="quiz-btn">Verificar</button>
+    </form>
+
+    <div class="kana-feedback" id="kanaFeedback"></div>
+    <div class="kana-answer" id="kanaAnswer" style="display:none;"></div>
+
+    <div class="kana-controls">
+      <button type="button" class="quiz-btn secondary" id="kanaShow" style="display:none;">Mostrar resposta</button>
+      <button type="button" class="quiz-btn" id="kanaNext">Próximo →</button>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  const KANA = [
+    { k:'あ', r:'a' },  { k:'い', r:'i' },  { k:'う', r:'u' },  { k:'え', r:'e' },  { k:'お', r:'o' },
+    { k:'か', r:'ka' }, { k:'き', r:'ki' }, { k:'く', r:'ku' }, { k:'け', r:'ke' }, { k:'こ', r:'ko' },
+    { k:'が', r:'ga' }, { k:'ぎ', r:'gi' }, { k:'ぐ', r:'gu' }, { k:'げ', r:'ge' }, { k:'ご', r:'go' }
+  ];
+
+  const display  = document.getElementById('kanaDisplay');
+  const form     = document.getElementById('kanaForm');
+  const input    = document.getElementById('kanaInput');
+  const feedback = document.getElementById('kanaFeedback');
+  const answer   = document.getElementById('kanaAnswer');
+  const showBtn  = document.getElementById('kanaShow');
+  const nextBtn  = document.getElementById('kanaNext');
+  const scoreEl  = document.getElementById('kanaScore');
+  const triesEl  = document.getElementById('kanaTries');
+  const progBar  = document.getElementById('kanaProgBar');
+
+  let current = null;
+  let score = 0;
+  let tries = 0;
+  let solved = false;
+
+  function pick() {
+    let next;
+    do { next = KANA[Math.floor(Math.random() * KANA.length)]; }
+    while (KANA.length > 1 && next === current);
+    current = next;
+  }
+
+  function newQuestion() {
+    pick();
+    solved = false;
+    display.textContent = current.k;
+    input.value = '';
+    input.disabled = false;
+    feedback.textContent = '';
+    feedback.className = 'kana-feedback';
+    answer.style.display = 'none';
+    showBtn.style.display = 'none';
+    progBar.style.width = '0%';
+    input.focus();
+  }
+
+  function check() {
+    if (solved) return;
+    const guess = input.value.trim().toLowerCase();
+    if (!guess) return;
+    tries++;
+    triesEl.textContent = tries;
+
+    if (guess === current.r) {
+      solved = true;
+      score++;
+      scoreEl.textContent = score;
+      feedback.textContent = '正解！ Acertou — ' + current.r;
+      feedback.className = 'kana-feedback ok';
+      answer.style.display = 'none';
+      showBtn.style.display = 'none';
+      input.disabled = true;
+      progBar.style.width = '100%';
+      nextBtn.focus();
+    } else {
+      feedback.textContent = 'Não foi dessa vez. Tente de novo ou veja a resposta.';
+      feedback.className = 'kana-feedback no';
+      showBtn.style.display = 'inline-block';
+      input.select();
+    }
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    check();
+  });
+
+  showBtn.addEventListener('click', function() {
+    answer.innerHTML = 'Resposta: <em>' + current.r + '</em>';
+    answer.style.display = 'block';
+  });
+
+  nextBtn.addEventListener('click', newQuestion);
+
+  document.addEventListener('DOMContentLoaded', newQuestion);
+})();
+</script>
+
 <script>
 (function() {
   function initCarousel(root) {
