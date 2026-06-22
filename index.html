@@ -120,8 +120,21 @@
 
   .index ol {
     list-style: none;
+  }
+  /* Fallback (sem JS): a lista crua já aparece em 2 colunas. */
+  .index > ol {
     columns: 2;
     column-gap: 40px;
+  }
+  /* Com JS: 2 colunas reais por contagem (esquerda recebe ⌈n/2⌉). */
+  .index .index-cols {
+    display: flex;
+    gap: 0 40px;
+  }
+  .index .index-cols > ol {
+    columns: auto;
+    flex: 1 1 0;
+    min-width: 0;
   }
 
   .index li {
@@ -1283,7 +1296,6 @@
   /* ── RESPONSIVE ─────────────────────────────── */
   @media (max-width: 640px) {
     .container { padding: 50px 20px 80px; }
-    .index ol { columns: 1; }
     .turn { grid-template-columns: 1fr; }
     .speaker {
       text-align: left;
@@ -1297,6 +1309,12 @@
     .final-tips { padding: 30px 24px; }
     .quiz { padding: 28px 22px; }
     .quiz-question { padding: 20px 18px; }
+  }
+
+  /* Só empilha o índice em uma coluna em telas bem estreitas. */
+  @media (max-width: 430px) {
+    .index > ol { columns: 1; }
+    .index .index-cols { flex-direction: column; gap: 0; }
   }
 </style>
 </head>
@@ -1333,7 +1351,6 @@
     <li><a href="#youbi">Dias da semana</a></li>
     <li><a href="#nannichi">Dias do mês</a></li>
     <li><a href="#quiz">Quiz</a></li>
-    <li><a href="#kanaQuiz">Quiz de hiragana</a></li>
   </ol>
 </aside>
 
@@ -1382,9 +1399,29 @@
     <li><a href="#youbi">Dias da semana — 曜日</a></li>
     <li><a href="#nannichi">Dias do mês — 何日 (datas)</a></li>
     <li><a href="#quiz">Quiz — teste seus conhecimentos</a></li>
-    <li><a href="#kanaQuiz">Quiz de hiragana — treino de leitura</a></li>
   </ol>
 </nav>
+
+<script>
+(function () {
+  // Índice em duas colunas por contagem: a esquerda recebe ⌈n/2⌉ itens, a direita o resto.
+  const nav = document.getElementById('indexInline');
+  if (!nav) return;
+  const ol = nav.querySelector('ol');
+  if (!ol) return;
+  const items = Array.from(ol.children);
+  const leftCount = Math.ceil(items.length / 2);
+  const wrap = document.createElement('div');
+  wrap.className = 'index-cols';
+  const left = document.createElement('ol');
+  const right = document.createElement('ol');
+  items.forEach((li, i) => (i < leftCount ? left : right).appendChild(li));
+  right.style.counterReset = 'item ' + leftCount;   // numeração continua na 2ª coluna
+  wrap.appendChild(left);
+  wrap.appendChild(right);
+  ol.replaceWith(wrap);
+})();
+</script>
 
 <!-- ─────────────────────────── CENA 1 ─────────────────────────── -->
 <section class="scene" id="cena1">
@@ -3700,7 +3737,7 @@
   <div class="quiz-head">
     <div class="ja">小テスト</div>
     <h2>Quiz — <em>teste seus conhecimentos</em></h2>
-    <p>Uma pergunta por vez. Clique numa alternativa para ver na hora se acertou; depois avance. As perguntas e a ordem das alternativas são <strong>sorteadas e embaralhadas a cada nova rodada</strong> — nada de decoreba por posição. Escolha <strong>Tudo (ilimitado)</strong> para cair no banco inteiro, que cresce sozinho conforme novas aulas são adicionadas.</p>
+    <p>Uma pergunta por vez. Clique numa alternativa para ver na hora se acertou; depois avance. As perguntas e a ordem das alternativas são <strong>sorteadas e embaralhadas a cada nova rodada</strong> — nada de decoreba por posição. Escolha <strong>Tudo (ilimitado)</strong> para cair no banco inteiro, que cresce sozinho conforme novas aulas são adicionadas. Em <strong>Tipo</strong> há também dois modos de <strong>hiragana</strong> para treino de leitura: <strong>letras</strong> (vogais, séries K e S e as sonoras G e Z) e <strong>palavras</strong> (os adjetivos e verbos das tabelas da apostila) — nesses modos você digita a leitura em rōmaji.</p>
   </div>
 
   <div class="quiz-config">
@@ -3710,6 +3747,8 @@
         <option value="vocab" selected>Vocabulário</option>
         <option value="conv">Conversação (responder ao atendente)</option>
         <option value="mixed">Misturado</option>
+        <option value="kana-letras">Hiragana — letras (vogais, K, S, G, Z)</option>
+        <option value="kana-palavras">Hiragana — palavras (adjetivos e verbos)</option>
       </select>
     </label>
     <label>
@@ -3740,6 +3779,19 @@
       <div class="q-text" id="qText"></div>
       <ul class="quiz-options" id="qOpts"></ul>
       <div class="quiz-feedback" id="qFb"></div>
+    </div>
+
+    <div class="kana-block" id="kanaBlock" style="display:none;">
+      <div class="kana-display" id="qKanaDisplay"></div>
+      <form class="kana-input-row" id="qKanaForm" autocomplete="off">
+        <input type="text" class="kana-input" id="qKanaInput" placeholder="digite a leitura (rōmaji)" autocapitalize="off" autocorrect="off" spellcheck="false">
+        <button type="submit" class="quiz-btn">Verificar</button>
+      </form>
+      <div class="kana-feedback" id="qKanaFeedback"></div>
+      <div class="kana-answer" id="qKanaAnswer" style="display:none;"></div>
+      <div class="kana-controls">
+        <button type="button" class="quiz-btn secondary" id="qKanaShow" style="display:none;">Mostrar resposta</button>
+      </div>
     </div>
 
     <div class="quiz-card-controls">
@@ -4803,7 +4855,16 @@
   ];
 
   const LETTERS = ['A', 'B', 'C', 'D', 'E'];
-  const state = { picked: [], idx: 0, score: 0, answered: false };
+  const state = { picked: [], idx: 0, score: 0, answered: false, kana: false };
+
+  // Modo "Hiragana — letras": vogais, séries K e S e as sonoras G e Z (dakuten).
+  const KANA_LETRAS = [
+    { kana:'あ', romaji:'a' },  { kana:'い', romaji:'i' },  { kana:'う', romaji:'u' },  { kana:'え', romaji:'e' },  { kana:'お', romaji:'o' },
+    { kana:'か', romaji:'ka' }, { kana:'き', romaji:'ki' }, { kana:'く', romaji:'ku' }, { kana:'け', romaji:'ke' }, { kana:'こ', romaji:'ko' },
+    { kana:'さ', romaji:'sa' }, { kana:'し', romaji:'shi' }, { kana:'す', romaji:'su' }, { kana:'せ', romaji:'se' }, { kana:'そ', romaji:'so' },
+    { kana:'が', romaji:'ga' }, { kana:'ぎ', romaji:'gi' }, { kana:'ぐ', romaji:'gu' }, { kana:'げ', romaji:'ge' }, { kana:'ご', romaji:'go' },
+    { kana:'ざ', romaji:'za' }, { kana:'じ', romaji:'ji' }, { kana:'ず', romaji:'zu' }, { kana:'ぜ', romaji:'ze' }, { kana:'ぞ', romaji:'zo' }
+  ];
 
   function shuffle(arr) {
     const a = arr.slice();
@@ -4814,6 +4875,10 @@
     return a;
   }
 
+  function isKanaMode(mode) {
+    return mode === 'kana-letras' || mode === 'kana-palavras';
+  }
+
   function getPool() {
     const mode = document.getElementById('quizMode').value;
     if (mode === 'conv') return CONV_QUESTIONS;
@@ -4821,18 +4886,42 @@
     return QUESTIONS;
   }
 
+  // Banco do modo "Hiragana — palavras": adjetivos (い e な) e verbos do grupo 2,
+  // lidos direto das listas das tabelas (window.__ADJ_I / __ADJ_NA / __VERBS_G2),
+  // então cresce sozinho com novas aulas. Mantém só palavras em hiragana (descarta katakana).
+  function kanaWords() {
+    const src = [].concat(window.__ADJ_I || [], window.__ADJ_NA || [], window.__VERBS_G2 || []);
+    const seen = {};
+    const out = [];
+    src.forEach(w => {
+      if (!/^[぀-ゟ]+$/.test(w.kana)) return;
+      if (seen[w.kana]) return;
+      seen[w.kana] = true;
+      out.push({ kana: w.kana, romaji: w.romaji, pt: w.pt || '' });
+    });
+    return out;
+  }
+
   function startQuiz() {
+    const mode = document.getElementById('quizMode').value;
     const sizeVal = document.getElementById('quizSize').value;
-    const pool = getPool();
+    state.kana = isKanaMode(mode);
+
+    const pool = state.kana
+      ? (mode === 'kana-letras' ? KANA_LETRAS : kanaWords())
+      : getPool();
     // "all" = versão ilimitada: usa o banco inteiro (cresce sozinho quando novas perguntas/aulas são adicionadas).
     const count = (sizeVal === 'all')
       ? pool.length
       : Math.min(parseInt(sizeVal, 10) || 10, pool.length);
-    state.picked = shuffle(pool).slice(0, count).map(item => ({
-      q: item.q,
-      hint: item.hint || '',
-      options: shuffle(item.options)
-    }));
+
+    state.picked = state.kana
+      ? shuffle(pool).slice(0, count).map(w => ({ kana: w.kana, romaji: w.romaji, pt: w.pt || '' }))
+      : shuffle(pool).slice(0, count).map(item => ({
+          q: item.q,
+          hint: item.hint || '',
+          options: shuffle(item.options)
+        }));
     state.idx = 0;
     state.score = 0;
     state.answered = false;
@@ -4844,14 +4933,24 @@
   }
 
   function renderQuestion() {
-    const item = state.picked[state.idx];
     state.answered = false;
-
     document.getElementById('qNow').textContent = state.idx + 1;
     document.getElementById('qScore').textContent = state.score;
-    const pct = ((state.idx) / state.picked.length) * 100;
-    document.getElementById('progBar').style.width = pct + '%';
+    document.getElementById('progBar').style.width =
+      ((state.idx) / state.picked.length) * 100 + '%';
 
+    const next = document.getElementById('btnNext');
+    next.disabled = true;
+    next.textContent = (state.idx === state.picked.length - 1) ? 'Ver resultado →' : 'Próxima →';
+
+    if (state.kana) renderKana(); else renderMcq();
+  }
+
+  function renderMcq() {
+    document.getElementById('qBlock').style.display = '';
+    document.getElementById('kanaBlock').style.display = 'none';
+
+    const item = state.picked[state.idx];
     document.getElementById('qText').innerHTML = item.q;
 
     const opts = document.getElementById('qOpts');
@@ -4881,10 +4980,71 @@
     const fb = document.getElementById('qFb');
     fb.className = 'quiz-feedback';
     fb.innerHTML = '';
+  }
 
-    const next = document.getElementById('btnNext');
-    next.disabled = true;
-    next.textContent = (state.idx === state.picked.length - 1) ? 'Ver resultado →' : 'Próxima →';
+  function renderKana() {
+    document.getElementById('qBlock').style.display = 'none';
+    document.getElementById('kanaBlock').style.display = '';
+
+    const item = state.picked[state.idx];
+    const disp = document.getElementById('qKanaDisplay');
+    disp.textContent = item.kana;
+    disp.classList.toggle('word', item.kana.length > 1);
+
+    const input = document.getElementById('qKanaInput');
+    input.value = '';
+    input.disabled = false;
+
+    const fb = document.getElementById('qKanaFeedback');
+    fb.textContent = '';
+    fb.className = 'kana-feedback';
+    document.getElementById('qKanaAnswer').style.display = 'none';
+    document.getElementById('qKanaShow').style.display = 'none';
+    input.focus();
+  }
+
+  function norm(s) {
+    return (s || '').trim().toLowerCase().replace(/\s+/g, '');
+  }
+
+  function kanaResolve(pct) {
+    state.answered = true;
+    document.getElementById('qKanaInput').disabled = true;
+    document.getElementById('qKanaShow').style.display = 'none';
+    document.getElementById('progBar').style.width = pct + '%';
+    document.getElementById('btnNext').disabled = false;
+  }
+
+  function kanaCheck() {
+    if (state.answered) return;
+    const item = state.picked[state.idx];
+    const input = document.getElementById('qKanaInput');
+    const guess = norm(input.value);
+    if (!guess) return;
+
+    const fb = document.getElementById('qKanaFeedback');
+    if (guess === norm(item.romaji)) {
+      state.score++;
+      document.getElementById('qScore').textContent = state.score;
+      fb.textContent = '正解！ Acertou — ' + item.romaji + (item.pt ? '（' + item.pt + '）' : '');
+      fb.className = 'kana-feedback ok';
+      kanaResolve(((state.idx + 1) / state.picked.length) * 100);
+      document.getElementById('btnNext').focus();
+    } else {
+      fb.textContent = 'Não foi dessa vez. Tente de novo ou veja a resposta.';
+      fb.className = 'kana-feedback no';
+      document.getElementById('qKanaShow').style.display = 'inline-block';
+      input.select();
+    }
+  }
+
+  function kanaReveal() {
+    if (state.answered) return;
+    const item = state.picked[state.idx];
+    const ans = document.getElementById('qKanaAnswer');
+    ans.innerHTML = 'Resposta: <em>' + item.romaji + '</em>' + (item.pt ? ' — ' + item.pt : '');
+    ans.style.display = 'block';
+    kanaResolve(((state.idx + 1) / state.picked.length) * 100);
   }
 
   function onAnswer(btn) {
@@ -4960,26 +5120,35 @@
     });
     document.getElementById('quizSize').addEventListener('change', startQuiz);
     document.getElementById('quizMode').addEventListener('change', startQuiz);
+    document.getElementById('qKanaForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      kanaCheck();
+    });
+    document.getElementById('qKanaShow').addEventListener('click', kanaReveal);
   });
 })();
 </script>
 
 <style>
-  .kana-quiz .kana-display {
-    font-size: 200px;
-    line-height: 1;
+  .quiz .kana-display {
+    font-size: 150px;
+    line-height: 1.05;
     text-align: center;
     color: var(--ink);
-    margin: 18px 0 32px;
+    margin: 8px 0 28px;
     font-weight: 600;
   }
-  .kana-quiz .kana-input-row {
+  .quiz .kana-display.word {
+    font-size: 80px;
+    word-break: keep-all;
+  }
+  .quiz .kana-input-row {
     display: flex;
     gap: 10px;
     justify-content: center;
     flex-wrap: wrap;
   }
-  .kana-quiz input.kana-input {
+  .quiz input.kana-input {
     font-size: 22px;
     padding: 12px 16px;
     border: 2px solid var(--gold);
@@ -4987,33 +5156,34 @@
     background: var(--paper);
     color: var(--ink);
     text-align: center;
-    width: 220px;
+    width: 260px;
+    max-width: 100%;
     font-family: inherit;
   }
-  .kana-quiz input.kana-input:focus {
+  .quiz input.kana-input:focus {
     outline: none;
     border-color: var(--vermilion);
   }
-  .kana-quiz .kana-feedback {
+  .quiz .kana-feedback {
     text-align: center;
     margin-top: 18px;
     min-height: 26px;
     font-size: 18px;
   }
-  .kana-quiz .kana-feedback.ok { color: var(--sage); }
-  .kana-quiz .kana-feedback.no { color: var(--vermilion); }
-  .kana-quiz .kana-answer {
+  .quiz .kana-feedback.ok { color: var(--sage); }
+  .quiz .kana-feedback.no { color: var(--vermilion); }
+  .quiz .kana-answer {
     text-align: center;
     margin-top: 12px;
     font-size: 20px;
     color: var(--ink);
   }
-  .kana-quiz .kana-answer em {
+  .quiz .kana-answer em {
     color: var(--vermilion);
     font-style: normal;
     font-weight: 700;
   }
-  .kana-quiz .kana-controls {
+  .quiz .kana-controls {
     display: flex;
     gap: 10px;
     justify-content: center;
@@ -5021,125 +5191,6 @@
     flex-wrap: wrap;
   }
 </style>
-
-<section class="quiz kana-quiz" id="kanaQuiz">
-  <div class="quiz-head">
-    <div class="ja">ひらがな</div>
-    <h2>Hiragana — <em>treino de leitura</em></h2>
-    <p>Digite a leitura (rōmaji) do hiragana mostrado. Vogais (<strong>あ い う え お</strong>), série K (<strong>か き く け こ</strong>) e a alternância sonora G (<strong>が ぎ ぐ げ ご</strong>). Os caracteres aparecem <strong>em ordem sorteada</strong>. Se errar, a resposta <strong>não aparece automaticamente</strong> — tente de novo ou clique em <strong>Mostrar resposta</strong>.</p>
-  </div>
-
-  <div class="quiz-card">
-    <div class="quiz-progress">
-      <div class="quiz-progress-bar"><div id="kanaProgBar"></div></div>
-      <div class="quiz-progress-label">
-        Acertos: <span id="kanaScore">0</span> ・ Tentativas: <span id="kanaTries">0</span>
-      </div>
-    </div>
-
-    <div class="kana-display" id="kanaDisplay">あ</div>
-
-    <form class="kana-input-row" id="kanaForm" autocomplete="off">
-      <input type="text" class="kana-input" id="kanaInput" placeholder="ex.: ka" autocapitalize="off" autocorrect="off" spellcheck="false">
-      <button type="submit" class="quiz-btn">Verificar</button>
-    </form>
-
-    <div class="kana-feedback" id="kanaFeedback"></div>
-    <div class="kana-answer" id="kanaAnswer" style="display:none;"></div>
-
-    <div class="kana-controls">
-      <button type="button" class="quiz-btn secondary" id="kanaShow" style="display:none;">Mostrar resposta</button>
-      <button type="button" class="quiz-btn" id="kanaNext">Próximo →</button>
-    </div>
-  </div>
-</section>
-
-<script>
-(function() {
-  const KANA = [
-    { k:'あ', r:'a' },  { k:'い', r:'i' },  { k:'う', r:'u' },  { k:'え', r:'e' },  { k:'お', r:'o' },
-    { k:'か', r:'ka' }, { k:'き', r:'ki' }, { k:'く', r:'ku' }, { k:'け', r:'ke' }, { k:'こ', r:'ko' },
-    { k:'が', r:'ga' }, { k:'ぎ', r:'gi' }, { k:'ぐ', r:'gu' }, { k:'げ', r:'ge' }, { k:'ご', r:'go' }
-  ];
-
-  const display  = document.getElementById('kanaDisplay');
-  const form     = document.getElementById('kanaForm');
-  const input    = document.getElementById('kanaInput');
-  const feedback = document.getElementById('kanaFeedback');
-  const answer   = document.getElementById('kanaAnswer');
-  const showBtn  = document.getElementById('kanaShow');
-  const nextBtn  = document.getElementById('kanaNext');
-  const scoreEl  = document.getElementById('kanaScore');
-  const triesEl  = document.getElementById('kanaTries');
-  const progBar  = document.getElementById('kanaProgBar');
-
-  let current = null;
-  let score = 0;
-  let tries = 0;
-  let solved = false;
-
-  function pick() {
-    let next;
-    do { next = KANA[Math.floor(Math.random() * KANA.length)]; }
-    while (KANA.length > 1 && next === current);
-    current = next;
-  }
-
-  function newQuestion() {
-    pick();
-    solved = false;
-    display.textContent = current.k;
-    input.value = '';
-    input.disabled = false;
-    feedback.textContent = '';
-    feedback.className = 'kana-feedback';
-    answer.style.display = 'none';
-    showBtn.style.display = 'none';
-    progBar.style.width = '0%';
-    input.focus();
-  }
-
-  function check() {
-    if (solved) return;
-    const guess = input.value.trim().toLowerCase();
-    if (!guess) return;
-    tries++;
-    triesEl.textContent = tries;
-
-    if (guess === current.r) {
-      solved = true;
-      score++;
-      scoreEl.textContent = score;
-      feedback.textContent = '正解！ Acertou — ' + current.r;
-      feedback.className = 'kana-feedback ok';
-      answer.style.display = 'none';
-      showBtn.style.display = 'none';
-      input.disabled = true;
-      progBar.style.width = '100%';
-      nextBtn.focus();
-    } else {
-      feedback.textContent = 'Não foi dessa vez. Tente de novo ou veja a resposta.';
-      feedback.className = 'kana-feedback no';
-      showBtn.style.display = 'inline-block';
-      input.select();
-    }
-  }
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    check();
-  });
-
-  showBtn.addEventListener('click', function() {
-    answer.innerHTML = 'Resposta: <em>' + current.r + '</em>';
-    answer.style.display = 'block';
-  });
-
-  nextBtn.addEventListener('click', newQuestion);
-
-  document.addEventListener('DOMContentLoaded', newQuestion);
-})();
-</script>
 
 <script>
 (function() {
@@ -5322,6 +5373,7 @@
     table.classList.toggle('hide-romaji', !romajiToggle.checked);
   });
 
+  window.__ADJ_I = ADJ;   // exposto para o modo "Hiragana — palavras" do quiz
   render('');
 })();
 </script>
@@ -5428,6 +5480,7 @@
     table.classList.toggle('hide-romaji', !romajiToggle.checked);
   });
 
+  window.__ADJ_NA = ADJ_NA;   // exposto para o modo "Hiragana — palavras" do quiz
   render('');
 })();
 </script>
@@ -5537,6 +5590,7 @@
     table.classList.toggle('hide-romaji', !romajiToggle.checked);
   });
 
+  window.__VERBS_G2 = VERBS_G2;   // exposto para o modo "Hiragana — palavras" do quiz
   render('');
 })();
 </script>
