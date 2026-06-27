@@ -829,17 +829,25 @@
     .side-index {
       display: block;
       position: fixed;
-      top: 30px;
-      left: 30px;
-      width: 230px;
-      max-height: calc(100vh - 60px);
-      overflow-y: auto;
-      padding: 22px 22px 22px 24px;
+      top: 24px;
+      left: 18px;
+      width: 296px;
+      padding: 20px 20px 20px 22px;
       border: 1px solid var(--line);
       background: rgba(255, 255, 255, 0.75);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
       z-index: 10;
+    }
+
+    /* Índice lateral em 2 colunas balanceadas (esquerda recebe ⌈n/2⌉) — sem scroll. */
+    .side-index .index-cols {
+      display: flex;
+      gap: 0 18px;
+    }
+    .side-index .index-cols > ol {
+      flex: 1 1 0;
+      min-width: 0;
     }
 
     .side-index h3 {
@@ -887,9 +895,9 @@
     .side-index a:hover { color: var(--vermilion); }
 
     .container {
-      margin-left: max(300px, calc(50vw - 540px));
+      margin-left: 290px;
       margin-right: auto;
-      max-width: 1080px;
+      max-width: 1640px;
     }
 
     #indexInline { display: none; }
@@ -1347,6 +1355,8 @@
     <li><a href="#adjetivos">Tabela de adjetivos い</a></li>
     <li><a href="#adjetivos-na">Tabela de adjetivos な</a></li>
     <li><a href="#verbos-g2">Verbos grupo 2 (る)</a></li>
+    <li><a href="#aula13-notas">Observações da Aula 13</a></li>
+    <li><a href="#verbos-g3">Verbos grupo 3 (する・くる)</a></li>
     <li><a href="#tempo">Expressões de tempo</a></li>
     <li><a href="#youbi">Dias da semana</a></li>
     <li><a href="#nannichi">Dias do mês</a></li>
@@ -1364,7 +1374,7 @@
     Este material reúne diálogos curtos baseados nas aulas 0 a 11. Cada cena foi montada com o vocabulário que você já viu — para que você possa ler em voz alta, treinar a entonação e se acostumar com as combinações naturais de palavras. Use os diálogos como roteiro: leia o japonês, depois confira o romaji e a tradução. As traduções em português aparecem <strong>borradas</strong> — tente traduzir por conta própria e clique em qualquer uma para revelá-la (clique de novo para ocultar).
   </div>
   <div class="coverage">
-    Esta versão da apostila contempla o conteúdo até a <strong>Aula 12</strong>. Conforme novas aulas forem acontecendo, este aviso e os diálogos abaixo serão atualizados. A Aula 9 traz os <strong>adjetivos い</strong>, com uma <strong>tabela completa e pesquisável</strong> e conjugação automática. A Aula 10 acrescenta os <strong>adjetivos な</strong> (em tabela separada, porque conjugam pela cópula, não pelo radical), as <strong>saudações de sair e voltar para casa</strong> e um bloco grande de <strong>expressões de tempo</strong> (hoje/amanhã, semanas, meses, anos, frequência) e os <strong>dias da semana</strong>. A Aula 11 <strong>amplia muito a tabela de adjetivos な</strong> (de 2 para quase 40) e acrescenta os <strong>dias do mês</strong> (何日), com as leituras irregulares destacadas. A Aula 12 traz a <strong>tabela de verbos do grupo 2</strong> (一段/る), pesquisável, com <strong>todas as colunas do PDF</strong> (ない, 可能 〜られます, 意向 〜よう, て／た) <strong>mais</strong> as formas polidas <strong>ます／ません／ました／ませんでした</strong>, geradas automaticamente. No final há um <strong>quiz interativo</strong> — perguntas e alternativas mudam de ordem a cada execução, então não tem como decorar pela posição.
+    Esta versão da apostila contempla o conteúdo até a <strong>Aula 13</strong>. Conforme novas aulas forem acontecendo, este aviso e os diálogos abaixo serão atualizados. A Aula 9 traz os <strong>adjetivos い</strong>, com uma <strong>tabela completa e pesquisável</strong> e conjugação automática. A Aula 10 acrescenta os <strong>adjetivos な</strong> (em tabela separada, porque conjugam pela cópula, não pelo radical), as <strong>saudações de sair e voltar para casa</strong> e um bloco grande de <strong>expressões de tempo</strong> (hoje/amanhã, semanas, meses, anos, frequência) e os <strong>dias da semana</strong>. A Aula 11 <strong>amplia muito a tabela de adjetivos な</strong> (de 2 para quase 40) e acrescenta os <strong>dias do mês</strong> (何日), com as leituras irregulares destacadas. A Aula 12 traz a <strong>tabela de verbos do grupo 2</strong> (一段/る), pesquisável, com <strong>todas as colunas do PDF</strong> (ない, 可能 〜られます, 意向 〜よう, て／た) <strong>mais</strong> as formas polidas <strong>ます／ません／ました／ませんでした</strong>, geradas automaticamente. A Aula 13 acrescenta a <strong>tabela de verbos do grupo 3</strong> (irregulares <span class="jp-inline">する</span> e <span class="jp-inline">くる</span> e seus compostos), com as colunas do material da aula (ない, ます, じしょ, 可能, 意向, て／た), além de um bloco de <strong>observações</strong> com o vocabulário de <strong>carnes</strong> (肉), peixe e leite e as duas formas de perguntar <strong>"qual dos dois?"</strong> (それとも / か…か…どちら). No final há um <strong>quiz interativo</strong> — perguntas e alternativas mudam de ordem a cada execução, então não tem como decorar pela posição.
   </div>
 </header>
 
@@ -1395,6 +1405,8 @@
     <li><a href="#adjetivos">Tabela completa de adjetivos い — conjugação e busca</a></li>
     <li><a href="#adjetivos-na">Tabela de adjetivos な — conjugação e busca</a></li>
     <li><a href="#verbos-g2">Tabela de verbos — grupo 2 (る) — ます／ません／ました／ませんでした, ない, 可能, 意向, て／た</a></li>
+    <li><a href="#aula13-notas">Observações da Aula 13 — carnes (肉), peixe, leite e "qual dos dois?"</a></li>
+    <li><a href="#verbos-g3">Tabela de verbos — grupo 3 (irregulares する・くる) — ない, ます, じしょ, 可能, 意向, て／た</a></li>
     <li><a href="#tempo">Expressões de tempo — hoje, semanas, meses, frequência</a></li>
     <li><a href="#youbi">Dias da semana — 曜日</a></li>
     <li><a href="#nannichi">Dias do mês — 何日 (datas)</a></li>
@@ -1405,21 +1417,31 @@
 <script>
 (function () {
   // Índice em duas colunas por contagem: a esquerda recebe ⌈n/2⌉ itens, a direita o resto.
-  const nav = document.getElementById('indexInline');
-  if (!nav) return;
-  const ol = nav.querySelector('ol');
-  if (!ol) return;
-  const items = Array.from(ol.children);
-  const leftCount = Math.ceil(items.length / 2);
-  const wrap = document.createElement('div');
-  wrap.className = 'index-cols';
-  const left = document.createElement('ol');
-  const right = document.createElement('ol');
-  items.forEach((li, i) => (i < leftCount ? left : right).appendChild(li));
-  right.style.counterReset = 'item ' + leftCount;   // numeração continua na 2ª coluna
-  wrap.appendChild(left);
-  wrap.appendChild(right);
-  ol.replaceWith(wrap);
+  // counterName é o nome do contador CSS usado por cada índice (difere entre inline e lateral).
+  function splitIntoTwoColumns(rootId, counterName) {
+    const nav = document.getElementById(rootId);
+    if (!nav) return;
+    const ol = nav.querySelector('ol');
+    if (!ol) return;
+    const items = Array.from(ol.children);
+    const leftCount = Math.ceil(items.length / 2);
+    const wrap = document.createElement('div');
+    wrap.className = 'index-cols';
+    const left = document.createElement('ol');
+    const right = document.createElement('ol');
+    items.forEach((li, i) => (i < leftCount ? left : right).appendChild(li));
+    right.style.counterReset = counterName + ' ' + leftCount;   // numeração continua na 2ª coluna
+    wrap.appendChild(left);
+    wrap.appendChild(right);
+    ol.replaceWith(wrap);
+  }
+  splitIntoTwoColumns('indexInline', 'item');
+  // O índice lateral (side-index) não tem id próprio — dou um antes de dividir.
+  const side = document.querySelector('.side-index');
+  if (side) {
+    side.id = side.id || 'sideIndex';
+    splitIntoTwoColumns(side.id, 'side-item');
+  }
 })();
 </script>
 
@@ -3575,6 +3597,285 @@
       </table>
     </div>
     <div class="adj-empty" id="verbEmpty" style="display:none;">Nenhum verbo encontrado.</div>
+  </div>
+</section>
+
+<!-- ─────────────────────────── OBSERVAÇÕES DA AULA 13 ─────────────────────────── -->
+<section class="scene" id="aula13-notas">
+  <div class="scene-header">
+    <span class="scene-num">付録</span>
+    <span class="scene-jp">アウラ 13 の メモ</span>
+    <span class="scene-pt">Observações da Aula 13</span>
+  </div>
+  <p class="setting">Vocabulário e frases soltas que apareceram na Aula 13 (27/06), antes da tabela de verbos do grupo 3. Para perguntar a data: <span class="jp-inline">なんがつ なんにちですか？</span> <em>Nan-gatsu nan-nichi desu ka?</em> — "Que mês e que dia é?"; e <span class="jp-inline">なんようびですか？</span> <em>Nan-youbi desu ka?</em> — "Que dia da semana é?".</p>
+
+  <table class="vocab-table">
+    <thead>
+      <tr><th>Kana</th><th>Romaji</th><th>Kanji</th><th>Português</th></tr>
+    </thead>
+    <tbody>
+      <tr class="vt-group"><td colspan="4">Carnes — 肉 (にく / niku)</td></tr>
+      <tr class="vt-now"><td class="vt-kana">にく</td><td class="vt-ro">niku</td><td class="vt-kanji">肉</td><td>carne</td></tr>
+      <tr><td class="vt-kana">とりにく</td><td class="vt-ro">toriniku</td><td class="vt-kanji">鶏肉</td><td>frango (carne de frango)</td></tr>
+      <tr><td class="vt-kana">むねにく</td><td class="vt-ro">muneniku</td><td class="vt-kanji">胸肉</td><td>peito (de frango)</td></tr>
+      <tr><td class="vt-kana">ももにく</td><td class="vt-ro">momoniku</td><td class="vt-kanji">もも肉</td><td>coxa / sobrecoxa</td></tr>
+      <tr><td class="vt-kana">ぎゅうにく</td><td class="vt-ro">gyuuniku</td><td class="vt-kanji">牛肉</td><td>carne bovina</td></tr>
+      <tr><td class="vt-kana">ぶたにく</td><td class="vt-ro">butaniku</td><td class="vt-kanji">豚肉</td><td>carne de porco</td></tr>
+
+      <tr class="vt-group"><td colspan="4">Peixe e leite</td></tr>
+      <tr><td class="vt-kana">さかな</td><td class="vt-ro">sakana</td><td class="vt-kanji">魚</td><td>peixe</td></tr>
+      <tr><td class="vt-kana">ミルク</td><td class="vt-ro">miruku</td><td class="vt-kanji">—</td><td>leite (do inglês "milk")</td></tr>
+      <tr><td class="vt-kana">ぎゅうにゅう</td><td class="vt-ro">gyuunyuu</td><td class="vt-kanji">牛乳</td><td>leite (de vaca)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note" style="margin-top:14px;">
+    <strong>Perguntar "qual dos dois?" — duas formas</strong>
+    <p style="margin-top:8px;">Comparando peito (<em>muneniku</em>) e coxa (<em>momoniku</em>):</p>
+    <ul>
+      <li><span class="jp-inline">これは むねにくですか？（それとも）ももにくですか？</span><br><em>Kore wa muneniku desu ka? (soretomo) momoniku desu ka?</em> — "Isto é peito? (ou então) é coxa?" — duas perguntas ligadas por <strong>それとも</strong> (ou então).</li>
+      <li><span class="jp-inline">これは むねにくか ももにくか どちらですか？</span><br><em>Kore wa muneniku ka momoniku ka dochira desu ka?</em> — "Entre peito e coxa, qual é este?" — padrão <strong>A か B か どちら</strong> (qual dos dois).</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─────────────────────────── VERBOS GRUPO 3 — TABELA ─────────────────────────── -->
+<section class="scene" id="verbos-g3">
+  <div class="scene-header">
+    <span class="scene-num">付録</span>
+    <span class="scene-jp">どうし グループ 3 いちらん</span>
+    <span class="scene-pt">Tabela de verbos — grupo 3 (irregulares)</span>
+  </div>
+  <p class="setting">Os verbos do <strong>grupo 3</strong> (<em>fukisoku doushi</em>, irregulares) da Aula 13. São apenas dois núcleos — <span class="jp-inline">する</span> (fazer) e <span class="jp-inline">くる</span> (vir) — mas é deles que sai a maior parte dos verbos do dia a dia: qualquer substantivo + <span class="jp-inline">します</span> (<em>benkyou shimasu</em>, <em>denwa shimasu</em>…) conjuga como <span class="jp-inline">する</span>. Como são irregulares, <strong>não há regra de radical</strong> — a tabela traz as formas direto. As colunas seguem a ordem do material da aula: <span class="jp-inline">ない</span> (negativa casual), <span class="jp-inline">ます</span> (presente polido), <span class="jp-inline">じしょ</span> (dicionário), 可能 (potencial), 意向 (volitiva) e <span class="jp-inline">て／た</span>. Role na horizontal para ver todas as colunas.</p>
+
+  <div class="note" style="margin-bottom:8px;">
+    <strong>Os dois núcleos irregulares</strong>
+    <p style="margin-top:8px;"><span class="jp-inline">する</span> → <span class="jp-inline">しない／します／する／できる／しよう／して・した</span> (a forma potencial é <span class="jp-inline">できる</span>, não "*sareru"). <span class="jp-inline">くる</span> → <span class="jp-inline">こない／きます／くる／こられる／こよう／きて・きた</span> (note como a leitura da raiz muda: <em>ko / ki / ku</em>). Compostos herdam a irregularidade: <em>tsurete kuru</em> (trazer pessoas/animais), <em>motte kuru</em> (trazer objetos).</p>
+  </div>
+
+  <div class="adj-table-wrap">
+    <table class="adj-table" id="verbG3Table">
+      <thead>
+        <tr>
+          <th>Significado (いみ)</th>
+          <th><span class="form-jp">ない</span>negativa casual</th>
+          <th><span class="form-jp">ます</span>presente polido</th>
+          <th><span class="form-jp">じしょ</span>dicionário</th>
+          <th><span class="form-jp">可能</span>potencial</th>
+          <th><span class="form-jp">意向</span>volitiva</th>
+          <th><span class="form-jp">て／た</span>forma て / passado casual</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>vir</strong></td>
+          <td><span class="cell-jp">こない</span><span class="cell-ro">konai</span></td>
+          <td><span class="cell-jp">きます</span><span class="cell-ro">kimasu</span></td>
+          <td><span class="cell-jp">くる</span><span class="cell-ro">kuru</span></td>
+          <td><span class="cell-jp">こられる</span><span class="cell-ro">korareru</span></td>
+          <td><span class="cell-jp">こよう</span><span class="cell-ro">koyou</span></td>
+          <td><span class="cell-jp">きて／きた</span><span class="cell-ro">kite / kita</span></td>
+        </tr>
+        <tr>
+          <td><strong>levar / trazer</strong><br><span style="font-size:0.78rem;color:var(--ink-soft);">(pessoas e animais)</span></td>
+          <td><span class="cell-jp">つれてこない</span><span class="cell-ro">Tsurete konai</span></td>
+          <td><span class="cell-jp">つれてきます</span><span class="cell-ro">tsurete kimasu</span></td>
+          <td><span class="cell-jp">つれてくる</span><span class="cell-ro">Tsurete kuru</span></td>
+          <td><span class="cell-jp">つれてこられます</span><span class="cell-ro">Tsurete koraremasu</span></td>
+          <td><span class="cell-jp">つれてこよう</span><span class="cell-ro">Tsurete koyou</span></td>
+          <td><span class="cell-jp">つれてきて／た</span><span class="cell-ro">Tsurete kite / Tsurete kita</span></td>
+        </tr>
+        <tr>
+          <td><strong>trazer</strong><br><span style="font-size:0.78rem;color:var(--ink-soft);">(objetos)</span></td>
+          <td><span class="cell-jp">もってこない</span><span class="cell-ro">Motte konai</span></td>
+          <td><span class="cell-jp">もってきます</span><span class="cell-ro">motte kimasu</span></td>
+          <td><span class="cell-jp">もってくる</span><span class="cell-ro">Motte kuru</span></td>
+          <td><span class="cell-jp">もってこられます</span><span class="cell-ro">Motte koraremasu</span></td>
+          <td><span class="cell-jp">もってこよう</span><span class="cell-ro">Motte koyou</span></td>
+          <td><span class="cell-jp">もってきて／た</span><span class="cell-ro">Motte kite / Motte kita</span></td>
+        </tr>
+        <tr>
+          <td><strong>fazer</strong></td>
+          <td><span class="cell-jp">しない</span><span class="cell-ro">shinai</span></td>
+          <td><span class="cell-jp">します</span><span class="cell-ro">shimasu</span></td>
+          <td><span class="cell-jp">する</span><span class="cell-ro">suru</span></td>
+          <td><span class="cell-jp">できる</span><span class="cell-ro">dekiru</span></td>
+          <td><span class="cell-jp">しよう</span><span class="cell-ro">shiyou</span></td>
+          <td><span class="cell-jp">して／した</span><span class="cell-ro">shite / shita</span></td>
+        </tr>
+        <tr>
+          <td><strong>estudar</strong></td>
+          <td><span class="cell-jp">しない</span><span class="cell-ro">Benkyou shinai</span></td>
+          <td><span class="cell-jp">べんきょう します</span><span class="cell-ro">benkyou shimasu</span></td>
+          <td><span class="cell-jp">する</span><span class="cell-ro">benkyou suru</span></td>
+          <td><span class="cell-jp">できる</span><span class="cell-ro">Benkyou dekiru</span></td>
+          <td><span class="cell-jp">しよう</span><span class="cell-ro">Benkyou shiyou</span></td>
+          <td><span class="cell-jp">して／した</span><span class="cell-ro">Benkyou shite / Benkyou shita</span></td>
+        </tr>
+        <tr>
+          <td><strong>cozinhar</strong></td>
+          <td><span class="cell-jp">しない</span></td>
+          <td><span class="cell-jp">りょうり します</span><span class="cell-ro">Ryouri shimasu</span></td>
+          <td><span class="cell-jp">する</span></td>
+          <td><span class="cell-jp">できる</span></td>
+          <td><span class="cell-jp">しよう</span></td>
+          <td><span class="cell-jp">して／した</span></td>
+        </tr>
+        <tr>
+          <td><strong>dirigir</strong></td>
+          <td><span class="cell-jp">しない</span></td>
+          <td><span class="cell-jp">うんてん します</span><span class="cell-ro">unten shimasu</span></td>
+          <td><span class="cell-jp">する</span></td>
+          <td><span class="cell-jp">できる</span></td>
+          <td><span class="cell-jp">しよう</span></td>
+          <td><span class="cell-jp">して／した</span></td>
+        </tr>
+        <tr>
+          <td><strong>lavar as roupas</strong></td>
+          <td><span class="cell-jp">しない</span></td>
+          <td><span class="cell-jp">せんたく します</span><span class="cell-ro">Sentaku shimasu</span></td>
+          <td><span class="cell-jp">する</span></td>
+          <td><span class="cell-jp">できる</span></td>
+          <td><span class="cell-jp">しよう</span></td>
+          <td><span class="cell-jp">して／した</span></td>
+        </tr>
+        <tr>
+          <td><strong>limpar</strong></td>
+          <td><span class="cell-jp">しない</span></td>
+          <td><span class="cell-jp">そうじ します</span><span class="cell-ro">Souji shimasu</span></td>
+          <td><span class="cell-jp">する</span></td>
+          <td><span class="cell-jp">できる</span></td>
+          <td><span class="cell-jp">しよう</span></td>
+          <td><span class="cell-jp">して／した</span></td>
+        </tr>
+        <tr>
+          <td><strong>telefonar</strong></td>
+          <td><span class="cell-jp">しない</span></td>
+          <td><span class="cell-jp">でんわ します</span><span class="cell-ro">denwa shimasu</span></td>
+          <td><span class="cell-jp">する</span></td>
+          <td><span class="cell-jp">できる</span></td>
+          <td><span class="cell-jp">しよう</span></td>
+          <td><span class="cell-jp">して／した</span><span class="cell-ro">denwa shite kudasai</span></td>
+        </tr>
+        <tr>
+          <td><strong>fazer lição de casa</strong></td>
+          <td><span class="cell-jp">しない</span></td>
+          <td><span class="cell-jp">しゅくだい します</span><span class="cell-ro">shukudai shimasu</span></td>
+          <td><span class="cell-jp">する</span></td>
+          <td><span class="cell-jp">できる</span></td>
+          <td><span class="cell-jp">しよう</span></td>
+          <td><span class="cell-jp">して／した</span></td>
+        </tr>
+        <tr>
+          <td><strong>jogar tênis</strong></td>
+          <td><span class="cell-jp">しない</span></td>
+          <td><span class="cell-jp">テニス します</span><span class="cell-ro">tenisu shimasu</span></td>
+          <td><span class="cell-jp">する</span></td>
+          <td><span class="cell-jp">できる</span></td>
+          <td><span class="cell-jp">しよう</span></td>
+          <td><span class="cell-jp">して／した</span></td>
+        </tr>
+        <tr>
+          <td><strong>fazer compras</strong></td>
+          <td><span class="cell-jp">しない</span></td>
+          <td><span class="cell-jp">かいもの します</span><span class="cell-ro">kaimono shimasu</span></td>
+          <td><span class="cell-jp">する</span></td>
+          <td><span class="cell-jp">できる</span></td>
+          <td><span class="cell-jp">しよう</span></td>
+          <td><span class="cell-jp">して／した</span></td>
+        </tr>
+        <tr>
+          <td><strong>tomar refeição</strong></td>
+          <td><span class="cell-jp">しない</span></td>
+          <td><span class="cell-jp">しょくじ します</span><span class="cell-ro">shokuji shimasu</span></td>
+          <td><span class="cell-jp">する</span></td>
+          <td><span class="cell-jp">できる</span></td>
+          <td><span class="cell-jp">しよう</span></td>
+          <td><span class="cell-jp">して／した</span></td>
+        </tr>
+        <tr>
+          <td><strong>passear</strong></td>
+          <td><span class="cell-jp">しない</span></td>
+          <td><span class="cell-jp">さんぽ します</span><span class="cell-ro">sanpo shimasu</span></td>
+          <td><span class="cell-jp">する</span></td>
+          <td><span class="cell-jp">できる</span></td>
+          <td><span class="cell-jp">しよう</span></td>
+          <td><span class="cell-jp">して／した</span></td>
+        </tr>
+        <tr>
+          <td><strong>pesquisar</strong></td>
+          <td><span class="cell-jp">しない</span></td>
+          <td><span class="cell-jp">けんきゅう します</span><span class="cell-ro">kenkyuu shimasu</span></td>
+          <td><span class="cell-jp">する</span></td>
+          <td><span class="cell-jp">できる</span></td>
+          <td><span class="cell-jp">しよう</span></td>
+          <td><span class="cell-jp">して／した</span></td>
+        </tr>
+        <tr>
+          <td><strong>estar preocupado</strong></td>
+          <td><span class="cell-jp">しない</span></td>
+          <td><span class="cell-jp">しんぱい します</span><span class="cell-ro">Shinpai shimasu</span></td>
+          <td><span class="cell-jp">する</span></td>
+          <td><span class="cell-jp">できる</span></td>
+          <td><span class="cell-jp">しよう</span></td>
+          <td><span class="cell-jp">して／した</span></td>
+        </tr>
+        <tr>
+          <td><strong>viajar a trabalho</strong></td>
+          <td><span class="cell-jp">しない</span></td>
+          <td><span class="cell-jp">しゅっちょう します</span><span class="cell-ro">Shucchou shimasu</span></td>
+          <td><span class="cell-jp">する</span></td>
+          <td><span class="cell-jp">できる</span></td>
+          <td><span class="cell-jp">しよう</span></td>
+          <td><span class="cell-jp">して／した</span></td>
+        </tr>
+        <tr>
+          <td><strong>praticar</strong></td>
+          <td><span class="cell-jp">しない</span></td>
+          <td><span class="cell-jp">れんしゅう します</span><span class="cell-ro">Renshuu shimasu</span></td>
+          <td><span class="cell-jp">する</span></td>
+          <td><span class="cell-jp">できる</span></td>
+          <td><span class="cell-jp">しよう</span></td>
+          <td><span class="cell-jp">して／した</span></td>
+        </tr>
+        <tr>
+          <td><strong>quebrar</strong></td>
+          <td><span class="cell-jp">しない</span></td>
+          <td><span class="cell-jp">こしょう します</span><span class="cell-ro">Koshou shimasu</span></td>
+          <td><span class="cell-jp">する</span></td>
+          <td><span class="cell-jp">できる</span></td>
+          <td><span class="cell-jp">しよう</span></td>
+          <td><span class="cell-jp">して／した</span></td>
+        </tr>
+        <tr>
+          <td><strong>apresentar</strong></td>
+          <td><span class="cell-jp">しない</span></td>
+          <td><span class="cell-jp">しょうかい します</span><span class="cell-ro">Shoukai shimasu</span></td>
+          <td><span class="cell-jp">する</span></td>
+          <td><span class="cell-jp">できる</span></td>
+          <td><span class="cell-jp">しよう</span></td>
+          <td><span class="cell-jp">して／した</span></td>
+        </tr>
+        <tr>
+          <td><strong>guiar</strong></td>
+          <td><span class="cell-jp">しない</span></td>
+          <td><span class="cell-jp">あんない します</span><span class="cell-ro">Annai shimasu</span></td>
+          <td><span class="cell-jp">する</span></td>
+          <td><span class="cell-jp">できる</span></td>
+          <td><span class="cell-jp">しよう</span></td>
+          <td><span class="cell-jp">して／した</span></td>
+        </tr>
+        <tr>
+          <td><strong>preparar</strong></td>
+          <td><span class="cell-jp">しない</span></td>
+          <td><span class="cell-jp">じゅんび します</span><span class="cell-ro">Junbi shimasu</span></td>
+          <td><span class="cell-jp">する</span></td>
+          <td><span class="cell-jp">できる</span></td>
+          <td><span class="cell-jp">しよう</span></td>
+          <td><span class="cell-jp">して／した</span></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
